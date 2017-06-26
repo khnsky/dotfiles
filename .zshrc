@@ -19,3 +19,4 @@ alias reload="source $HOME/.zshrc"
 alias vi=nvim
 alias vim=nvim
 alias sudo="sudo "
+alias shutdown=/bin/shutdown
