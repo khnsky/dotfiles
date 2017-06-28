@@ -1,0 +1,46 @@
+! urxvt font and spacing
+
+URxvt.font: xft:monospace:size=14
+URxvt.letterSpace: -2
+
+! urxvt scroll bar
+URxvt.scrollBar: false
+
+! colors
+
+! special
+*.foreground:   #ffffff
+*.background:   #151515
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #3d3d3d
+*.color8:       #3d3d3d
+
+! red
+*.color1:       #992929
+*.color9:       #992929
+
+! green
+*.color2:       #007777
+*.color10:      #007777
+
+! yellow
+*.color3:       #ce8030
+*.color11:      #ce8030
+
+! blue
+*.color4:       #31658c
+*.color12:      #31658c
+
+! magenta
+*.color5:       #d80d80
+*.color13:      #d80d80
+
+! cyan
+*.color6:       #00b0b0
+*.color14:      #00b0b0
+
+! white
+*.color7:       #b2b2b2
+*.color15:      #b2b2b2

@@ -20,3 +20,6 @@ alias vi=nvim
 alias vim=nvim
 alias sudo="sudo "
 alias shutdown=/bin/shutdown
+
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
