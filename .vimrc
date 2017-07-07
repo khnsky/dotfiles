@@ -1,65 +1,108 @@
+"TODO:
+"	foldy
+"	kolory
+"	uporządkować vimrc
+"	kofiguracja plguinów
+"	migracja z vundle na vim-plug
+
 set nocompatible	" be iMproved
 
 filetype off		" required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Make sure you use single quotes
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
 
-Plugin 'scrooloose/nerdtree'
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-Plugin 'kien/ctrlp.vim'
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-Plugin 'vim-syntastic/syntastic'
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this lineype detection, loading filetype plugins and filetype indent plugins
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+" my plugins:
+
+" Plug 'tpope/vim-fugitive'
+
+" Plug 'scrooloose/nerdtree'
+
+" Plug 'kien/ctrlp.vim'
+
+" Plug 'vim-syntastic/syntastic'
+
+Plug 'vim-airline/vim-airline'
+
+" Initialize plugin system
+call plug#end()
+
+" enable file dependant plugins and indenting
 filetype indent plugin on
-"enable syntax
+
+" enable syntax
 syntax on
-"enable line numbering and relative line numbering
+
+" enable hybrid numbering and number width of 4
 set number relativenumber numberwidth=4
-"makes commands show in right down corner
+
+" make commands show in right down corner
 set showcmd
 
-"show end of line and tab chars (invisibles)
+" show end of line and tab chars (invisibles)
 set list listchars=tab:▸\ ,eol:¬
-"set tabs to 4 spaces length and use tabs not spaces
+
+" set tabs to 4 spaces length and use tabs not spaces
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 "
 set hidden
-"
+
+" visual autocomplete
 set wildmenu
-"
-"
+
+" search case insenitive unless cap. letter used or \C flag
 set ignorecase smartcase
-"
-set wildmenu
-"
-"search case insenitive unless cap. letter used or \C flag
-set ignorecase smartcase
-"display confiramtion prompt instead of error?
+
+" display confiramtion prompt instead of error?
 set confirm
+
+" make lines longer than vims width wrap
+set wrap "TODO breakpoints i autoindent
+
+" use system CLIPBOARD buffer
+set clipboard=unnamedplus
+
+" redraw only when needed
+set lazyredraw
+
+" higlight matching parenthesis-like characters
+set showmatch
+
+" search as characters are entered and highlight matches
+set incsearch hlsearch "TODO czyszczenie highighta
+
+" always show statusline
+set laststatus=2
