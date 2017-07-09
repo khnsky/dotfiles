@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -149,8 +149,39 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# import Xresources colors here
+# set_from_resource $<name> <resource_name> <fallback>
+set_from_resource		$fgcolor	i3wm.foreground	#ffffff
+set_from_resource		$bgcolor	i3wm.background	#151515
+
+set_from_resource		$black		i3wm.color0		#3d3d3d
+set_from_resource		$red		i3wm.color1		#992929
+set_from_resource		$green		i3wm.color2		#007777
+set_from_resource		$yellow		i3wm.color3		#ce8030
+set_from_resource		$blue		i3wm.color4		#31658c
+set_from_resource		$magenta	i3wm.color5		#d80d80
+set_from_resource		$cyan		i3wm.color6		#00b0b0
+set_from_resource		$white		i3wm.color7		#b2b2b2
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+		colors {
+				background $bgcolor
+
+				#					border		background	text
+				focused_workspace	$bgcolor	$bgcolor	$white
+				inactive_workspace	$bgcolor	$bgcolor	$black
+				urgent_workspace	$red		$red		$white
+				}
 }
+
+# Colors
+# class						border		backgr.		text		indicator
+client.focused				$black		$black		$bgcolor	$black
+client.focused_inactive		$bgcolor	$bgcolor	$white		$bgcolor
+client.unfocused			$bgcolor	$bgcolor	$white		$bgcolor
+client.urgent				$red		$red		$white		$red
+
+hide_edge_borders both
