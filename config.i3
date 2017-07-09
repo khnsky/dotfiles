@@ -179,8 +179,8 @@ bar {
 
 # Colors
 # class						border		backgr.		text		indicator
-client.focused				$black		$black		$bgcolor	$black
-client.focused_inactive		$bgcolor	$bgcolor	$white		$bgcolor
+client.focused				$bgcolor	$bgcolor	$white		$bgcolor
+client.focused_inactive		$bgcolor	$bgcolor	$black		$bgcolor
 client.unfocused			$bgcolor	$bgcolor	$white		$bgcolor
 client.urgent				$red		$red		$white		$red
 
