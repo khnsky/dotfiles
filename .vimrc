@@ -3,7 +3,6 @@
 "	kolory
 "	uporządkować vimrc
 "	kofiguracja plguinów
-"	migracja z vundle na vim-plug
 
 set nocompatible	" be iMproved
 
