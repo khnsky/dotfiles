@@ -23,3 +23,4 @@ alias shutdown=/bin/shutdown
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
+alias cal='cal -m --color=auto'
