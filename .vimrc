@@ -1,9 +1,3 @@
-"TODO:
-"	foldy
-"	kolory
-"	uporządkować vimrc
-"	kofiguracja plguinów
-
 set nocompatible	" be iMproved
 
 filetype off		" required
@@ -89,8 +83,7 @@ set ignorecase smartcase
 set confirm
 
 " make lines longer than vims width wrap
-set wrap "TODO breakpoints i autoindent
-
+set wrap 
 " use system CLIPBOARD buffer
 set clipboard=unnamedplus
 
@@ -101,7 +94,6 @@ set lazyredraw
 set showmatch
 
 " search as characters are entered and highlight matches
-set incsearch hlsearch "TODO czyszczenie highighta
-
+set incsearch hlsearch
 " always show statusline
 set laststatus=2
