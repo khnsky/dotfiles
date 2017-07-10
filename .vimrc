@@ -49,6 +49,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 
+Plug 'vim-airline/vim-airline-themes'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -97,3 +100,12 @@ set showmatch
 set incsearch hlsearch
 " always show statusline
 set laststatus=2
+
+" plugin settings
+" vim-airline
+
+let g:airline_powerline_fonts = 1 "powerline fonts
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
