@@ -39,7 +39,7 @@ call plug#begin('~/.vim/plugged')
 
 " my plugins:
 
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Plug 'scrooloose/nerdtree'
 
