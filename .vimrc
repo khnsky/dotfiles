@@ -90,8 +90,8 @@ set wrap
 " use system CLIPBOARD buffer
 set clipboard=unnamedplus
 
-" redraw only when needed
-set lazyredraw
+" redraw after new window is opened in i3
+set nolazyredraw
 
 " higlight matching parenthesis-like characters
 set showmatch
