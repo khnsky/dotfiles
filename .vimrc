@@ -104,6 +104,9 @@ set laststatus=2
 " plugin settings
 " vim-airline
 
+set t_Co=256
+colorscheme default
+
 let g:airline_powerline_fonts = 1 "powerline fonts
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
