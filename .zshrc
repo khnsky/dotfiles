@@ -13,12 +13,12 @@ compinit
 # 
 # my config
 export VISUAL=nvim
-export EDITOR="$VISUAL"
+export EDITOR='$VISUAL'
 
-alias reload="source $HOME/.zshrc"
+alias reload='source $HOME/.zshrc'
 alias vi=nvim
 alias vim=nvim
-alias sudo="sudo "
+alias sudo='sudo '
 alias shutdown=/bin/shutdown
 
 alias grep='grep --color=auto'
