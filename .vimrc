@@ -5,7 +5,7 @@ filetype off		" required
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+" call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
@@ -39,7 +39,7 @@ call plug#begin('~/.vim/plugged')
 
 " my plugins:
 
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " Plug 'scrooloose/nerdtree'
 
@@ -47,13 +47,13 @@ Plug 'tpope/vim-fugitive'
 
 " Plug 'vim-syntastic/syntastic'
 
-Plug 'vim-airline/vim-airline'
-
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"
+"Plug 'vim-airline/vim-airline-themes'
 
 
 " Initialize plugin system
-call plug#end()
+" call plug#end()
 
 " enable file dependant plugins and indenting
 filetype indent plugin on
@@ -85,8 +85,8 @@ set ignorecase smartcase
 " display confiramtion prompt instead of error?
 set confirm
 
-" make lines longer than vims width wrap
-set wrap 
+" wrap lines in sensible places, keep indentation
+set wrap linebreak breakindent
 " use system CLIPBOARD buffer
 set clipboard=unnamedplus
 
@@ -107,8 +107,8 @@ set laststatus=2
 set t_Co=256
 colorscheme default
 
-let g:airline_powerline_fonts = 1 "powerline fonts
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
+" let g:airline_powerline_fonts = 1 "powerline fonts
+" if !exists('g:airline_symbols')
+" 	let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
