@@ -1,7 +1,7 @@
 set nocompatible	" be iMproved
-
 filetype off		" required
 
+" ----- PLUGINS ----- {{{
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -53,8 +53,10 @@ filetype off		" required
 
 
 " Initialize plugin system
-" call plug#end()
+" call plug#end() 
+" }}}
 
+" ----- WORKFLOW ----- {{{
 " enable file dependant plugins and indenting
 filetype indent plugin on
 
@@ -101,14 +103,28 @@ set incsearch hlsearch
 " always show statusline
 set laststatus=2
 
-" plugin settings
-" vim-airline
+" folding based on syntax, not folded on default
+set foldmethod=syntax nofoldenable
+" }}}
 
+" ----- INTERFACE ----- {{{
 set t_Co=256
 colorscheme default
+
+" highlight current line
+set cursorline
+highlight cursorline cterm=none ctermbg=black
+" }}}
+
+" ----- PLUGIN SETTINGS ----- {{{
+" vim-airline
+
 
 " let g:airline_powerline_fonts = 1 "powerline fonts
 " if !exists('g:airline_symbols')
 " 	let g:airline_symbols = {}
 " endif
 " let g:airline_symbols.space = "\ua0"
+" }}}
+
+" vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0
