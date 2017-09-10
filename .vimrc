@@ -105,6 +105,10 @@ set laststatus=2
 
 " folding based on syntax, not folded on default
 set foldmethod=syntax nofoldenable
+
+" default timeout on mappings, no timeout on escape sequences - no lag when
+" exiting visual mode
+set timeout timeoutlen=1000 ttimeoutlen=0
 " }}}
 
 " ----- INTERFACE ----- {{{
@@ -114,6 +118,20 @@ colorscheme default
 " highlight current line
 set cursorline
 highlight cursorline cterm=none ctermbg=black
+
+" define custom highlighting groups
+hi User1 ctermbg=none ctermfg=green cterm=none
+" statusline
+set statusline=
+set statusline+=%1*		 "User1 highlighting
+set statusline+=%t
+set statusline+=%y
+set statusline+=%m
+set statusline+=%r
+set statusline+=%h
+set statusline+=%=		"left/right separator
+set statusline+=%l/%L	"current line/all lines
+set statusline+=\ %P
 " }}}
 
 " ----- PLUGIN SETTINGS ----- {{{
