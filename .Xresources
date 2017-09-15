@@ -1,14 +1,4 @@
-! urxvt font and spacing
-
-! URxvt.font: xft:monospace:size=13
-
-URxvt.font: xft:DejaVu\ Sans\ Mono:size=11:antialias=true,xft:DejaVu\ Sans\ Mono\ for\ Powerline:style=bold:size=11:antialias=true
-! URxvt.letterSpace:-1
-
-! urxvt scroll bar
-URxvt.scrollBar: false
-
-! colors
+! colors {{{
 
 ! special
 *.foreground:   #ffffff
@@ -46,10 +36,26 @@ URxvt.scrollBar: false
 ! white
 *.color7:       #b2b2b2
 *.color15:      #b2b2b2
+! }}} 
 
-! ROFI Color theme
+! ROFI Color theme {{{
 rofi.color-enabled: true
 rofi.color-window: #151515, #151515, #151515
 rofi.color-normal: #151515, #3d3d3d, #151515, #b2b2b2, #151515
 rofi.color-active: #151515, #31658c, #151515, #31658c, #151515
 rofi.color-urgent: #151515, #992929, #151515, #992929, #151515
+! }}}
+
+! urxvt settings {{{
+! no longer used, i moved to suckless simple terminal
+
+! URxvt.font: xft:monospace:size=13
+
+URxvt.font: xft:DejaVu\ Sans\ Mono:size=11:antialias=true,xft:DejaVu\ Sans\ Mono\ for\ Powerline:style=bold:size=11:antialias=true
+! URxvt.letterSpace:-1
+
+! urxvt scroll bar
+URxvt.scrollBar: false
+! }}}
+
+! vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0
