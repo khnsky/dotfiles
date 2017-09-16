@@ -136,7 +136,7 @@ highlight cursorline cterm=none ctermbg=black
 set laststatus=2
 
 " custom highlight
-hi User1 ctermbg=none ctermfg=green guibg=none guifg=green
+hi User1 ctermbg=none ctermfg=green
 
 set statusline=			" clear statusline when vimrc is reloaded
 set statusline+=%1*		" use User1 highlighting
