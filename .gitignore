@@ -4,6 +4,7 @@ gconf
 mimeapps.list
 pavucontrol.ini
 pulse
+dconf
 
 *.bak
 *.note
