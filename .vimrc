@@ -1,7 +1,8 @@
 set nocompatible	" be iMproved
 filetype off		" required
 
-" ----- PLUGINS ----- {{{
+" plugins {{{
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -51,48 +52,40 @@ filetype off		" required
 "
 "Plug 'vim-airline/vim-airline-themes'
 
-
 " Initialize plugin system
 " call plug#end() 
+
 " }}}
 
-" ----- WORKFLOW ----- {{{
+" behaviour {{{
+
 " enable file dependant plugins and indenting
 filetype indent plugin on
 
-" enable syntax
+" enable syntax dependant settings
 syntax on
 
-" enable hybrid numbering and number width of 4
-set number relativenumber numberwidth=4
-
-" make commands show in right down corner
-set showcmd
-
-" show end of line and tab chars (invisibles)
-set list listchars=tab:▸\ ,eol:¬
-
-" set tabs to 4 spaces length and use tabs not spaces
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-
-"
+" allow opening new buffers without saving changes?
 set hidden
 
-" visual autocomplete
-set wildmenu
-
-" search case insenitive unless cap. letter used or \C flag
+" case insensitive search
+" unless using capital letters
+" or specifing \C flag
 set ignorecase smartcase
 
-" display confiramtion prompt instead of error?
+" show dialog when action needs confirmation
+" quitind without saving, overwritting read only file, etc
 set confirm
 
-" wrap lines in sensible places, keep indentation
+" wrap lines too long to display
+" break lines at characters specified in breakat instead of middle of word
+" keep indentation on wraps
 set wrap linebreak breakindent
+
 " use system CLIPBOARD buffer
 set clipboard=unnamedplus
 
-" redraw after new window is opened in i3
+" redraw needed when terminal size changes?
 set nolazyredraw
 
 " higlight matching parenthesis-like characters
@@ -100,44 +93,67 @@ set showmatch
 
 " search as characters are entered and highlight matches
 set incsearch hlsearch
-" always show statusline
-set laststatus=2
-
+"
 " folding based on syntax, not folded on default
 set foldmethod=syntax nofoldenable
 
-" default timeout on mappings, no timeout on escape sequences - no lag when
-" exiting visual mode
+" default timeout on mappings, no timeout on escape sequences
+" no lag when exiting visual mode
 set timeout timeoutlen=1000 ttimeoutlen=0
+
 " }}}
 
-" ----- INTERFACE ----- {{{
+" interface {{{
+"
+" show line number on current line
+" and relative line numbering for others
+" width of line numbers 4
+set number relativenumber numberwidth=4
+
+" show pressed keys in down right corner
+set showcmd
+
+" show end of line and tab chars (invisibles) as characters after colon
+set list listchars=tab:▸\ ,eol:¬
+
+" set tabs to 4 spaces length and use tabs not spaces
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
+" enhanced comand line autocompletition
+set wildmenu
+
+" terminal option, 256 colors
 set t_Co=256
+
 colorscheme default
 
 " highlight current line
 set cursorline
 highlight cursorline cterm=none ctermbg=black
 
-" define custom highlighting groups
-hi User1 ctermbg=none ctermfg=green cterm=none
 " statusline
-set statusline=
-set statusline+=%1*		 "User1 highlighting
-set statusline+=%t
-set statusline+=%y
-set statusline+=%m
-set statusline+=%r
-set statusline+=%h
-set statusline+=%=		"left/right separator
-set statusline+=%l/%L	"current line/all lines
-set statusline+=\ %P
+" always show statusline
+set laststatus=2
+
+" custom highlight
+hi User1 ctermbg=none ctermfg=green
+
+set statusline=			" clear statusline when vimrc is reloaded
+set statusline+=%1*		" use User1 highlighting
+set statusline+=%t		" filename tail
+set statusline+=%y		" filetype
+set statusline+=%m		" modified flag
+set statusline+=%r		" read only flag
+set statusline+=%h		" help file flag
+set statusline+=%=		" left/right separator
+set statusline+=%l/%L	" current line/all lines
+set statusline+=\ %P	" percent trough file
+
 " }}}
 
-" ----- PLUGIN SETTINGS ----- {{{
+" pugin settings {{{
+
 " vim-airline
-
-
 " let g:airline_powerline_fonts = 1 "powerline fonts
 " if !exists('g:airline_symbols')
 " 	let g:airline_symbols = {}
@@ -145,4 +161,4 @@ set statusline+=\ %P
 " let g:airline_symbols.space = "\ua0"
 " }}}
 
-" vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0
+" vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
