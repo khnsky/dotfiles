@@ -5,6 +5,7 @@ mimeapps.list
 pavucontrol.ini
 pulse
 dconf
+qBittorrent
 
 *.bak
 *.note
