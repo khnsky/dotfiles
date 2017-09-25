@@ -1,5 +1,5 @@
-set nocompatible	" be iMproved
-filetype off		" required
+set nocompatible    " be iMproved
+filetype off        " required
 
 " plugins {{{
 
@@ -116,8 +116,11 @@ set showcmd
 " show end of line and tab chars (invisibles) as characters after colon
 set list listchars=tab:▸\ ,eol:¬
 
-" set tabs to 4 spaces length and use tabs not spaces
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+" indentation
+set tabstop=4       " width of <tab>
+set softtabstop=4   " amount of columns tab key inserts (combination of spaces and tabs if needed)
+set shiftwidth=4    " indent width
+set expandtab       " insert spaces in place of tabs
 
 " enhanced comand line autocompletition
 set wildmenu
@@ -136,18 +139,18 @@ highlight cursorline cterm=none ctermbg=black
 set laststatus=2
 
 " custom highlight
-hi User1 ctermbg=none ctermfg=green
+highlight User1 ctermbg=none ctermfg=red
 
-set statusline=			" clear statusline when vimrc is reloaded
-set statusline+=%1*		" use User1 highlighting
-set statusline+=%t		" filename tail
-set statusline+=%y		" filetype
-set statusline+=%m		" modified flag
-set statusline+=%r		" read only flag
-set statusline+=%h		" help file flag
-set statusline+=%=		" left/right separator
-set statusline+=%l/%L	" current line/all lines
-set statusline+=\ %P	" percent trough file
+set statusline=         " clear statusline when vimrc is reloaded
+set statusline+=%1*     " use User1 highlighting
+set statusline+=%t      " filename tail
+set statusline+=%y      " filetype
+set statusline+=%m      " modified flag
+set statusline+=%r      " read only flag
+set statusline+=%h      " help file flag
+set statusline+=%=      " left/right separator
+set statusline+=%l/%L   " current line/all lines
+set statusline+=\ %P    " percent trough file
 
 " }}}
 
@@ -156,7 +159,7 @@ set statusline+=\ %P	" percent trough file
 " vim-airline
 " let g:airline_powerline_fonts = 1 "powerline fonts
 " if !exists('g:airline_symbols')
-" 	let g:airline_symbols = {}
+"   let g:airline_symbols = {}
 " endif
 " let g:airline_symbols.space = "\ua0"
 " }}}
