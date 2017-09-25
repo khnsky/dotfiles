@@ -6,6 +6,7 @@ pavucontrol.ini
 pulse
 dconf
 qBittorrent
+*gtk*
 
 *.bak
 *.note
