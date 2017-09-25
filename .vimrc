@@ -83,7 +83,7 @@ set confirm
 set wrap linebreak breakindent
 
 " use system CLIPBOARD buffer
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 " redraw needed when terminal size changes?
 set nolazyredraw
