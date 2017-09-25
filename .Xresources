@@ -13,7 +13,7 @@ URxvt.scrollBar: false
 
 ! }}}
 
-! colors
+! colors {{{
 
 ! old colors {{{
 ! ! special
@@ -91,7 +91,10 @@ URxvt.scrollBar: false
 *.color7:       #808080
 *.color15:      #a2a2a2
 
-! ROFI Color theme
+! }}}
+
+! ROFI Color theme {{{
+!
 rofi.color-enabled: true
 ! <bg> <border> <separator>
 rofi.color-window: #151515, #151515, #151515
@@ -99,5 +102,7 @@ rofi.color-window: #151515, #151515, #151515
 rofi.color-normal: #151515, #3d3d3d, #151515, #b2b2b2, #151515
 rofi.color-active: #151515, #31658c, #151515, #31658c, #151515
 rofi.color-urgent: #151515, #992929, #151515, #992929, #151515
+
+! }}}
 
 ! vim:foldenable:foldlevel=0:foldmethod=marker:foldmarker={{{,}}}

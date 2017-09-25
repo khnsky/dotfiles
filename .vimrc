@@ -162,6 +162,7 @@ set statusline+=\ %P    " percent trough file
 "   let g:airline_symbols = {}
 " endif
 " let g:airline_symbols.space = "\ua0"
+
 " }}}
 
 " vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
