@@ -1,0 +1,87 @@
+# TODO: make wm agnostic keybindings
+
+# wm bindings {{{
+# shift, zmienna mod, floating modifier
+#set $mod Mod4
+# # Use Mouse+$mod to drag floating windows to their wanted position
+# floating_modifier $mod
+
+# switch to workspace
+super + {1,2,3,4,5,6,7,8,9,0}
+ i3-msg workspace {1,2,3,4,5,6,7,8,9,0}
+# switch to last workspace
+super + z
+ i3-msg workspace back_and_forth
+
+# move container to workspace
+super + shift + {1,2,3,4,5,6,7,8,9,0}
+ i3-msg move container to workspace {1,2,3,4,5,6,7,8,9,0}
+# move container to last workspace; focus last workspace
+super + shift + z
+ i3-msg move container to workspace back_and_forth; workspace back_and_forth
+
+# start a terminal
+super + Return
+ st || i3-sensible-terminal
+
+# kill focused window
+super + shift + q
+ i3-msg kill
+
+# start dmenu (a program launcher)
+super + d
+ rofi -show run
+
+# change focus vim keybinding
+super + {h,j,k,l}
+ i3-msg focus {left,down,up,right}
+
+# move focused window
+super + shift + {h,j,k,l}
+ i3-msg move {left,down,up,right}
+
+# split in horizontal orientation
+super + shift v
+ i3-msg split h
+
+# split in vertical orientation
+super + v
+ i3-msg split v
+
+# enter fullscreen mode for the focused container
+super + f
+ i3-msg fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+super + {s,w,e}
+ i3-msg layout {stacking,tabbed,toggle split}
+
+# toggle tiling / floating
+super + shift + space
+ i3-msg floating toggle
+
+# change focus between tiling / floating windows
+super + space
+ i3-msg focus mode_toggle
+
+# focus the parent container
+super + a
+ i3-msg focus parent
+
+# scratchpad
+super + x
+ i3-msg scratchpad show
+super + c
+ i3-msg move scratchpad
+
+# relaod configuration file
+super + shift + c
+ i3-msg reload
+# restart i3 inplace (preserve layout/session)
+super + shift + r
+ i3-msg restart
+# exit i3
+super + shift + e
+ i3-nagbar -t warning -m 'do you want to exit i3?' -b 'yes' 'i3-msg exit'
+# }}}
+# vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
