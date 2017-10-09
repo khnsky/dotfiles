@@ -12,18 +12,18 @@ compinit
 # End of lines added by compinstall
 # 
 # my config
-export VISUAL=vim
-export EDITOR='$VISUAL'
+export EDITOR=nvim
+export VISUAL=nvim
 
 alias reload='source $HOME/.zshrc'
 
-# alias vi=nvim
-# alias vim=nvim
+alias vi=vim
+alias vim=nvim
 
 # use aliases with sudo
 alias sudo='sudo '
 
-alias shutdown=/bin/shutdown
+#alias shutdown=/bin/shutdown
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
