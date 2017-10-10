@@ -84,4 +84,47 @@ super + shift + r
 super + shift + e
  i3-nagbar -t warning -m 'do you want to exit i3?' -b 'yes' 'i3-msg exit'
 # }}}
+
+# additional media keys
+
+#
+# TODO: make it work only if not in some program that already uses them (e.g. mpv)
+# TODO: restart statusbar?
+#
+
+#XF86AudioMute
+#
+#XF86AudioLowerVolume
+# amixer -q set Master 1%-
+#
+# doesn't work for some reason
+#XF86AudioRiseVolume
+# amixer -q set Master 1%+
+#
+#XF86AudioMicMute
+#
+#XF86AudioPlay
+#XF86AudioStop
+#XF86AudioPrev
+#XF86AudioNext
+#
+#XF86Launch1
+#XF86WakeUp
+#
+#Print
+# TODO: make it agnostic of screenshot utility (e.g. scrot, maim)
+# TODO: find better naming scheme than unix epoch time
+# TODO: write it in a better more condensed manner
+Print
+ maim $(date +%s).png
+ctrl + Print
+ maim --hidecursor $(date +%s).png
+shift + Print
+ maim --select $(date +%s).png
+ctrl + shift + Print
+ maim --select --hidecursor $(date +%s).png
+
+# restart sxhkd, need to choose shortcut
+# pkill -i --signal SIGUSR1 sxhkd
+
 # vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
