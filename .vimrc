@@ -1,64 +1,16 @@
-set nocompatible    " be iMproved
-filetype off        " required
+" vim modeline for this file
+" vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
+
+" Piotr Kochański's .vimrc
+
+set nocompatible    " turn vi compability off
+filetype off        " for plugin managers, later turned on after plugins are loaded
 
 " plugins {{{
-
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-" call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
-
-" my plugins:
-
-" Plug 'tpope/vim-fugitive'
-
-" Plug 'scrooloose/nerdtree'
-
-" Plug 'kien/ctrlp.vim'
-
-" Plug 'vim-syntastic/syntastic'
-
-"Plug 'vim-airline/vim-airline'
-"
-"Plug 'vim-airline/vim-airline-themes'
-
-" Initialize plugin system
-" call plug#end() 
-
+" TODO: setup plugins
 " }}}
 
 " behaviour {{{
-
 " enable file dependant plugins and indenting
 filetype indent plugin on
 
@@ -83,7 +35,7 @@ set confirm
 set wrap linebreak breakindent
 
 " use system CLIPBOARD buffer
-" set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 " redraw needed when terminal size changes?
 set nolazyredraw
@@ -100,11 +52,9 @@ set foldmethod=syntax nofoldenable
 " default timeout on mappings, no timeout on escape sequences
 " no lag when exiting visual mode
 set timeout timeoutlen=1000 ttimeoutlen=0
-
 " }}}
 
 " interface {{{
-"
 " show line number on current line
 " and relative line numbering for others
 " width of line numbers 4
@@ -131,8 +81,8 @@ set t_Co=256
 colorscheme default
 
 " highlight current line
-set cursorline
-highlight cursorline cterm=none ctermbg=black
+"set cursorline
+"highlight cursorline cterm=none ctermbg=black
 
 " statusline
 " always show statusline
@@ -151,18 +101,8 @@ set statusline+=%h      " help file flag
 set statusline+=%=      " left/right separator
 set statusline+=%l/%L   " current line/all lines
 set statusline+=\ %P    " percent trough file
-
 " }}}
 
 " pugin settings {{{
-
-" vim-airline
-" let g:airline_powerline_fonts = 1 "powerline fonts
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
-
 " }}}
 
-" vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
