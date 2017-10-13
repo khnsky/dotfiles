@@ -1,3 +1,14 @@
 open_with mpv
 open_with 
 open_with `
+help
+move
+move mat
+shell 
+open guzip
+guzip
+mkdir
+mkdir mat
+mkdir studia
+delete
+mv . matematyka
