@@ -1,3 +1,5 @@
+# vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -10,7 +12,7 @@ zstyle :compinstall filename '/home/user/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-# 
+
 # my config
 export EDITOR=nvim
 export VISUAL=nvim

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -43,6 +45,8 @@ setxkbmap \
 # hothey daemon
 # is &> notation posix compliant?
 pgrep sxhkd &> /dev/null || sxhkd &> /dev/null &
+# music player daemon
+pgrep mpd &> /dev/null || mpd &> /dev/null &
 # if redshift is not running start redshift in background, redirect stdout & stderr to /dev/null
 pgrep redshift &> /dev/null || redshift &> /dev/null &
 

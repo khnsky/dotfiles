@@ -1,20 +1,18 @@
+! vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
+
 ! rxtv-unicode settings {{{
 ! not used anymore, moved to st
 
 ! urxvt font and spacing
-
 ! URxvt.font: xft:monospace:size=13
-
 URxvt.font: xft:DejaVu\ Sans\ Mono:size=11:antialias=true,xft:DejaVu\ Sans\ Mono\ for\ Powerline:style=bold:size=11:antialias=true
 ! URxvt.letterSpace:-1
 
 ! urxvt scroll bar
-URxvt.scrollBar: false
-
+URxvt.scrollBar: false 
 ! }}}
 
-! colors {{{
-
+! colors {{{ 
 ! old colors {{{
 ! ! special
 ! *.foreground:   #ffffff
@@ -90,19 +88,14 @@ URxvt.scrollBar: false
 ! white
 *.color7:       #808080
 *.color15:      #a2a2a2
-
 ! }}}
 
 ! ROFI Color theme {{{
-!
-rofi.color-enabled: true
+!  rofi.color-enabled: true
 ! <bg> <border> <separator>
 rofi.color-window: #151515, #151515, #151515
-! <bg> <fg> <alt. bg> <higlight bg> <highlight fg>
-rofi.color-normal: #151515, #3d3d3d, #151515, #b2b2b2, #151515
-rofi.color-active: #151515, #31658c, #151515, #31658c, #151515
-rofi.color-urgent: #151515, #992929, #151515, #992929, #151515
-
-! }}}
-
-! vim:foldenable:foldlevel=0:foldmethod=marker:foldmarker={{{,}}}
+!                   <bg>        <fg>        <alt. bg>   <higlight bg>   <highlight fg>
+rofi.color-normal:  #151515,    #3d3d3d,    #151515,    #b2b2b2,        #151515
+rofi.color-active:  #151515,    #31658c,    #151515,    #31658c,        #151515
+rofi.color-urgent:  #151515,    #992929,    #151515,    #992929,        #151515
+! }}} 
