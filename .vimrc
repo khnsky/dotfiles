@@ -3,14 +3,10 @@
 
 " Piotr Kochański's .vimrc
 
-set nocompatible    " turn vi compability off
-filetype off        " for plugin managers, later turned on after plugins are loaded
-
-" plugins {{{
-" TODO: setup plugins
-" }}}
-
 " behaviour {{{
+" turn vi compability off
+set nocompatible
+
 " enable file dependant plugins and indenting
 filetype indent plugin on
 
@@ -103,6 +99,44 @@ set statusline+=%l/%L   " current line/all lines
 set statusline+=\ %P    " percent trough file
 " }}}
 
+" plugins {{{
+"if has('nvim')
+"    if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+"      silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+"        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"    endif
+"else
+"    if empty(glob('~/.vim/autoload/plug.vim'))
+"      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"    endif
+"endif
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-syntastic/syntastic'
+
+Plug 'scrooloose/nerdtree'
+
+call plug#end()
+" }}}
+
 " pugin settings {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " }}}
 
