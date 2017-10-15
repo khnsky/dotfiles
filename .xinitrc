@@ -45,6 +45,8 @@ setxkbmap \
 # hothey daemon
 # is &> notation posix compliant?
 pgrep sxhkd &> /dev/null || sxhkd &> /dev/null &
+# automounter of removable media
+#udiskie &
 # music player daemon
 pgrep mpd &> /dev/null || mpd &> /dev/null &
 # if redshift is not running start redshift in background, redirect stdout & stderr to /dev/null
