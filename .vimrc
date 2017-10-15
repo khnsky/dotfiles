@@ -100,20 +100,7 @@ set statusline+=\ %P    " percent trough file
 " }}}
 
 " plugins {{{
-"if has('nvim')
-"    if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-"      silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-"        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"    endif
-"else
-"    if empty(glob('~/.vim/autoload/plug.vim'))
-"      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"    endif
-"endif
-
+" if plug.vim is not present in autoload dir download it, install plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -122,14 +109,17 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" syntax cheking
 Plug 'vim-syntastic/syntastic'
 
+" file explorer
 Plug 'scrooloose/nerdtree'
 
 call plug#end()
 " }}}
 
 " pugin settings {{{
+" syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -138,5 +128,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" nerdtree
+map <C-n> :NERDTreeToggle<CR>
 " }}}
 
