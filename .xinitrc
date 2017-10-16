@@ -43,14 +43,13 @@ setxkbmap \
 
 # autostart 
 # hothey daemon
-# is &> notation posix compliant?
-pgrep sxhkd &> /dev/null || sxhkd &> /dev/null &
+sxhkd &> /dev/null &
 # automounter of removable media
-#udiskie &
+udiskie &> /dev/null &
 # music player daemon
-pgrep mpd &> /dev/null || mpd &> /dev/null &
+mpd &> /dev/null &
 # if redshift is not running start redshift in background, redirect stdout & stderr to /dev/null
-pgrep redshift &> /dev/null || redshift &> /dev/null &
+redshift &> /dev/null &
 
 # start wm
 exec i3
