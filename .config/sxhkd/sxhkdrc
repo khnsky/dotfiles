@@ -1,3 +1,5 @@
+# vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
+
 # TODO: make wm agnostic keybindings
 
 # wm bindings {{{
@@ -13,7 +15,7 @@ super + shift + {1,2,3,4,5,6,7,8,9,0}
  i3-msg move container to workspace {1,2,3,4,5,6,7,8,9,0}
 # move container to last workspace; focus last workspace
 super + shift + z
- i3-msg move container to workspace back_and_forth; workspace back_and_forth
+ i3-msg move container to workspace back_and_forth; i3-msg workspace back_and_forth
 
 # start a terminal
 super + Return
@@ -77,12 +79,13 @@ super + shift + r
  i3-msg restart
 # exit i3
 super + shift + e
- i3-nagbar -t warning -m 'do you want to exit i3?' -b 'yes' 'i3-msg exit'
+ i3-nagbar -t warning -b 'exit i3' 'i3-msg exit' -b 'poweroff' 'systemctl poweroff' \
+ -b 'reboot' 'systemctl reboot' -b 'suspend' 'systemctl suspend' \
+ -b 'hibernate' 'systemctl hibernate'
 # }}}
 
 # additional media keys
 
-#
 # TODO: make it work only if not in some program that already uses them (e.g. mpv)
 # TODO: restart statusbar?
 #
@@ -111,15 +114,13 @@ super + shift + e
 # TODO: find better naming scheme than unix epoch time
 # TODO: write it in a better more condensed manner
 Print
- maim $(date +%s).png
+ mkdir -p ~/pictures/screenshots && maim ~/pictures/screenshots/$(date +%s).png
 ctrl + Print
- maim --hidecursor $(date +%s).png
+ mkdir -p ~/pictures/screenshots && maim --hidecursor ~/pictures/screenshots/$(date +%s).png
 shift + Print
- maim --select $(date +%s).png
+ mkdir -p ~/pictures/screenshots && maim --select ~/pictures/screenshots/$(date +%s).png
 ctrl + shift + Print
- maim --select --hidecursor $(date +%s).png
+ mkdir -p ~/pictures/screenshots && maim --select --hidecursor ~/pictures/screenshots/$(date +%s).png
 
 # restart sxhkd, need to choose shortcut
-# pkill -i --signal SIGUSR1 sxhkd
-
-# vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
+# pkill -i --signal SIGUSR1 sxhkd 
