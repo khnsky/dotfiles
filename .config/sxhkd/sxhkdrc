@@ -3,19 +3,13 @@
 # TODO: make wm agnostic keybindings
 
 # wm bindings {{{
-# switch to workspace
-super + {1,2,3,4,5,6,7,8,9,0}
- i3-msg workspace {1,2,3,4,5,6,7,8,9,0}
-# switch to last workspace
-super + z
- i3-msg workspace back_and_forth
+# switch to/move container to workspace
+super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
+ i3-msg {_,move container to} workspace {1,2,3,4,5,6,7,8,9,0}
 
-# move container to workspace
-super + shift + {1,2,3,4,5,6,7,8,9,0}
- i3-msg move container to workspace {1,2,3,4,5,6,7,8,9,0}
-# move container to last workspace; focus last workspace
-super + shift + z
- i3-msg move container to workspace back_and_forth; i3-msg workspace back_and_forth
+# switch to/move container to last workspace
+super + {_,shift} + z
+ {_,i3-msg move container to workspace back_and_forth}; i3-msg workspace back_and_forth
 
 # start a terminal
 super + Return
@@ -29,21 +23,13 @@ super + shift + q
 super + d
  rofi -show run
 
-# change focus vim keybinding
-super + {h,j,k,l}
- i3-msg focus {left,down,up,right}
+# change focus to/move focused window
+super + {_,shift} + {h,j,k,l}
+ i3-msg {focus,move} {left,down,up,right}
 
-# move focused window
-super + shift + {h,j,k,l}
- i3-msg move {left,down,up,right}
-
-# split in horizontal orientation
-super + shift v
- i3-msg split h
-
-# split in vertical orientation
-super + v
- i3-msg split v
+# split vertically/horizontally
+super + {_,shift} + v
+ i3-msg split {h,v}
 
 # enter fullscreen mode for the focused container
 super + f
@@ -112,15 +98,9 @@ super + shift + e
 #Print
 # TODO: make it agnostic of screenshot utility (e.g. scrot, maim)
 # TODO: find better naming scheme than unix epoch time
-# TODO: write it in a better more condensed manner
-Print
- mkdir -p ~/pictures/screenshots && maim ~/pictures/screenshots/$(date +%s).png
-ctrl + Print
- mkdir -p ~/pictures/screenshots && maim --hidecursor ~/pictures/screenshots/$(date +%s).png
-shift + Print
- mkdir -p ~/pictures/screenshots && maim --select ~/pictures/screenshots/$(date +%s).png
-ctrl + shift + Print
- mkdir -p ~/pictures/screenshots && maim --select --hidecursor ~/pictures/screenshots/$(date +%s).png
+# print screen
+{_,ctrl} + {_,shift} + Print
+ mkdir -p ~/pictures/screenshots && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
 
 # restart sxhkd, need to choose shortcut
 # pkill -i --signal SIGUSR1 sxhkd 
