@@ -4,29 +4,44 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e #emacs keybinding?
+bindkey -e # emacs keybinding?
 # End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/user/.zshrc'
 
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
 # my config
-export EDITOR=nvim
-export VISUAL=nvim
+# prompt
+autoload -Uz promptinit && promptinit   # load promptinit
+PROMPT='%#%(?. ~> .%F{red} ~> %f)'      # left prompt, show # if priviliged else % and ~>, red if last command failed
+RPROMPT='%~'                            # right prompt, show current dir
 
-alias reload='source $HOME/.zshrc'
+# help
+autoload -Uz run-help run-help-git      # load run-help and run-help-git
 
-alias vi=vim
-alias vim=nvim
+# completition
+autoload -Uz compinit && compinit       # load compinit
+zstyle ':completion:*' menu select
 
-# use aliases with sudo
-alias sudo='sudo '
+setopt COMPLETE_ALIASES
+setopt CORRECTALL
 
-#alias shutdown=/bin/shutdown
+setopt autocd           # cd if not a command and dir exist
+setopt extendedglob     # use extended globs, behaviour may be unexpected 
 
-alias grep='grep --color=auto'
-alias ls='ls --color=auto'
-alias cal='cal -m --color=auto'
+# variables
+export EDITOR=nvim      # set editor to nvim
+export VISUAL=nvim      # set visual editor to nvim
+
+# aliases
+alias reload='source $HOME/.zshrc'      # source .zshrc with reload command
+
+alias vi=vim            # use vim instead of vi
+alias vim=nvim          # use nvim instead of vim
+
+alias sudo='sudo '                  # expand aliases when using with sudo
+alias grep='grep --color=auto'      # color grep output
+alias ls='ls --color=auto'          # color ls output
+alias cal='cal -m --color=auto'     # color cal output and default to starting weekends with monday
