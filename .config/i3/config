@@ -1,3 +1,5 @@
+# vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
+
 font pango:monospace 11
 set $mod Mod4
 
@@ -84,15 +86,10 @@ workspace_auto_back_and_forth yes
 assign [class="(?i)steam"] 9
 # discord
 assign [class="(?i)discord"] 8
+# riot
+assign [class="(?i)riot"] 8
 
-# autostart {{{
-#for_window [instance="scratchpad"] floating enable
-#for_window [instance="scratchpad"] move scratchpad
-#exec --no-startup-id st -t scratchpad -e tmux new-session -A -s scratchpad
-#assign [instance="(?i)scratchpad"] scratchpad
+for_window [instance="(?i)scratchpad"] floating enable; move scratchpad
+exec --no-startup-id st -t scratchpad -e tmux new-session -A -s scratchpad
 # TODO: why is this not working
-
-# exec --no-startup-id feh --bg-scale $HOME/dotfiles/wall.png
-# }}}
-
-# vim:foldmethod=marker:foldmarker={{{,}}}:foldlevel=0:foldenable
+# }}} 
