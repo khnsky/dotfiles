@@ -24,9 +24,10 @@ autoload -Uz run-help run-help-git      # load run-help and run-help-git
 # completition
 autoload -Uz compinit && compinit       # load compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # match case insensitivly
 
-setopt COMPLETE_ALIASES
-setopt CORRECTALL
+setopt complete_aliases
+setopt correctall
 
 setopt autocd           # cd if not a command and dir exist
 setopt extendedglob     # use extended globs, behaviour may be unexpected 
