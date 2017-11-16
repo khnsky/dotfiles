@@ -4,14 +4,12 @@
 " Piotr Kochański's .vimrc
 
 " behaviour {{{
-" turn vi compability off
-set nocompatible
+set nocompatible            " turn vi compability off
+filetype indent plugin on   " enable file dependant plugins and indenting
+syntax on                   " enable syntax dependant settings
 
-" enable file dependant plugins and indenting
-filetype indent plugin on
-
-" enable syntax dependant settings
-syntax on
+" backspace over everything in insert mode
+set backspace=2
 
 " allow opening new buffers without saving changes?
 set hidden
@@ -29,9 +27,6 @@ set confirm
 " break lines at characters specified in breakat instead of middle of word
 " keep indentation on wraps
 set wrap linebreak breakindent
-
-" use system CLIPBOARD buffer
-"set clipboard=unnamedplus
 
 " redraw needed when terminal size changes?
 set nolazyredraw
@@ -74,11 +69,8 @@ set wildmenu
 " terminal option, 256 colors
 set t_Co=256
 
+set bg=dark
 colorscheme default
-
-" highlight current line
-"set cursorline
-"highlight cursorline cterm=none ctermbg=black
 
 " statusline
 " always show statusline
@@ -98,6 +90,10 @@ set statusline+=%=      " left/right separator
 set statusline+=%l/%L   " current line/all lines
 set statusline+=\ %P    " percent trough file
 " }}}
+
+" autocommands
+" use tab in Makefiles
+autocmd FileType make setlocal noexpandtab
 
 " plugins {{{
 " if plug.vim is not present in autoload dir download it, install plugins
