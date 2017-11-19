@@ -85,33 +85,55 @@ static unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 const char *colorname[] = {
 
-  /* 8 normal colors */
-  [0] = "#002b36", /* black   */
-  [1] = "#cc1100", /* red     */
-  [2] = "#859900", /* green   */
+//  /* 8 normal colors */
+//  [0] = "#002b36", /* black   */
+//  [1] = "#cc1100", /* red     */
+//  [2] = "#859900", /* green   */
+//  [3] = "#b58900", /* yellow  */
+//  [4] = "#268bd2", /* blue    */
+//  [5] = "#aa00aa", /* magenta */
+//  [6] = "#2aa198", /* cyan    */
+//  [7] = "#93a1a1", /* white   */
+//
+//  /* 8 bright colors */
+//  [8]  = "#657b83", /* black   */
+//  [9]  = "#dc322f", /* red     */
+//  [10] = "#859900", /* green   */
+//  [11] = "#d7ab22", /* yellow  */
+//  [12] = "#48adf4", /* blue    */
+//  [13] = "#cc33cc", /* magenta */
+//  [14] = "#2aa198", /* cyan    */
+//  [15] = "#fdf6e3", /* white   */
+//
+//  /* special colors */
+//  //[256] = "#1a1d1f", /* background */
+//  [256] = "#0b0b0b", /* background */
+//  [257] = "#93a1a1", /* foreground */
+
+/* 8 normal colors */
+  [0] = "#161925", /* black   */
+  [1] = "#aa0000", /* red     */
+  [2] = "#0bdd38", /* green   */
   [3] = "#b58900", /* yellow  */
-  [4] = "#268bd2", /* blue    */
-  [5] = "#aa00aa", /* magenta */
+  [4] = "#0469a0", /* blue    */
+  [5] = "#ff00c4", /* magenta */
   [6] = "#2aa198", /* cyan    */
   [7] = "#93a1a1", /* white   */
 
   /* 8 bright colors */
   [8]  = "#657b83", /* black   */
-  [9]  = "#dc322f", /* red     */
-  [10] = "#859900", /* green   */
+  [9]  = "#cc1100", /* red     */
+  [10] = "#2dff5a", /* green   */
   [11] = "#d7ab22", /* yellow  */
-  [12] = "#48adf4", /* blue    */
+  [12] = "#268bd2", /* blue    */
   [13] = "#cc33cc", /* magenta */
   [14] = "#2aa198", /* cyan    */
   [15] = "#fdf6e3", /* white   */
 
   /* special colors */
-  //[256] = "#1a1d1f", /* background */
-  [256] = "#0b0b0b", /* background */
+  [256] = "#000000", /* background */
   [257] = "#93a1a1", /* foreground */
-
 };
-
 
 /*
  * Default colors (colorname index)
