@@ -15,7 +15,8 @@ zstyle :compinstall filename '/home/user/.zshrc'
 # my config
 # prompt
 autoload -Uz promptinit && promptinit   # load promptinit
-PROMPT='%#%(?. ~> .%F{red} ~> %f)'      # left prompt, show # if priviliged else % and ~>, red if last command failed
+#PROMPT='%#%(?. ~> .%F{red} ~> %f)'     # left prompt, show # if priviliged else % and ~>, red if last command failed
+PROMPT='%(?.%B$: .%F{red}%B$: %f)%b'    # left prompt, $:, red if last command failed
 RPROMPT='%~'                            # right prompt, show current dir
 
 # help
@@ -26,11 +27,11 @@ autoload -Uz compinit && compinit       # load compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # match case insensitivly
 
-setopt complete_aliases
-setopt correctall
+setopt COMPLETE_ALIASES # alias completition before substitution
+setopt CORRECTALL
 
-setopt autocd           # cd if not a command and dir exist
-setopt extendedglob     # use extended globs, behaviour may be unexpected 
+setopt AUTOCD           # cd if not a command and dir exist
+setopt EXTENDEDGLOB     # use extended globs, behaviour may be unexpected
 
 # variables
 export EDITOR=nvim      # set editor to nvim
