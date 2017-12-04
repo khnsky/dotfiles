@@ -45,7 +45,7 @@ setxkbmap \
 # hothey daemon
 sxhkd &> /dev/null &
 # automounter of removable media
-udiskie &> /dev/null &
+#udiskie &> /dev/null &
 # music player daemon
 mpd &> /dev/null &
 # if redshift is not running start redshift in background, redirect stdout & stderr to /dev/null
