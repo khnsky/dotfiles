@@ -28,10 +28,10 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # match case insensitivly
 
 setopt COMPLETE_ALIASES # alias completition before substitution
-setopt CORRECTALL
+setopt CORRECT_ALL
 
-setopt AUTOCD           # cd if not a command and dir exist
-setopt EXTENDEDGLOB     # use extended globs, behaviour may be unexpected
+setopt AUTO_CD           # cd if not a command and dir exist
+setopt EXTENDED_GLOB     # use extended globs, behaviour may be unexpected
 
 # variables
 export EDITOR=nvim      # set editor to nvim
@@ -44,6 +44,8 @@ alias vi=vim            # use vim instead of vi
 alias vim=nvim          # use nvim instead of vim
 
 alias sudo='sudo '                  # expand aliases when using with sudo
+
+alias cal='cal -m --color=auto'     # color cal output and default to starting weekends with monday
+alias diff='diff --color=auto'      # color diff output
 alias grep='grep --color=auto'      # color grep output
 alias ls='ls --color=auto'          # color ls output
-alias cal='cal -m --color=auto'     # color cal output and default to starting weekends with monday
