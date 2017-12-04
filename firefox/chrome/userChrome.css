@@ -1,0 +1,43 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+    --tab-min-height: 0 !important;
+    --tab-max-height: 20px !important;
+    --toolbarbutton-inner-padding: 5px !important;
+}
+.tab-line {
+    display: none !important; /* don't display color line over tabs */
+}
+
+.tab-close-button {
+    display: none !important;
+}
+
+#nav-bar {
+    padding: 0 !important;
+    border: 0 !important; /* chyba nic nie robi */
+    margin: 0 !important;
+}
+
+#urlbar {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    font-size: 12px !important;
+}
+
+#tabbrowser-tabs {
+    min-height: 0 !important;
+    max-height: 25px !important;
+}
+
+.tabbrowser-tab {
+    font-size: 12px !important;
+    padding: 0 !important;
+}
+
+.tab-icon-image {
+    /*display: none !important;*/
+    height: 12px !important;
+    width: 12px !important;
+}
