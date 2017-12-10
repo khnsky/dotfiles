@@ -74,14 +74,31 @@ client.urgent               $red        $red        $white      $red
 # }}}
 
 # additional settings {{{
-# no borders
+# orientation for new workspaces
+default_orientation auto 
+# horizontal | vertical | auto
+
+# layout mode for new containers
+workspace_layout default 
+# default | stacking | tabbed
+
+# border style for new windows
+new_window pixel 1
+# normal | none | pixel
+new_float pixel 1
+# normal | none | pixel
+# normal and pixel border styles support width in pixels
+
+# hide borders adjecent to the screen edges
 hide_edge_borders both
+# none | vertical | horizontal | both | smart
+# smart - hides borders on workspaces with only 1 window visible, default none
 
 # switch to last workspace if using shortcut to already focused workspace
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 # }}}
 
-# assign to workspaces
+# assign to workspaces {{{
 # steam
 assign [class="(?i)steam"] 9
 # discord
@@ -89,7 +106,7 @@ assign [class="(?i)discord"] 8
 # riot
 assign [class="(?i)riot"] 8
 
-for_window [instance="(?i)scratchpad"] floating enable; move scratchpad
-exec --no-startup-id st -t scratchpad -e tmux new-session -A -s scratchpad
+#for_window [instance="(?i)scratchpad"] floating enable; move scratchpad
+#exec --no-startup-id st -t scratchpad -e tmux new-session -A -s scratchpad
 # TODO: why is this not working
 # }}} 
