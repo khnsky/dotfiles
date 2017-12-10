@@ -50,50 +50,89 @@ URxvt.scrollBar: false
 ! ! white
 ! *.color7:       #b2b2b2
 ! *.color15:      #b2b2b2
+!
+! newer old xD
+!  special
+! *.foreground:   #a2a2a2
+! *.background:   #1a1d1f
+! *.cursorColor:  #a2a2a2
+! 
+! ! black
+! *.color0:       #0d1220
+! *.color8:       #2f3552
+! 
+! ! red
+! *.color1:       #b43131
+! *.color9:       #df5454
+! 
+! ! green
+! *.color2:       #007777
+! *.color10:      #229999
+! 
+! ! yellow
+! *.color3:       #b58900
+! *.color11:      #d7ab22
+! 
+! ! blue
+! *.color4:       #268bd2
+! *.color12:      #48adf4
+! 
+! ! magenta
+! *.color5:       #aa00aa
+! *.color13:      #cc33cc
+! 
+! ! cyan
+! *.color6:       #00b0b0
+! *.color14:      #22d2d2
+! 
+! ! white
+! *.color7:       #808080
+! *.color15:      #a2a2a2
 ! }}}
 
 ! special
-*.foreground:   #a2a2a2
-*.background:   #1a1d1f
-*.cursorColor:  #a2a2a2
+*.foreground:   #93a1a1
+*.background:   #000000
+*.cursorColor:  #92a1a1
 
 ! black
-*.color0:       #0d1220
-*.color8:       #2f3552
+*.color0:       #161925
+*.color8:       #657b83
 
 ! red
-*.color1:       #b43131
-*.color9:       #df5454
+*.color1:       #aa0000
+*.color9:       #cc1100
 
 ! green
-*.color2:       #007777
-*.color10:      #229999
+*.color2:       #0bdd38
+*.color10:      #2sdd5a
 
 ! yellow
 *.color3:       #b58900
 *.color11:      #d7ab22
 
 ! blue
-*.color4:       #268bd2
-*.color12:      #48adf4
+*.color4:       #0469a0
+*.color12:      #268bd2
 
 ! magenta
-*.color5:       #aa00aa
+*.color5:       #ff00c4
 *.color13:      #cc33cc
 
 ! cyan
-*.color6:       #00b0b0
-*.color14:      #22d2d2
+*.color6:       #2aa198
+*.color14:      #2aa198
 
 ! white
-*.color7:       #808080
-*.color15:      #a2a2a2
+*.color7:       #93a1a1
+*.color15:      #fdf6e3
 ! }}}
 
 ! ROFI Color theme {{{
 !  rofi.color-enabled: true
-! <bg> <border> <separator>
-rofi.color-window: #151515, #151515, #151515
+!                   <bg>        <border>    <separator>
+rofi.color-window:  #151515,    #151515,    #151515
+
 !                   <bg>        <fg>        <alt. bg>   <higlight bg>   <highlight fg>
 rofi.color-normal:  #151515,    #3d3d3d,    #151515,    #b2b2b2,        #151515
 rofi.color-active:  #151515,    #31658c,    #151515,    #31658c,        #151515
