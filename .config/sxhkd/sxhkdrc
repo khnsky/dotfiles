@@ -20,6 +20,8 @@ super + shift + q
  i3-msg kill
 
 # start dmenu (a program launcher)
+# TODO:
+# super + shift some other mode?
 super + d
  rofi -show run
 
@@ -47,9 +49,9 @@ super + shift + space
 super + space
  i3-msg focus mode_toggle
 
-# focus the parent container
-super + a
- i3-msg focus parent
+# focus the parent / child container
+super + {_,shift} + a
+ i3-msg focus {parent,child}
 
 # scratchpad
 super + x
@@ -70,7 +72,7 @@ super + shift + e
  -b 'hibernate' 'systemctl hibernate'
 # }}}
 
-# additional media keys
+# additional media keys {{{
 
 # TODO: make it work only if not in some program that already uses them (e.g. mpv)
 # TODO: restart statusbar?
@@ -94,7 +96,8 @@ super + shift + e
 #
 #XF86Launch1
 #XF86WakeUp
-#
+# }}}
+
 #Print
 # TODO: make it agnostic of screenshot utility (e.g. scrot, maim)
 # TODO: find better naming scheme than unix epoch time
