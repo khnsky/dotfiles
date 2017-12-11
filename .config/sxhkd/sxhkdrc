@@ -13,7 +13,7 @@ super + {_,shift} + z
 
 # start a terminal
 super + Return
- st -f "Lberation Mono:pixelsize=12:antialias=true:autohint=true" || i3-sensible-terminal
+ st || i3-sensible-terminal
 
 # kill focused window
 super + shift + q
