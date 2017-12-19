@@ -3,68 +3,93 @@
 
 " Piotr Kochański's .vimrc
 
+" undos, tabs, usr_05.txt usr_toc.txt 5.05, :options
+
 " behaviour {{{
 set nocompatible            " turn vi compability off
 filetype indent plugin on   " enable file dependant plugins and indenting
 syntax on                   " enable syntax dependant settings
 
-" backspace over everything in insert mode
-set backspace=2
+"set showmode               " default value
 
-" allow opening new buffers without saving changes?
-set hidden
+set visualbell
 
-" case insensitive search
-" unless using capital letters
-" or specifing \C flag
-set ignorecase smartcase
+set autoindent              " copy indent form current line when making newline
+set smarttab                " sw at the start of a line, sts everywhere else
 
-" show dialog when action needs confirmation
-" quitind without saving, overwritting read only file, etc
-set confirm
+set cmdheight=1             " number of lines to use for the command-line
+set backspace=2             " backspace over everything in insert mode
 
-" wrap lines too long to display
-" break lines at characters specified in breakat instead of middle of word
-" keep indentation on wraps
-set wrap linebreak breakindent
+set hidden                  " allow opening new buffers without saving changes?
+" maybe set autoread & autowrite, nohidden, undo & undofile 
+" and change workflow to not worring about saving
+set undofile                " peristant undo history kept in a file
 
-" redraw needed when terminal size changes?
-set nolazyredraw
+set ignorecase              " case insensitive search by default
+set smartcase               " case sensitive search when using capital letters
+set incsearch               " search as chars are entered
+set hlsearch                " higlight all matches
 
-" higlight matching parenthesis-like characters
-set showmatch
+set confirm                 " show dialog on quiting without savind etc
 
-" search as characters are entered and highlight matches
-set incsearch hlsearch
-"
-" folding based on syntax, not folded on default
-set foldmethod=syntax nofoldenable
+set wrap                    " wrap lines too long to display
+set linebreak               " break at characters in breakat, not middle of a word
+set breakindent             " keep indentation when wrapping
+
+set nolazyredraw            " had problems with it off using tiling wm
+
+set showmatch               " higlight matching parenthesis-like characters
+
+set foldmethod=syntax       " folding based on syntax
+set nofoldenable            " no folding by default
+
+set makeprg=make            " program to use with :make command
+
+set mouse=a                 " use mouse in all modes, maybe set to nvi, also how does copying change when setting this?
+set nomousefocus            " window on which mouse is is not automaticaly activated
+set mousemodel=popup        " right mouse button doesn't extend selection but instead pops up a menu?
+
+set scrolljump=1            " lines scrolled when cursor moved off screen
+set scrolloff=1             " scroll before this amout of lines off screen
+
+set splitbelow              " put split below current window
+set splitright              " put vertical split to the right
 
 " default timeout on mappings, no timeout on escape sequences
 " no lag when exiting visual mode
 set timeout timeoutlen=1000 ttimeoutlen=0
 " }}}
 
+" bindings {{{
+" move verticaly by viusal line
+nnoremap j gj
+nnoremap k gk
+
+" retain visual selection after indenting
+vnoremap > >gv
+vnoremap < <gv
+" }}}
+
 " interface {{{
-" show line number on current line
-" and relative line numbering for others
-" width of line numbers 4
-set number relativenumber numberwidth=4
+set number                      " show current line number
+set relativenumber              " show relative line numbers for other lines
+set numberwidth=4
 
-" show pressed keys in down right corner
-set showcmd
+set showcmd                     " show keys in a current chord
 
-" show end of line and tab chars (invisibles) as characters after colon
-set list listchars=tab:▸\ ,eol:¬
+set list                        " show invisibles
+set listchars=tab:▸\ ,eol:¬     " show tabs and eols as such
 
 " indentation
-set tabstop=4       " width of <tab>
-set softtabstop=4   " amount of columns tab key inserts (combination of spaces and tabs if needed)
-set shiftwidth=4    " indent width
-set expandtab       " insert spaces in place of tabs
+set tabstop=4                   " visual width of <tab>
+set softtabstop=4               " amount of columns tab key inserts (combination of spaces and tabs if needed)
+set shiftwidth=4                " indent width
+set expandtab                   " insert spaces in place of tabs
 
-" enhanced comand line autocompletition
-set wildmenu
+set path+=**
+
+set wildmenu                    " show possible matches above command line on pressing wildchar
+set wildmode=longest:list,full  " complete longest common string, then each full match
 
 " terminal option, 256 colors
 set t_Co=256
@@ -73,27 +98,29 @@ set bg=dark
 colorscheme default
 
 " statusline
-" always show statusline
-set laststatus=2
+set laststatus=2 " always show statusline
 
 " custom highlight
 highlight User1 ctermbg=none ctermfg=red
 
-set statusline=         " clear statusline when vimrc is reloaded
-set statusline+=%1*     " use User1 highlighting
-set statusline+=%t      " filename tail
-set statusline+=%y      " filetype
-set statusline+=%m      " modified flag
-set statusline+=%r      " read only flag
-set statusline+=%h      " help file flag
-set statusline+=%=      " left/right separator
-set statusline+=%l/%L   " current line/all lines
-set statusline+=\ %P    " percent trough file
+set statusline=                 " clear statusline when vimrc is reloaded
+set statusline+=%1*             " use User1 highlighting
+" set statusline+=f:\ 
+set statusline+=%t              " filename tail
+set statusline+=%y              " filetype
+set statusline+=%m              " modified flag
+set statusline+=%r              " read only flag
+set statusline+=%h              " help file flag
+set statusline+=%=              " left/right separator
+set statusline+=ch:\ %c         " current char
+set statusline+=\ l:\ %l/%L     " current line/all lines
+set statusline+=\ %P            " percent trough file
 " }}}
 
-" autocommands
+" autocommands {{{
 " use tab in Makefiles
 autocmd FileType make setlocal noexpandtab
+" }}}
 
 " plugins {{{
 " if plug.vim is not present in autoload dir download it, install plugins
@@ -128,4 +155,3 @@ let g:syntastic_check_on_wq = 0
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 " }}}
-
