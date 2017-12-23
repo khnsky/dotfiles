@@ -28,7 +28,14 @@ usr_p=
 #    #usr_prompt="[%n@%M]"
 #fi
 
-privlige_p="[%#]"                       # '#' if shell running with priviliges, % otherwise
+good_color="%F{green}"
+bad_color="%F{red}"
+#color="%F{white}"
+reset_color="%f"
+
+color="%(?..$bad_color)"
+
+privlige_p="[$color%#$reset_color]"     # '#' if shell running with priviliges, % otherwise
 dir_p="[%~]"                            # show current dir, home shown as ~
 git_p=
 vim_p=
