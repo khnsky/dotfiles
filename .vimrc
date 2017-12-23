@@ -68,6 +68,11 @@ nnoremap k gk
 " retain visual selection after indenting
 vnoremap > >gv
 vnoremap < <gv
+
+" Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
+" yanked stack (also, in visual mode)
+nmap <silent> <leader>d "_d
+vmap <silent> <leader>d "_d
 " }}}
 
 " interface {{{
@@ -85,6 +90,7 @@ set tabstop=4                   " visual width of <tab>
 set softtabstop=4               " amount of columns tab key inserts (combination of spaces and tabs if needed)
 set shiftwidth=4                " indent width
 set expandtab                   " insert spaces in place of tabs
+set shiftround                  " < and > indent to multiples of shiftwidth
 
 set path+=**
 
