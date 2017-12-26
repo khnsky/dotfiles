@@ -19,14 +19,11 @@ export KEYTIMEOUT=1                     # timeout when exiting normal mode, defa
 autoload -Uz promptinit && promptinit   # load promptinit
 
 usr_p=
-# if in ssh for eg.
 # $SSH_TTY, $SSH_CONNECTION, $SSH_CLIENT
-#if [ false ]; then
-#    usr_prompt="[$(whoami)@$(hostname)]"
-#    # maybe zsh builtin
-#    # n - $username, M - full machine hostname, m - hostname til first .
-#    #usr_prompt="[%n@%M]"
-#fi
+if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
+    # zsh builtin - whoami@hostname
+    usr_p="[%n@%M]"
+fi
 
 good_color="%F{green}"
 bad_color="%F{red}"
