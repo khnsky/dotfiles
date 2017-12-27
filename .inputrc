@@ -1,0 +1,3 @@
+set editing-mode vi
+# (partialy) complete word and show suggestions if still ambiguous with single tab
+set show-all-if-ambiguous on
