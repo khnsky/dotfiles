@@ -71,6 +71,24 @@ setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexp
 export EDITOR=nvim                  # set editor to nvim
 export VISUAL=nvim                  # set visual editor to nvim
 
+# functions
+# stolen from /u/Rhomboid
+cxxrun()
+{
+    local src=$1
+    local out=/tmp/cxxrun-$RANDOM-$RANDOM-$RANDOM
+    local flags="-xc++ -Wall -Wextra -pedantic -O2"
+    local inc="-include iostream -include fstream -include iomanip \
+        -include cmath -include vector -include cstdlib -include unistd.h \
+        -include cstring -include cerrno -include fcntl.h"
+    shift
+    (
+        trap 'rm -f "$out" 2>/dev/null 2>&1' EXIT
+        eval ${CXX:-g++} -o "$out" $flags $inc - <<<"using namespace std; \
+            int main(int argc, char* argv[]) { $src; }" "$@" && "$out"
+    )
+}
+
 # aliases
 alias reload='source $HOME/.zshrc'  # source .zshrc with reload command
 
