@@ -29,4 +29,8 @@ rename 8-dowolny_płaski_układ_sił.jpg
 rename 9-dowolny_płaski_układ_sił.jpg
 rename 10-dowolny_płaski_układ_sił.jpg
 rename 11-dowolny_płaski_układ_sił.jpg
+unzip
+open unzip
+open_with nvim
 delete
+open_with zathura
