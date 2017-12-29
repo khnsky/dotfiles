@@ -1,10 +1,16 @@
 # vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
+
+setopt APPEND_HISTORY                   # append history instead of overwriting it
+setopt INC_APPEND_HISTORY               # write history on command not on shell exit
+setopt NO_SHARE_HISTORY                 # every instance of zsh has its history
+setopt EXTENDED_HISTORY                 # store command start and execution time
+setopt HIST_IGNORE_DUPS                 # dont save command if preciding command is same
+setopt HIST_REDUCE_BLANKS               # strim meaningless whitespace
+setopt HIST_IGNORE_SPACE                # dont save commands preceded with space
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/user/.zshrc'
@@ -18,12 +24,18 @@ export KEYTIMEOUT=1                     # timeout when exiting normal mode, defa
 # prompt {{{
 autoload -Uz promptinit && promptinit   # load promptinit
 
+setopt PROMPT_SUBST
+setopt PROMPT_PERCENT
+
 usr_p=
 # $SSH_TTY, $SSH_CONNECTION, $SSH_CLIENT
 if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
     # zsh builtin - whoami@hostname
     usr_p="[%n@%M]"
 fi
+
+autoload -Uz colors && colors
+# can now use better color notation eg. fg[green]
 
 good_color="%F{green}"
 bad_color="%F{red}"
