@@ -1,2 +1,6 @@
 # dotfiles
-dotfiles can be easily installed with gnu stow (stow _foldername_), if config specific dir is not in directory located in home ($HOME/_dotfiles_) you also need to specify target directory.
+---  
+
+easily install config files with gnu stow  
+
+> stow \[-d _stow-dir_] [-t _target-dir_] _package_  
