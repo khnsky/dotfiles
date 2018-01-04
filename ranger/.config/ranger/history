@@ -1,0 +1,36 @@
+open_with mpv
+open_with 
+open_with `
+help
+move
+move mat
+shell 
+open guzip
+guzip
+mkdir
+mkdir mat
+mkdir studia
+mv . matematyka
+mkdir misc
+move misc
+rename aksjomat_statyki.jpg
+rename aksjomat_statyki_cd
+rename aksjomat_statyki_cd.jpg
+rename płaski_zbieżny_układ_sił.jpg
+rename 1-aksjomat_statyki.jpg
+rename 2-aksjomat_statyki_cd.jpg
+rename 3-płaski_zbieżny_układ_sił.jpg
+rename 4-płaski_zbieżny_układ_sił.jpg
+rename 5-moment_siły_względem_punktu.jpg
+rename 6-pojęcie_pary_sił.jpg
+rename 5-pojęcie_pary_sił.jpg
+rename 7-pojęcie_pary_sił.jpg
+rename 8-dowolny_płaski_układ_sił.jpg
+rename 9-dowolny_płaski_układ_sił.jpg
+rename 10-dowolny_płaski_układ_sił.jpg
+rename 11-dowolny_płaski_układ_sił.jpg
+unzip
+open unzip
+open_with nvim
+delete
+open_with zathura

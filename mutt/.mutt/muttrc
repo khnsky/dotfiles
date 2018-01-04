@@ -1,0 +1,7 @@
+# imap user, for gmail need to specify full address,
+# this is not standard
+set imap_user='pkriddick16@gmail.com'
+# imap password, if unset password will be prompted for
+set imap_pass=
+set folder='imaps://imap.gmail.com'
+set spoolfile=+INBOX

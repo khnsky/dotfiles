@@ -1,8 +1,0 @@
-Sep 26 01:35 : exception: Failed to open /home/khnsky/.config/mpd/state: No such file or directory
-Sep 26 01:35 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
-Sep 26 01:35 : client: [0] opened from [::1]:38164
-Sep 26 01:35 : client: [0] closed
-Sep 28 16:21 : client: [1] opened from [::1]:38396
-Sep 28 16:22 : client: [1] closed
-Oct 16 10:21 : exception: Failed to open /home/khnsky/.config/mpd/state: No such file or directory
-Oct 16 10:21 : exception: OutputThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted

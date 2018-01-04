@@ -1,12 +1,1 @@
-cef_user_data
-discord
-gconf
-mimeapps.list
-pavucontrol.ini
-pulse
-dconf
-qBittorrent
-*gtk*
 
-*.bak
-*.note
