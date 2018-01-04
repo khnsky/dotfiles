@@ -11,4 +11,4 @@ so to install i3 config you would use:
 
 > stow i3  
 
-you need to specify stow dir if you are not in it currently. you need to specify targer dir if it's not one above the stow dir.  
+you need to specify stow dir if you are not in it currently, you need to specify target dir if it's not one above the stow dir.  
