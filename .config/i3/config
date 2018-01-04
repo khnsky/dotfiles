@@ -9,6 +9,10 @@ floating_modifier $mod
 # toggle tiling / floating
 # without it i3 says config contains errors
 bindsym $mod+Shift+space floating toggle
+# disable mouse scroll
+# not working, maybe need full reload instead of mod+shift+r
+bindsym button4 nop
+bindsym button5 nop
 
 # modes {{{
 # resize window (you can also use the mouse for that)
