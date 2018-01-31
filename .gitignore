@@ -1,3 +1,4 @@
-# ignore vim / nvim plugin files
 nvim/.config/nvim/autoload/*
 nvim/.config/nvim/plugged/*
+
+emacs/.emacs.d/*
