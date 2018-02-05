@@ -3,6 +3,8 @@ nvim/.config/nvim/plugged/*
 
 emacs/.emacs.d/*
 
+*~
+
 mpd/.config/mpd/log
 mpd/.config/mpd/pid
 
