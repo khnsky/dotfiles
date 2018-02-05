@@ -9,6 +9,7 @@ floating_modifier $mod
 # toggle tiling / floating
 # without it i3 says config contains errors
 bindsym $mod+Shift+space floating toggle
+
 # disable mouse scroll
 # not working, maybe need full reload instead of mod+shift+r
 bindsym button4 nop
@@ -110,7 +111,8 @@ assign [class="(?i)discord"] 8
 # riot
 assign [class="(?i)riot"] 8
 
-#for_window [instance="(?i)scratchpad"] floating enable; move scratchpad
-#exec --no-startup-id st -t scratchpad -e tmux new-session -A -s scratchpad
+for_window [instance="(?i)scratchpad"] floating enable
+for_window [instance="(?i)scratchpad"] move scratchpad
+exec --no-startup-id st -n scratchpad -e tmux new-session -A -s x
 # TODO: why is this not working
 # }}} 
