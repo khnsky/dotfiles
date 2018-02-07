@@ -1,52 +1,75 @@
+;; TODO:
+;; linum makes emacs freeze when opening pdf
+;; org-mode
+;; magit
+;; configure haskell-mode
+;; auctex
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file); 'noerror)
+
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/"))
-
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-ex-search-case (quote smart))
- '(evil-respect-visual-line-mode t)
- '(evil-shift-round t)
- '(evil-shift-width 4)
- '(evil-vsplit-window-right t)
- '(global-visual-line-mode t)
- '(indent-tabs-mode nil)
- '(linum-relative-current-symbol "")
- '(linum-relative-global-mode t)
- '(package-selected-packages (quote (haskell-mode helm linum-relative evil)))
- '(standard-indent 4)
- '(tab-always-indent t)
- '(tab-width 4))
 
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-install-selected-packages)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(eval-when-compile (require 'use-package))
 
-(require 'haskell-mode)
+(use-package evil
+             :ensure t
+             :init
+             (setq eevil-respect-visual-line-mode t
+                   evil-ex-search-case 'smart
+                   evil-shift-round t
+                   evil-shift-width 4
+                   evil-vsplit-window-right t)
+             :config
+             (evil-mode 1)
+             (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
 
-(require 'helm-config)
-(helm-mode 1)
+(use-package linum-relative
+             :ensure t
+             :init
+             (setq linum-relative-current-symbol "")
+             :config
+             (linum-relative-global-mode 1))
 
-(require 'linum-relative)
-(linum-on)
+(use-package haskell-mode
+             :ensure t)
 
-(require 'evil)
-(evil-mode 1)
-(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+(use-package helm
+             :ensure t
+             :config
+             (require 'helm-config)
+             (helm-mode 1))
 
-(tool-bar-mode -1) ; hide tool-bar
-(menu-bar-mode -1) ; hide menu-bar
 
-(setq completition-ignore-case t)
+(global-visual-line-mode 1)
+;; hide tool and menu bars
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+;; show clear scratchpad on startup
+(setq inhibit-startup-message t
+      initial-scratch-message nil)
+
 (global-prettify-symbols-mode 1) 
+(setq indent-tabs-mode nil
+      standard-indent 4
+      tab-always-indent t
+      tab-width 4)
+
+      
+;; set executable bit if file starts with #!
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
+;; ask y/n instead of yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq completition-ignore-case t)
+
+;; use visual bell instead off sound
+(setq visible-bell t)
