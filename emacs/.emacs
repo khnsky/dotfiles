@@ -2,11 +2,10 @@
 ;; linum makes emacs freeze when opening pdf
 ;; org-mode
 ;; magit
-;; configure haskell-mode
 ;; auctex
 
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file); 'noerror)
+(load custom-file 'noerror)
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -39,7 +38,8 @@
              (linum-relative-global-mode 1))
 
 (use-package haskell-mode
-             :ensure t)
+	     :ensure t
+	     :defer t)
 
 (use-package helm
              :ensure t
@@ -57,6 +57,9 @@
       initial-scratch-message nil)
 
 (global-prettify-symbols-mode 1) 
+(set-frame-font "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
+
+;;; indentation
 (setq indent-tabs-mode nil
       standard-indent 4
       tab-always-indent t
