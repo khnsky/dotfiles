@@ -19,35 +19,36 @@
 (eval-when-compile (require 'use-package))
 
 (use-package evil
-             :ensure t
-             :init
-             (setq eevil-respect-visual-line-mode t
-                   evil-ex-search-case 'smart
-                   evil-shift-round t
-                   evil-shift-width 4
-                   evil-vsplit-window-right t)
-             :config
-             (evil-mode 1)
-             (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
+  :ensure t
+  :init
+  (setq evil-respect-visual-line-mode t
+        evil-ex-search-case 'smart
+        evil-shift-round t
+        evil-shift-width 4
+        evil-vsplit-window-right t)
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
 
 (use-package linum-relative
-             :ensure t
-             :init
-             (setq linum-relative-current-symbol "")
-             :config
-             (linum-relative-global-mode 1))
+  :ensure t
+  :init
+  (setq linum-relative-current-symbol "")
+  :config
+  (linum-relative-global-mode 1))
 
 (use-package haskell-mode
-	     :ensure t
-	     :defer t)
+  :ensure t
+  :defer t)
 
 (use-package helm
-             :ensure t
-             :config
-             (require 'helm-config)
-             (helm-mode 1))
+  :ensure t
+  :config
+  (require 'helm-config)
+  (helm-mode 1))
 
 
+;;; interface
 (global-visual-line-mode 1)
 ;; hide tool and menu bars
 (tool-bar-mode -1)
@@ -57,14 +58,17 @@
       initial-scratch-message nil)
 
 (global-prettify-symbols-mode 1) 
+
 (set-frame-font "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
 
 ;;; indentation
-(setq indent-tabs-mode nil
-      standard-indent 4
-      tab-always-indent t
-      tab-width 4)
+(customize-set-variable 'indent-tabs-mode nil)
+(customize-set-variable 'standard-indent 4)
+(customize-set-variable 'tab-always-indent t)
+(customize-set-variable 'tab-width 4)
 
+(setq-default c-default-style "bsd"
+              c-basic-offset 4)
       
 ;; set executable bit if file starts with #!
 (add-hook 'after-save-hook
@@ -72,6 +76,7 @@
 
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
+
 (setq completition-ignore-case t)
 
 ;; use visual bell instead off sound
