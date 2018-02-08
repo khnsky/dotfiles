@@ -81,3 +81,5 @@
 
 ;; use visual bell instead off sound
 (setq visible-bell t)
+
+(setq default-directory "~/")
