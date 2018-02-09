@@ -30,6 +30,12 @@
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
 
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-tomorrow-night t)
+  (doom-themes-visual-bell-config))
+
 (use-package linum-relative
   :ensure t
   :init
