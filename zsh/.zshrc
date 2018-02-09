@@ -34,8 +34,8 @@ if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
     usr_p="[%n@%M]"
 fi
 
-autoload -Uz colors && colors
 # can now use better color notation eg. fg[green]
+autoload -Uz colors && colors
 
 good_color="%F{green}"
 bad_color="%F{red}"
@@ -46,21 +46,31 @@ color="%(?..$bad_color)"
 
 privlige_p="[$color%#$reset_color]"     # '#' if shell running with priviliges, % otherwise
 dir_p="[%~]"                            # show current dir, home shown as ~
-git_p=
-vim_p=
 
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+# b - branch, a - action (rebase), m - misc. (stashes), u - unstaged, c -staged
+zstyle ':vcs_info:*' formats "[%b %m%u%c]"
+zstyle ':vcs_info:*' actionformats "[%b|%a %m%u%c]"
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "%F{green}+%f"   # show green + if staged files
+zstyle ':vcs_info:*' unstagedstr "%F{red}+%f"   # show red + if unstaged files
+precmd() {
+    vcs_info                                    # set vcs_info...
+}
+git_p='${vcs_info_msg_0_}'                      # parameter expansion in prompt, not now
+
+vim_p=
 # doesn't work
 #function zle-line-init zle-keymap-select {
-#    vim_p="${${KEYMAP/vicmd/[ NORMAL ]}/(main|viins)/}"
+#    vim_p='${${KEYMAP/vicmd/[ NORMAL ]}/(main|viins)/}'
 #    zle reset-prompt
 #}
 #zle -N zle-line-init
 #zle -N zle-keymap-select
 
-#PROMPT='%(?.%B$: .%F{red}%B$: %f)%b'    # left prompt, $:, red if last command failed
-
 PROMPT="${usr_p}${privlige_p}: "
-RPROMPT="$vim_p$dir_p$git_p"
+RPROMPT="${vim_p}${dir_p}${git_p}"
 
 # }}}
 
