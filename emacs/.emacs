@@ -53,6 +53,11 @@
   (require 'helm-config)
   (helm-mode 1))
 
+(use-package org
+  :ensure t
+  :config
+  (setq org-startup-indented t))
+
 
 ;;; interface
 
