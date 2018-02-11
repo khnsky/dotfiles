@@ -1,2 +1,5 @@
 # set zathura to use x clipboard buffer for copying
 set selection-clipboard clipboard
+# nightmode
+set recolor true
+#set recolor-darkcolor "#808080"
