@@ -1,11 +1,7 @@
-;; TODO:
-;; linum makes emacs freeze when opening pdf
-;; org-mode
-;; magit
-;; auctex
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
+;;; package configuration
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -33,7 +29,8 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-tomorrow-night t)
+  (load-theme 'doom-peacock t)
+  (doom-themes-org-config)
   (doom-themes-visual-bell-config))
 
 (use-package linum-relative
@@ -50,13 +47,17 @@
 (use-package helm
   :ensure t
   :config
-  (require 'helm-config)
+  (use-package helm-config)
   (helm-mode 1))
 
 (use-package org
   :ensure t
   :config
-  (setq org-startup-indented t))
+  (setq org-startup-indented t
+        org-log-done 'time
+        org-src-fontify-natively t)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c l") 'org-store-link))
 
 
 ;;; interface
