@@ -5,10 +5,10 @@ easily install config files with gnu stow:
 
 > stow \[ -d _stow-dir_ ] [ -t _target-dir_ ] _package_  
 
-where:
-*package* is the name of folder with configs you would like to install for e.g. i3, vim.
-*stow dir* is the directory in which packages are.
-*target dir* is home.  
+where:  
+**package** is the name of folder with configs you would like to install for e.g. i3, vim.  
+**stow dir** is the directory in which packages are.  
+**target dir** is home.  
 
 so to install i3 config you would use:  
 
