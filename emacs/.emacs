@@ -6,63 +6,67 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
+(package-initialize t)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
+(unless package-archive-contents
+  (package-refersh-contents))
+
 (eval-when-compile (require 'use-package))
 
 (use-package evil
   :ensure t
-  :init
-  (setq evil-respect-visual-line-mode t
-        evil-ex-search-case 'smart
-        evil-shift-round t
-        evil-shift-width 4
-        evil-vsplit-window-right t)
-  :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
+  :init (setq evil-respect-visual-line-mode t
+              evil-ex-search-case 'smart
+              evil-shift-round t
+              evil-shift-width 4
+              evil-vsplit-window-right t)
+  :config (evil-mode 1)
+          (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
 
 (use-package doom-themes
   :ensure t
-  :config
-  (load-theme 'doom-peacock t)
-  (doom-themes-org-config)
-  (doom-themes-visual-bell-config))
+  :config (load-theme 'doom-peacock t)
+          (doom-themes-org-config)
+          (doom-themes-visual-bell-config)) ; flash modeline on bell
 
 (use-package linum-relative
   :ensure t
-  :init
-  (setq linum-relative-current-symbol "")
-  :config
-  (linum-relative-global-mode 1))
+  :init (setq linum-relative-current-symbol "")   ; show absolute line number on current line
+  :config (linum-relative-global-mode 1))
 
 (use-package haskell-mode
   :ensure t
   :defer t)
 
-(use-package helm
+(use-package ivy
   :ensure t
-  :config
-  (use-package helm-config)
-  (helm-mode 1))
+  :config (use-package counsel
+            :ensure t
+            :config (counsel-mode 1))
+          (setq ivy-use-virtual-buffers t)  ; add recent files and bookmarks to ivy-switch-buffer
+          (ivy-mode 1))
 
 (use-package org
   :ensure t
-  :config
-  (setq org-startup-indented t
-        org-log-done 'time
-        org-src-fontify-natively t)
-  (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c l") 'org-store-link))
+  :config (setq org-startup-indented t
+                org-log-done 'time
+                org-src-fontify-natively t  ; syntax color src code blocks
+                org-return-follows-link t)
+          (global-set-key (kbd "C-c a") 'org-agenda)
+          (global-set-key (kbd "C-c l") 'org-store-link))
+
+(use-package flycheck
+  :ensure t
+  :config (global-flycheck-mode 1))
 
 
 ;;; interface
 
-(global-visual-line-mode 1)
+(global-visual-line-mode 1)         ; wrap lines where logical
 
 ;; hide toolbar, menubar, scrollbar
 (tool-bar-mode -1)
@@ -74,7 +78,11 @@
       initial-scratch-message nil)
 
 ;; replace some keywords (lambda) with nice symbols
-(global-prettify-symbols-mode 1) 
+(global-prettify-symbols-mode 1)
+
+(global-hl-line-mode 1)
+
+(show-paren-mode 1)
 
 (set-frame-font "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
 
@@ -96,8 +104,8 @@
             (when buffer-file-name
               (let ((dir (file-name-directory buffer-file-name)))
                 (when (and (not (file-exist-p dir))
-                         (y-or-n-p (format "directory %s doesn't exist. create it?"
-                                           dir)))
+                           (y-or-n-p
+                            (format "Directory %s doesn't exist. Create it? " dir)))
                   (make-directory dir t))))))
 
 ;; set executable bit if file starts with #!
@@ -107,9 +115,17 @@
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq completition-ignore-case t)
+(setq apropos-do-all t                          ; search more exetnsively
+      completition-ignore-case t
+      default-directory "~/"
+      load-prefer-newer t
+      mouse-yank-at-point t                     ; paste at point, not at click
+      require-final-newline t                   ; append newline at end of file
+      save-interprogram-paste-before-kill t
+      sentence-end-double-space nil
+      visible-bell t)                           ; visual bell instead of sound
 
-;; use visual bell instead off sound
-(setq visible-bell t)
+(global-set-key (kbd "M-/") 'hippie-expand)     ; use hippie-expand instead of dabrev-expand
 
-(setq default-directory "~/")
+(provide '.emacs)
+;;; .emacs ends here

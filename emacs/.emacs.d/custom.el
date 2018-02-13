@@ -5,7 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(indent-tabs-mode nil)
  '(org-agenda-files (quote ("~/agenda.org")))
- '(package-selected-packages (quote (doom-themes haskell-mode helm linum-relative evil)))
+ '(package-selected-packages
+   (quote
+    (flycheck counsel ivy doom-themes haskell-mode helm linum-relative evil)))
  '(standard-indent 4)
  '(tab-always-indent t)
  '(tab-width 4))
