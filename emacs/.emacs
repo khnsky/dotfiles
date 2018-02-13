@@ -31,30 +31,31 @@
   :ensure t
   :config (load-theme 'doom-peacock t)
           (doom-themes-org-config)
-          (doom-themes-visual-bell-config)) ; flash modeline on bell
+          (doom-themes-visual-bell-config))     ; flash modeline on bell
 
 (use-package linum-relative
   :ensure t
-  :init (setq linum-relative-current-symbol "")   ; show absolute line number on current line
+  :init (setq linum-relative-current-symbol "") ; show absolute line number on current line
   :config (linum-relative-global-mode 1))
 
 (use-package haskell-mode
   :ensure t
   :defer t)
 
-(use-package ivy
-  :ensure t
-  :config (use-package counsel
+(use-package counsel
             :ensure t
             :config (counsel-mode 1))
-          (setq ivy-use-virtual-buffers t)  ; add recent files and bookmarks to ivy-switch-buffer
+
+(use-package ivy
+  :ensure t
+  :config (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
           (ivy-mode 1))
 
 (use-package org
   :ensure t
   :config (setq org-startup-indented t
                 org-log-done 'time
-                org-src-fontify-natively t  ; syntax color src code blocks
+                org-src-fontify-natively t      ; syntax color src code blocks
                 org-return-follows-link t)
           (global-set-key (kbd "C-c a") 'org-agenda)
           (global-set-key (kbd "C-c l") 'org-store-link))
