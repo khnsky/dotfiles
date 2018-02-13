@@ -68,23 +68,19 @@
 
 (global-visual-line-mode 1)         ; wrap lines where logical
 
-;; hide toolbar, menubar, scrollbar
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+(tool-bar-mode -1)                  ; hide tool-bar
+(menu-bar-mode -1)                  ; hide menu-bar
+(scroll-bar-mode -1)                ; hide scroll-bar
 
-;; show clear scratchpad on startup
-(setq inhibit-startup-message t
-      initial-scratch-message nil)
+(setq inhibit-startup-message t     ; show scratchpad on startup
+      initial-scratch-message nil)  ; no message in scratchpad
 
-;; replace some keywords (lambda) with nice symbols
-(global-prettify-symbols-mode 1)
+(global-prettify-symbols-mode 1)    ; show nice symbols instead of some keywords
+(global-hl-line-mode 1)             ; highlight current line
+(show-paren-mode 1)                 ; highlight matching paren
 
-(global-hl-line-mode 1)
-
-(show-paren-mode 1)
-
-(set-frame-font "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
+(set-frame-font                     ; set default font
+ "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
 
 ;;; indentation
 
@@ -115,7 +111,7 @@
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq apropos-do-all t                          ; search more exetnsively
+(setq apropos-do-all t                          ; search apropos more exetnsively
       completition-ignore-case t
       default-directory "~/"
       load-prefer-newer t
