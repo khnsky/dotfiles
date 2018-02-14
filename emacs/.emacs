@@ -57,12 +57,12 @@
 
 (use-package org
   :ensure t
-  :config (setq org-startup-indented t
-                org-log-done 'time
+  :config (setq org-startup-indented t          ; turn on indenting according to structure
+                org-log-done 'time              ; add timestamps on done todos
                 org-src-fontify-natively t      ; syntax color src code blocks
-                org-return-follows-link t)
-          (global-set-key (kbd "C-c a") 'org-agenda)
-          (global-set-key (kbd "C-c l") 'org-store-link))
+                org-return-follows-link t)      ; open links under point whith ret
+  :bind ("C-c a" . org-agenda)
+        ("C-c l" . org-store-link))
 
 (use-package flycheck
   :ensure t
