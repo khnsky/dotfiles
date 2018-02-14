@@ -29,7 +29,7 @@
               evil-shift-width 4
               evil-vsplit-window-right t)
   :config (evil-mode 1)
-          (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop))
+          (evil-global-set-key 'insert (kbd "TAB") 'tab-to-tab-stop)
 
 (use-package doom-themes
   :ensure t
