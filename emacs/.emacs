@@ -71,14 +71,15 @@
 
 ;;; interface
 
-(global-visual-line-mode 1)         ; wrap lines where logical
-(global-prettify-symbols-mode 1)    ; show nice symbols instead of some keywords
+(global-font-lock-mode 1)           ; syntax highlighting everywhere
 (global-hl-line-mode 1)             ; highlight current line
+(global-prettify-symbols-mode 1)    ; show nice symbols instead of some keywords
+(global-visual-line-mode 1)         ; wrap lines where logical
 (show-paren-mode 1)                 ; highlight matching paren
 
-(tool-bar-mode -1)                  ; hide tool-bar
 (menu-bar-mode -1)                  ; hide menu-bar
 (scroll-bar-mode -1)                ; hide scroll-bar
+(tool-bar-mode -1)                  ; hide tool-bar
 
 (setq inhibit-startup-message t     ; show scratchpad on startup
       initial-scratch-message nil)  ; no message in scratchpad
