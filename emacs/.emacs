@@ -17,7 +17,7 @@
   (package-install 'use-package))
 
 (unless package-archive-contents
-  (package-refersh-contents))
+  (package-refresh-contents))
 
 (eval-when-compile (require 'use-package))
 
