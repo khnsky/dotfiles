@@ -1,3 +1,7 @@
+;;; .emacs --- personal config
+;;; commentary:
+;;; code:
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
@@ -68,6 +72,9 @@
 ;;; interface
 
 (global-visual-line-mode 1)         ; wrap lines where logical
+(global-prettify-symbols-mode 1)    ; show nice symbols instead of some keywords
+(global-hl-line-mode 1)             ; highlight current line
+(show-paren-mode 1)                 ; highlight matching paren
 
 (tool-bar-mode -1)                  ; hide tool-bar
 (menu-bar-mode -1)                  ; hide menu-bar
@@ -76,22 +83,17 @@
 (setq inhibit-startup-message t     ; show scratchpad on startup
       initial-scratch-message nil)  ; no message in scratchpad
 
-(global-prettify-symbols-mode 1)    ; show nice symbols instead of some keywords
-(global-hl-line-mode 1)             ; highlight current line
-(show-paren-mode 1)                 ; highlight matching paren
-
 (set-frame-font                     ; set default font
  "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
 
 ;;; indentation
 
-(customize-set-variable 'indent-tabs-mode nil)
-(customize-set-variable 'standard-indent 4)
-(customize-set-variable 'tab-always-indent t)
-(customize-set-variable 'tab-width 4)
-
-(setq-default c-default-style "bsd"
-              c-basic-offset 4)
+(setq-default c-basic-offset 4
+              c-default-style "bsd"
+              indent-tabs-mode nil
+              standard-indent 4
+              tab-always-indent t
+              tab-width 4)
 
 ;;; tweaks
 
@@ -122,7 +124,7 @@
       sentence-end-double-space nil
       visible-bell t)                           ; visual bell instead of sound
 
-(global-set-key (kbd "M-/") 'hippie-expand)     ; use hippie-expand instead of dabrev-expand
+(global-set-key (kbd "M-/") 'hippie-expand)     ; hippie-expand > dabrev-expand
 
 (provide '.emacs)
 ;;; .emacs ends here
