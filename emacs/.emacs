@@ -29,8 +29,8 @@
               evil-shift-round t
               evil-shift-width 4
               evil-vsplit-window-right t)
-  :config (evil-mode 1)
-          (evil-global-set-key 'insert (kbd "TAB") 'tab-to-tab-stop))
+  :bind (:map evil-insert-state-map ("TAB" . tab-to-tab-stop))
+  :config (evil-mode 1))
 
 (use-package doom-themes
   :ensure t
