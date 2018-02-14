@@ -23,6 +23,7 @@
 
 (use-package evil
   :ensure t
+  :demand
   :init (setq evil-respect-visual-line-mode t
               evil-ex-search-case 'smart
               evil-shift-round t
@@ -103,7 +104,7 @@
           (lambda ()
             (when buffer-file-name
               (let ((dir (file-name-directory buffer-file-name)))
-                (when (and (not (file-exist-p dir))
+                (when (and (not (file-exists-p dir))
                            (y-or-n-p
                             (format "Directory %s doesn't exist. Create it? " dir)))
                   (make-directory dir t))))))
