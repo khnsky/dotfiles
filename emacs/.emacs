@@ -48,8 +48,8 @@
   :defer t)
 
 (use-package counsel
-            :ensure t
-            :config (counsel-mode 1))
+  :ensure t
+  :config (counsel-mode 1))
 
 (use-package ivy
   :ensure t
