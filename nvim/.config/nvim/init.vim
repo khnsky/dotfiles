@@ -1,16 +1,9 @@
-" vim modeline for this file
 " vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
-
-" Piotr Kochański's .vimrc
-
-" undos, tabs, usr_05.txt usr_toc.txt 5.05, :options
 
 " behaviour {{{
 set nocompatible            " turn vi compability off
 filetype indent plugin on   " enable file dependant plugins and indenting
 syntax on                   " enable syntax dependant settings
-
-"set showmode               " default value
 
 set visualbell
 
