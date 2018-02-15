@@ -56,14 +56,18 @@
   :config (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
           (ivy-mode 1))
 
+(use-package swiper
+  :ensure t
+  :bind ("C-s" . swiper))
+
 (use-package org
   :ensure t
   :config (setq org-startup-indented t          ; turn on indenting according to structure
                 org-log-done 'time              ; add timestamps on done todos
                 org-src-fontify-natively t      ; syntax color src code blocks
                 org-return-follows-link t)      ; open links under point whith ret
-  :bind ("C-c a" . org-agenda)
-        ("C-c l" . org-store-link))
+  :bind (("C-c a" . org-agenda)
+         ("C-c l" . org-store-link)))
 
 (use-package flycheck
   :ensure t
