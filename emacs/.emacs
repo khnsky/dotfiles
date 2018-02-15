@@ -115,6 +115,27 @@
               tab-always-indent t
               tab-width 4)
 
+;;; misc. settings
+
+(setq apropos-do-all t                          ; search apropos more exetnsively
+      completition-ignore-case t
+      default-directory "~/"
+      load-prefer-newer t
+      mouse-yank-at-point t                     ; paste at point, not at click
+      require-final-newline t                   ; append newline at end of file
+      save-interprogram-paste-before-kill t
+      sentence-end-double-space nil
+      visible-bell t)                           ; visual bell instead of sound
+
+(global-set-key (kbd "M-/") 'hippie-expand)     ; hippie-expand > dabrev-expand
+
+;; backup files
+
+(setq backup-by-copying t
+      delete-old-versions t
+      version-control t
+      backup-directory-alist (cons "." (concat user-emacs-directory "backup")))
+
 ;;; tweaks
 
 ;; ask to (recursively) create directories when saving file in non existant dir
@@ -133,18 +154,6 @@
 
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(setq apropos-do-all t                          ; search apropos more exetnsively
-      completition-ignore-case t
-      default-directory "~/"
-      load-prefer-newer t
-      mouse-yank-at-point t                     ; paste at point, not at click
-      require-final-newline t                   ; append newline at end of file
-      save-interprogram-paste-before-kill t
-      sentence-end-double-space nil
-      visible-bell t)                           ; visual bell instead of sound
-
-(global-set-key (kbd "M-/") 'hippie-expand)     ; hippie-expand > dabrev-expand
 
 (provide '.emacs)
 ;;; .emacs ends here
