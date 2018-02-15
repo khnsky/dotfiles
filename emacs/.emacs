@@ -19,6 +19,8 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;; evil and related
+
 (eval-when-compile (require 'use-package))
 
 (use-package evil
@@ -32,20 +34,22 @@
   :bind (:map evil-insert-state-map ("TAB" . tab-to-tab-stop))
   :config (evil-mode 1))
 
-(use-package doom-themes
-  :ensure t
-  :config (load-theme 'doom-peacock t)
-          (doom-themes-org-config)
-          (doom-themes-visual-bell-config))     ; flash modeline on bell
-
 (use-package linum-relative
   :ensure t
   :init (setq linum-relative-current-symbol "") ; show absolute line number on current line
   :config (linum-relative-global-mode 1))
 
-(use-package haskell-mode
+(use-package origami
   :ensure t
-  :defer t)
+  :config (global-origami-mode 1))
+
+;; other
+
+(use-package doom-themes
+  :ensure t
+  :config (load-theme 'doom-peacock t)
+          (doom-themes-org-config)
+          (doom-themes-visual-bell-config))     ; flash modeline on bell
 
 (use-package counsel
   :ensure t
@@ -69,9 +73,15 @@
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)))
 
+;; programming
+
 (use-package flycheck
   :ensure t
   :config (global-flycheck-mode 1))
+
+(use-package haskell-mode
+  :ensure t
+  :defer t)
 
 
 ;;; interface
