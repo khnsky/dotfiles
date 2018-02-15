@@ -19,9 +19,9 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; evil and related
-
 (eval-when-compile (require 'use-package))
+
+;; evil and related
 
 (use-package evil
   :ensure t
@@ -33,6 +33,10 @@
               evil-vsplit-window-right t)
   :bind (:map evil-insert-state-map ("TAB" . tab-to-tab-stop))
   :config (evil-mode 1))
+
+(use-package evil-surround
+  :ensure t
+  :config (global-evil-surround-mode 1))
 
 (use-package linum-relative
   :ensure t
