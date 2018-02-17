@@ -28,12 +28,15 @@ setopt PROMPT_PERCENT                   # perform % sequences substitution
 setopt PROMPT_SUBST                     # perform substitution in prompt
 setopt TRANSIENT_RPROMPT                # display rprompt only on current line
 
-usr_p=
-# $SSH_TTY, $SSH_CONNECTION, $SSH_CLIENT
-if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
-    # zsh builtin - whoami@hostname
-    usr_p="[%n@%M]"
-fi
+user_info_in_ssh() {
+    # $SSH_TTY, $SSH_CONNECTION, $SSH_CLIENT
+    if [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
+        # zsh builtin - whoami@hostname
+        user_info_in_ssh_="[%n@%M]"
+    else
+        user_info_in_ssh_=
+    fi
+}
 
 # can now use better color notation eg. fg[green]
 autoload -Uz colors && colors
@@ -43,12 +46,13 @@ bad_color="%F{red}"
 #color="%F{white}"
 reset_color="%f"
 
-color="%(?..$bad_color)"
+color="%(?..$bad_color)"                # bad color if last command failed
 
 privlige_p="[$color%#$reset_color]"     # '#' if shell running with priviliges, % otherwise
 dir_p="[%~]"                            # show current dir, home shown as ~
 
 autoload -Uz vcs_info
+
 zstyle ':vcs_info:*' enable git
 # b - branch, a - action (rebase), m - misc. (stashes), u - unstaged, c -staged
 zstyle ':vcs_info:*' formats "[%b %m%u%c]"
@@ -56,22 +60,31 @@ zstyle ':vcs_info:*' actionformats "[%b|%a %m%u%c]"
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr "%F{green}+%f"   # show green + if staged files
 zstyle ':vcs_info:*' unstagedstr "%F{red}+%f"   # show red + if unstaged files
+
 precmd() {
     vcs_info                                    # set vcs_info...
+    user_info_in_ssh
 }
-git_p='${vcs_info_msg_0_}'                      # parameter expansion in prompt, not now
 
-vim_p=
-# doesn't work
-#function zle-line-init zle-keymap-select {
-#    vim_p='${${KEYMAP/vicmd/[ NORMAL ]}/(main|viins)/}'
+#git_info='${vcs_info_msg_0_}'                   # parameter expansion in prompt, not now
+
+#insert_mode="[ins]"
+#normal_mode="[nor]"
+#vim_mode=$insert_mode
+#
+#zle-keymap-select() {
+#    vim_mode="${${KEYMAP/vicmd/${normal_mode}}/(main|viins)/${insert_mode}}"
 #    zle reset-prompt
 #}
-#zle -N zle-line-init
 #zle -N zle-keymap-select
+#
+#zle-line-finish() {
+#    vim_mode=$insert_mode
+#}
+#zle -N zle-line-finish
 
-PROMPT="${usr_p}${privlige_p}: "
-RPROMPT="${vim_p}${dir_p}${git_p}"
+PROMPT='${user_info_in_ssh_}${privlige_p}: '
+RPROMPT='${dir_p}${vcs_info_msg_0_}'
 
 # }}}
 
