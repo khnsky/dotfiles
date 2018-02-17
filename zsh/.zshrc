@@ -137,3 +137,5 @@ alias cal='cal -m --color=auto'     # color cal output, start week with monday
 alias diff='diff --color=auto'      # color diff output
 alias grep='grep --color=auto'      # color grep output
 alias ls='ls --color=auto'          # color ls output
+
+alias gs='git status -sb'
