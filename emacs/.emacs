@@ -5,6 +5,8 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+(setq debug-on-error t)
+
 ;;; package configuration
 
 (require 'package)
@@ -134,7 +136,7 @@
 (setq backup-by-copying t
       delete-old-versions t
       version-control t
-      backup-directory-alist (cons "." (concat user-emacs-directory "backup")))
+      backup-directory-alist `(("." . ,(concat user-emacs-directory "backup"))))
 
 ;;; tweaks
 
