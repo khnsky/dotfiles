@@ -85,10 +85,29 @@
   :ensure t
   :config (global-flycheck-mode 1))
 
+(use-package company
+  :ensure t
+  :demand
+  :bind ("M-/" . company-complete)
+  :config (global-company-mode 1))
+
+; haskell
 (use-package haskell-mode
   :ensure t
   :defer t)
 
+(use-package flycheck-haskell
+  :ensure t
+  :hook (flycheck-mode . flycheck-haskell-setup))
+
+; rust
+(use-package rust-mode
+  :ensure t
+  :defer t)
+
+(use-package flycheck-rust
+  :ensure t
+  :hook (flycheck-mode . flycheck-rust-setup))
 
 ;;; interface
 
@@ -129,7 +148,7 @@
       sentence-end-double-space nil
       visible-bell t)                           ; visual bell instead of sound
 
-(global-set-key (kbd "M-/") 'hippie-expand)     ; hippie-expand > dabrev-expand
+;(global-set-key (kbd "M-/") 'hippie-expand)     ; hippie-expand > dabrev-expand
 
 ;; backup files
 
