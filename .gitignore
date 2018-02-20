@@ -8,5 +8,7 @@ emacs/.emacs.d/*
 mpd/.config/mpd/log
 mpd/.config/mpd/pid
 
+mpv/.config/mpv/watch_later/*
+
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/history
