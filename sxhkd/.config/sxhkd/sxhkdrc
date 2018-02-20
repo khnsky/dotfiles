@@ -1,8 +1,52 @@
 # vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
-# TODO: make wm agnostic keybindings
+# start a terminal
+super + Return
+ st || i3-sensible-terminal
 
-# wm bindings {{{
+# TODO:
+# super + shift some other mode?
+super + d
+ rofi -show run
+
+#Print
+# TODO: make it agnostic of screenshot utility (e.g. scrot, maim)
+# TODO: find better naming scheme than unix epoch time
+# print screen
+{_,ctrl} + {_,shift} + Print
+ mkdir -p ~/pictures/screenshots && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
+
+# restart sxhkd, need to choose shortcut
+# pkill -i --signal SIGUSR1 sxhkd 
+
+# additional media keys {{{
+
+# TODO: make it work only if not in some program that already uses them (e.g. mpv)
+# TODO: restart statusbar?
+#
+
+#XF86AudioMute
+#
+#XF86AudioLowerVolume
+# amixer -q set Master 1%-
+#
+# doesn't work for some reason
+#XF86AudioRiseVolume
+# amixer -q set Master 1%+
+#
+#XF86AudioMicMute
+#
+#XF86AudioPlay
+#XF86AudioStop
+#XF86AudioPrev
+#XF86AudioNext
+#
+#XF86Launch1
+#XF86WakeUp
+# }}}
+
+# TODO: make wm agnostic keybindings
+# i3 bindings {{{
 # switch to/move container to workspace
 super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
  i3-msg {_,move container to} workspace {1,2,3,4,5,6,7,8,9,0}
@@ -11,19 +55,9 @@ super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
 super + {_,shift} + z
  {_,i3-msg move container to workspace back_and_forth}; i3-msg workspace back_and_forth
 
-# start a terminal
-super + Return
- st || i3-sensible-terminal
-
 # kill focused window
 super + shift + q
  i3-msg kill
-
-# start dmenu (a program launcher)
-# TODO:
-# super + shift some other mode?
-super + d
- rofi -show run
 
 # change focus to/move focused window
 super + {_,shift} + {h,j,k,l}
@@ -69,39 +103,3 @@ super + shift + e
  -b 'reboot' 'systemctl reboot' -b 'suspend' 'systemctl suspend' \
  -b 'hibernate' 'systemctl hibernate'
 # }}}
-
-# additional media keys {{{
-
-# TODO: make it work only if not in some program that already uses them (e.g. mpv)
-# TODO: restart statusbar?
-#
-
-#XF86AudioMute
-#
-#XF86AudioLowerVolume
-# amixer -q set Master 1%-
-#
-# doesn't work for some reason
-#XF86AudioRiseVolume
-# amixer -q set Master 1%+
-#
-#XF86AudioMicMute
-#
-#XF86AudioPlay
-#XF86AudioStop
-#XF86AudioPrev
-#XF86AudioNext
-#
-#XF86Launch1
-#XF86WakeUp
-# }}}
-
-#Print
-# TODO: make it agnostic of screenshot utility (e.g. scrot, maim)
-# TODO: find better naming scheme than unix epoch time
-# print screen
-{_,ctrl} + {_,shift} + Print
- mkdir -p ~/pictures/screenshots && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
-
-# restart sxhkd, need to choose shortcut
-# pkill -i --signal SIGUSR1 sxhkd 
