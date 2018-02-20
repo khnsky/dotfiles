@@ -55,9 +55,7 @@ super + {_,shift} + a
 
 # scratchpad
 super + x
- i3-msg scratchpad show
-super + c
- i3-msg move scratchpad
+ i3-msg '[instance="scratchpad"] scratchpad show; [instance="scratchpad"] move position center'
 
 # relaod configuration file
 super + shift + c

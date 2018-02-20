@@ -7,29 +7,19 @@ set $mod Mod4
 floating_modifier $mod
 
 # toggle tiling / floating
-# without it i3 says config contains errors
+# TODO: without it i3 says config contains errors?
 bindsym $mod+Shift+space floating toggle
 
 # disable mouse scroll
-# not working, maybe need full reload instead of mod+shift+r
 bindsym button4 nop
 bindsym button5 nop
 
 # modes {{{
-# resize window (you can also use the mouse for that)
 mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
     bindsym h resize shrink width 10 px or 10 ppt
     bindsym j resize grow height 10 px or 10 ppt
     bindsym k resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
-
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -37,6 +27,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 # }}}
 
+# TODO: doesn't pull from .Xresources, sets fallback values
 # import colors {{{
 # set_from_resource     $<name>         <resource_name>     <fallback>
 set_from_resource       $fgcolor        i3wm.foreground     #ffffff
@@ -53,8 +44,6 @@ set_from_resource       $white          i3wm.color7         #b2b2b2
 # }}}
 
 # bar {{{
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
     status_command i3status
     position            bottom
@@ -104,15 +93,14 @@ workspace_auto_back_and_forth no
 # }}}
 
 # assign to workspaces {{{
-# steam
-assign [class="(?i)steam"] 9
-# discord
-assign [class="(?i)discord"] 8
-# riot
-assign [class="(?i)riot"] 8
+assign [class="discord"] 8
+assign [class="riot"] 8
+assign [class="steam"] 9
 
-for_window [instance="(?i)scratchpad"] floating enable
-for_window [instance="(?i)scratchpad"] move scratchpad
+# scratchpad
+for_window [instance="scratchpad"] floating enable
+for_window [instance="scratchpad"] resize set 625 400
+for_window [instance="scratchpad"] sticky enable
+for_window [instance="scratchpad"] move scratchpad
 exec --no-startup-id st -n scratchpad -e tmux new-session -A -s x
-# TODO: why is this not working
 # }}} 
