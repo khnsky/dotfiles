@@ -1,5 +1,13 @@
 # set zathura to use x clipboard buffer for copying
 set selection-clipboard clipboard
+
 # nightmode
 set recolor true
 #set recolor-darkcolor "#808080"
+
+# bindings
+# use jk for changing pages, JK for scrolling
+map j navigate next
+map k navigate previous
+map J scroll down
+map K scroll up
