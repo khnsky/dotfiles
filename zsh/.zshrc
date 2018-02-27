@@ -133,19 +133,30 @@ alias vim=nvim                      # use nvim instead of vim
 
 alias sudo='sudo '                  # expand aliases when using with sudo
 
-export LESS=-R
-export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
-export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
-export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
-export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-# and so on
+# https://boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
+# color man pages and other less output
+# -R: output ANSI color escape seqs in 'raw' form,
+# +Gg: go to the end and back to show total lines and percentage,
+# might slow down on large files. maybe put in a man function?
+export LESS='-R +Gg'
+# represent termcap effect as:
+# headings (bold; blue fg)
+export LESS_TERMCAP_md=$'\e[1;34m'      # begin bold
+# proper names (bright yellow fg)
+export LESS_TERMCAP_us=$'\e[93m'        # begin underline
+# prompt at the bottom (bold; bright white fg; black bg)
+export LESS_TERMCAP_so=$'\e[01;97;40m'  # begin standout mode
 
-alias cal='cal -m --color=auto'     # color cal output, start week with monday
-alias diff='diff --color=auto'      # color diff output
-alias grep='grep --color=auto'      # color grep output
-alias ls='ls --color=auto'          # color ls output
+export LESS_TERMCAP_me=$'\e[0m'         # reset all mode (so, us, mb, md, mr)
+export LESS_TERMCAP_se=$'\e[0m'         # reset standout mode
+export LESS_TERMCAP_ue=$'\e[0m'         # reset underline
+
+# unused
+export LESS_TERMCAP_mb=$'\e[1;36m'      # begin blink
+
+alias cal='cal -m --color=auto'         # color cal output, start week with monday
+alias diff='diff --color=auto'          # color diff output
+alias grep='grep --color=auto'          # color grep output
+alias ls='ls --color=auto'              # color ls output
 
 alias gs='git status -sb'
