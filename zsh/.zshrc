@@ -107,6 +107,9 @@ setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexp
 export EDITOR=nvim                  # set editor to nvim
 export VISUAL=nvim                  # set visual editor to nvim
 
+export CFLAGS='-std=99 -Wall -Wextra -pedantic -g'
+export CXXFLAGS='-Wall -Wextra -g'
+
 # functions
 # stolen from /u/Rhomboid
 cxxrun()
