@@ -177,5 +177,11 @@
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+(message "startup time: %s" (emacs-init-time))
+
 (provide '.emacs)
 ;;; .emacs ends here
