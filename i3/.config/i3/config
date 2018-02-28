@@ -10,10 +10,6 @@ floating_modifier $mod
 # TODO: without it i3 says config contains errors?
 bindsym $mod+Shift+space floating toggle
 
-# disable mouse scroll
-bindsym button4 nop
-bindsym button5 nop
-
 # modes {{{
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -95,7 +91,7 @@ workspace_auto_back_and_forth no
 # assign to workspaces {{{
 assign [class="discord"] 8
 assign [class="riot"] 8
-assign [class="steam"] 9
+assign [class="Steam"] 9
 
 # scratchpad
 for_window [instance="scratchpad"] floating enable
