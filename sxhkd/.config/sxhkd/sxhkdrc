@@ -4,56 +4,25 @@
 super + Return
  st || i3-sensible-terminal
 
-# TODO:
-# super + shift some other mode?
+# rofi
 super + d
  rofi -show run
 
-#Print
-# TODO: make it agnostic of screenshot utility (e.g. scrot, maim)
-# TODO: find better naming scheme than unix epoch time
+# restart i3 inplace (preserve layout/session) and restart sxhkd
+super + shift + r
+ i3-msg restart && pkill -i --signal SIGUSR1 sxhkd
+
 # print screen
 {_,ctrl} + {_,shift} + Print
  mkdir -p ~/pictures/screenshots && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
 
-# restart sxhkd, need to choose shortcut
-# pkill -i --signal SIGUSR1 sxhkd 
-
-# additional media keys {{{
-
-# TODO: make it work only if not in some program that already uses them (e.g. mpv)
-# TODO: restart statusbar?
-#
-
-#XF86AudioMute
-#
-#XF86AudioLowerVolume
-# amixer -q set Master 1%-
-#
-# doesn't work for some reason
-#XF86AudioRiseVolume
-# amixer -q set Master 1%+
-#
-#XF86AudioMicMute
-#
-#XF86AudioPlay
-#XF86AudioStop
-#XF86AudioPrev
-#XF86AudioNext
-#
-#XF86Launch1
-#XF86WakeUp
-# }}}
-
-# TODO: make wm agnostic keybindings
 # i3 bindings {{{
 # switch to/move container to workspace
-super + {_,shift} + {1,2,3,4,5,6,7,8,9,0}
- i3-msg {_,move container to} workspace {1,2,3,4,5,6,7,8,9,0}
+super + {_,shift} + {1,2,3,4,5,6,7,8,9,0,z}
+ i3-msg {_,move container to} workspace {1,2,3,4,5,6,7,8,9,0,back_and_forth}
 
-# switch to/move container to last workspace
-super + {_,shift} + z
- {_,i3-msg move container to workspace back_and_forth}; i3-msg workspace back_and_forth
+#super + r + {h,j,k,l}
+# i3-msg resize {shrink width,grow height,shrink height,grow width} 5 px or 5 ppt
 
 # kill focused window
 super + shift + q
@@ -91,15 +60,7 @@ super + {_,shift} + a
 super + x
  i3-msg '[instance="scratchpad"] scratchpad show; [instance="scratchpad"] move position center'
 
-# relaod configuration file
-super + shift + c
- i3-msg reload
-# restart i3 inplace (preserve layout/session)
-super + shift + r
- i3-msg restart
-# exit i3
-super + shift + e
- i3-nagbar -t warning -b 'exit i3' 'i3-msg exit' -b 'poweroff' 'systemctl poweroff' \
- -b 'reboot' 'systemctl reboot' -b 'suspend' 'systemctl suspend' \
- -b 'hibernate' 'systemctl hibernate'
+# bring emacs
+super + c
+ i3-msg '[instance="emacs"] move scratchpad; [instance="emacs"] scratchpad show; floating disable'
 # }}}
