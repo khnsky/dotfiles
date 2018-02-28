@@ -177,9 +177,17 @@
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; server
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(add-hook 'server-switch-hook
+          (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+            (when server-buffer-clients
+              (local-set-key (kbd "C-x k") 'server-edit))))
 
 (message "startup time: %s" (emacs-init-time))
 
