@@ -3,7 +3,9 @@ set selection-clipboard clipboard
 
 # nightmode
 set recolor true
-#set recolor-darkcolor "#808080"
+set recolor-keephue true
+set recolor-darkcolor "#FFFFFF"
+set recolor-litghtcolor "#000000"
 
 # bindings
 # use jk for changing pages, JK for scrolling
