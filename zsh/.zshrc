@@ -104,7 +104,7 @@ setopt AUTO_CD                      # cd if not a command and dir exist
 setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexpected
 
 # variables
-export VISUAL=emacsclient           # set visual editor to nvim
+export VISUAL=emacsclient           # set visual editor to emacsclient
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
 export CFLAGS='-std=c99 -Wall -Wextra -pedantic -g'
