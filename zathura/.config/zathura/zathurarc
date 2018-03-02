@@ -8,15 +8,16 @@ set recolor-darkcolor "#FFFFFF"
 set recolor-litghtcolor "#000000"
 
 # bindings
+# normal mode
 # use jk for changing pages, JK for scrolling
 map j navigate next
-map [fullscreen] j navigate next
-
 map k navigate previous
-map [fullscreen] k navigate previous
-
 map J scroll down
-map [fullscreen] J scroll down
-
 map K scroll up
+
+# fullscreen
+# use jk for changing pages, JK for scrolling
+map [fullscreen] j navigate next
+map [fullscreen] k navigate previous
+map [fullscreen] J scroll down
 map [fullscreen] K scroll up
