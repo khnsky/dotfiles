@@ -42,13 +42,8 @@ setxkbmap \
     -option terminate:ctrl_alt_bksp
 
 # autostart 
-# hothey daemon
 sxhkd &> /dev/null &
-# automounter of removable media
-#udiskie &> /dev/null &
-# music player daemon
 mpd &> /dev/null &
-# if redshift is not running start redshift in background, redirect stdout & stderr to /dev/null
 redshift &> /dev/null &
 
 # start wm
