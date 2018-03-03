@@ -18,7 +18,7 @@
                              (setq file-name-handler-alist file-name-handler-alist-orig)
                              (makunbound 'file-name-handler-alist-orig)))
 
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
 
 (setq debug-on-error t)
