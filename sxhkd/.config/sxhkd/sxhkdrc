@@ -8,9 +8,9 @@ super + Return
 super + d
  rofi -show run
 
-# restart i3 inplace (preserve layout/session) and restart sxhkd
+# reload i3 and restart sxhkd
 super + shift + r
- i3-msg restart && pkill -i --signal SIGUSR1 sxhkd
+ i3-msg reload; pkill -i --signal SIGUSR1 sxhkd
 
 # print screen
 {_,ctrl} + {_,shift} + Print
@@ -61,7 +61,9 @@ super + {_,shift} + a
 super + x
  i3-msg '[instance="scratchpad"] scratchpad show; [instance="scratchpad"] move position center'
 
-# bring emacs
+# bring emacs or run if not running
 super + c
- i3-msg '[instance="emacs"] move scratchpad; [instance="emacs"] scratchpad show; floating disable'
+ pgrep emacs \
+ && i3-msg '[instance="emacs"] move scratchpad; [instance="emacs"] scratchpad show; floating disable' \
+ || emacs
 # }}}
