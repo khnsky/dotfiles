@@ -45,13 +45,9 @@ super + f
 super + {w,e}
  i3-msg layout {tabbed,toggle split}
 
-# toggle tiling / floating
-super + shift + space
- i3-msg floating toggle
-
-# change focus between tiling / floating windows
-super + space
- i3-msg focus mode_toggle
+# toggle floating / change focus floating tiling
+super + {_,shift} + space
+ i3-msg {focus mode_toggle,floating toggle}
 
 # focus the parent / child container
 super + {_,shift} + a
