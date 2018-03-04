@@ -8,21 +8,10 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
-fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
-
-if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
-fi
-
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
+[ -f "$sysresources" ] && xrdb -merge "$sysresources"
+[ -f "$sysmodmap" ] && xmodmap "$sysmodmap"
+[ -f "$userresources" ] && xrdb -merge "$userresources"
+[ -f "$usermodmap" ] && xmodmap "$usermodmap"
 
 # start some nice programs 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
@@ -42,9 +31,11 @@ setxkbmap \
     -option terminate:ctrl_alt_bksp
 
 # autostart 
-sxhkd &> /dev/null &
-mpd &> /dev/null &
-redshift &> /dev/null &
+mpd &
+redshift &
+sxhkd &
+# when i figure out how to have fonts set properly when using daemon
+#emacs --daemon &
 
 # start wm
 exec i3
