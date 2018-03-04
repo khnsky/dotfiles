@@ -41,9 +41,9 @@ super + {_,shift} + v
 super + f
  i3-msg fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-super + {s,w,e}
- i3-msg layout {stacking,tabbed,toggle split}
+# change container layout (tabbed, toggle split)
+super + {w,e}
+ i3-msg layout {tabbed,toggle split}
 
 # toggle tiling / floating
 super + shift + space
