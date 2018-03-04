@@ -107,7 +107,7 @@ setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexp
 export VISUAL=emacsclient           # set visual editor to emacsclient
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
-export CFLAGS='-std=c99 -Wall -Wextra -pedantic -g'
+export CFLAGS='-std=c99 -Wall -Wextra -pedantic -g -lm'
 export CXXFLAGS='-Wall -Wextra -g'
 
 # color man pages
