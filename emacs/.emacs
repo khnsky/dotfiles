@@ -2,7 +2,7 @@
 ;;; commentary:
 ;;; code:
 
-;;; startup optimizations
+;;; startup
 
 ;; increase gc threshold for init
 (setq gc-cons-threshold-orig gc-cons-threshold)
@@ -17,8 +17,6 @@
 (add-hook 'after-init-hook (lambda () "restore file-name-handler-alist after init"
                              (setq file-name-handler-alist file-name-handler-alist-orig)
                              (makunbound 'file-name-handler-alist-orig)))
-
-;;;
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
