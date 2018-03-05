@@ -5,14 +5,14 @@
 ;;; startup
 
 ;; increase gc threshold for init
-(setq gc-cons-threshold-orig gc-cons-threshold)
+(defvar gc-cons-threshold-orig gc-cons-threshold)
 (setq gc-cons-threshold (* 100 1024 1024))
 (run-with-idle-timer 5 nil (lambda () "after 5 idle seconds restore gc value, run once"
                              (setq gc-cons-threshold gc-cons-threshold-orig)
                              (makunbound 'gc-cons-threshold-orig)))
 
 ;; don't run regex on files during init
-(setq file-name-handler-alist-orig file-name-handler-alist)
+(defvar file-name-handler-alist-orig file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (add-hook 'after-init-hook (lambda () "restore file-name-handler-alist after init"
                              (setq file-name-handler-alist file-name-handler-alist-orig)
