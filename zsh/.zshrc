@@ -107,8 +107,14 @@ setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexp
 export VISUAL=emacsclient           # set visual editor to emacsclient
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
-export CFLAGS='-std=c99 -Wall -Wextra -pedantic -g -lm'
-export CXXFLAGS='-Wall -Wextra -g'
+flags='-Wall -Wextra'
+flags+='-Wduplicated-cond -Wduplicated-branches -Wlogical-op'
+flags+='-Wrestrict -Wnull-dereference'
+flags+='-Wdouble-promotion -Wconversion -Wsign-conversion'
+flags+='-Wshadow -Wformat=2 -g'
+export CFLAGS="-std=c99 $flags -Wjump-misses-init -pedantic -lm"
+export CXXFLAGS="$flags -Wold-style-cast -Wuseless-cast"
+unset flags
 
 # color man pages
 # https://boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
@@ -163,3 +169,5 @@ alias grep='grep --color=auto'          # color grep output
 alias ls='ls --color=auto'              # color ls output
 
 alias gs='git status -sb'               # short status, brach info
+
+type cgdb && alias gdb='cgdb'
