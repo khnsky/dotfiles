@@ -1,12 +1,12 @@
 set autosourcereload
-set cgdbmodkey=ESC
+set cgdbmodekey=ESC
 set color
 set debugwincolor
 set nodisasm
 set executinglinedisplay=longarrow
 set hlsearch
 set ignorecase
-set selectedlinedisrlay=longarrow
+set selectedlinedisplay=longarrow
 set showmarks
 set noshowdebugcommands
 set syntax=on
