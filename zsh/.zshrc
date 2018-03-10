@@ -170,4 +170,4 @@ alias ls='ls --color=auto'              # color ls output
 
 alias gs='git status -sb'               # short status, brach info
 
-type cgdb && alias gdb='cgdb'
+type cgdb > /dev/null 2>&1 && alias gdb='cgdb'
