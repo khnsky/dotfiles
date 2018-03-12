@@ -107,11 +107,11 @@ setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexp
 export VISUAL=emacsclient           # set visual editor to emacsclient
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
-flags='-Wall -Wextra'
-flags+='-Wduplicated-cond -Wduplicated-branches -Wlogical-op'
-flags+='-Wrestrict -Wnull-dereference'
-flags+='-Wdouble-promotion -Wconversion -Wsign-conversion'
-flags+='-Wshadow -Wformat=2 -g'
+flags='-Wall -Wextra '
+flags+='-Wduplicated-cond -Wduplicated-branches -Wlogical-op '
+flags+='-Wrestrict -Wnull-dereference '
+flags+='-Wdouble-promotion -Wconversion -Wsign-conversion '
+flags+='-Wshadow -Wformat=2 -g '
 export CFLAGS="-std=c99 $flags -Wjump-misses-init -pedantic -lm"
 export CXXFLAGS="$flags -Wold-style-cast -Wuseless-cast"
 unset flags
