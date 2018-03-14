@@ -112,7 +112,7 @@ flags+='-Wduplicated-cond -Wduplicated-branches -Wlogical-op '
 flags+='-Wrestrict -Wnull-dereference '
 flags+='-Wdouble-promotion -Wconversion -Wsign-conversion '
 flags+='-Wshadow -Wformat=2 -g '
-export CFLAGS="-std=c99 $flags -Wjump-misses-init -pedantic -lm"
+export CFLAGS="-std=c11 $flags -Wjump-misses-init -pedantic -lm"
 export CXXFLAGS="$flags -Wold-style-cast -Wuseless-cast"
 unset flags
 
