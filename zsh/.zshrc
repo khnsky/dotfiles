@@ -157,6 +157,16 @@ cxxrun() {
     )
 }
 
+# presenting
+mirror-screen() {
+    if [ $# -lt 3 ]; then
+        echo 'usage: mirror-screen _origin-display_ _dest-display_ _resolution_'
+        xrandr | grep --color=never ' connected'
+        return 1
+    fi
+    xrandr --output $2 --auto --scale-from $3 --output $1
+}
+
 # aliases
 alias reload='. $HOME/.zshrc'           # source .zshrc with reload command
 
@@ -167,6 +177,8 @@ alias cal='cal -m --color=auto'         # color cal output, start week with mond
 alias diff='diff --color=auto'          # color diff output
 alias grep='grep --color=auto'          # color grep output
 alias ls='ls --color=auto'              # color ls output
+
+alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
 alias gs='git status -sb'               # short status, brach info
 
