@@ -104,7 +104,7 @@
 (use-package company
   :ensure t
   :demand
-  :bind ("M-/" . company-complete)
+  :bind ("M-/" . company-complete-common-or-cycle)
   :config (global-company-mode 1))
 
 ; haskell
