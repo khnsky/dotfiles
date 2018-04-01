@@ -69,7 +69,7 @@
 
 (use-package doom-themes
   :ensure t
-  :config (load-theme 'doom-peacock t)
+  :config (load-theme 'doom-one t)
           (doom-themes-org-config)
           (doom-themes-visual-bell-config))     ; flash modeline on bell
 
