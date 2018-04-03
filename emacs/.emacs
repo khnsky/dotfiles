@@ -39,6 +39,12 @@
 
 (eval-when-compile (require 'use-package))
 
+(use-package delight
+  :ensure t)
+
+(use-package emacs
+  :delight (visual-line-mode))
+
 ;; evil and related
 
 (use-package evil
@@ -59,7 +65,8 @@
 (use-package linum-relative
   :ensure t
   :init (setq linum-relative-current-symbol "") ; show absolute line number on current line
-  :config (linum-relative-global-mode 1))
+  :config (linum-relative-global-mode 1)
+  :delight 'linum-relative-global-mode)
 
 (use-package origami
   :ensure t
@@ -75,12 +82,14 @@
 
 (use-package counsel
   :ensure t
-  :config (counsel-mode 1))
+  :config (counsel-mode 1)
+  :delight)
 
 (use-package ivy
   :ensure t
   :config (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
-          (ivy-mode 1))
+          (ivy-mode 1)
+  :delight)
 
 (use-package swiper
   :ensure t
@@ -105,7 +114,8 @@
   :ensure t
   :demand
   :bind ("M-/" . company-complete-common-or-cycle)
-  :config (global-company-mode 1))
+  :config (global-company-mode 1)
+  :delight 'global-company-mode)
 
 ; haskell
 (use-package haskell-mode
