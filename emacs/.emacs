@@ -64,7 +64,7 @@
 
 (use-package linum-relative
   :ensure t
-  :init (setq linum-relative-current-symbol "") ; show absolute line number on current line
+  :init (setq linum-relative-current-symbol "") ; set number relativenumber
   :config (linum-relative-global-mode 1)
   :delight 'linum-relative-global-mode)
 
@@ -103,6 +103,12 @@
                 org-return-follows-link t)      ; open links under point whith ret
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)))
+
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status)
+  :init (use-package evil-magit
+          :ensure t))
 
 ;; programming
 

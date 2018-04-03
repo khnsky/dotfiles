@@ -7,7 +7,7 @@
  '(org-agenda-files (quote ("~/agenda.org")))
  '(package-selected-packages
    (quote
-    (flycheck-haskell company company-mode flycheck-rust rust-mode evil-surround flycheck counsel ivy doom-themes haskell-mode helm linum-relative evil)))
+    (evil-magit magit flycheck-haskell company company-mode flycheck-rust rust-mode evil-surround flycheck counsel ivy doom-themes haskell-mode helm linum-relative evil)))
  '(standard-indent 4)
  '(tab-always-indent t)
  '(tab-width 4))
