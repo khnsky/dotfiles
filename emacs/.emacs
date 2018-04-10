@@ -123,6 +123,10 @@
   :config (global-company-mode 1)
   :delight 'global-company-mode)
 
+(use-package projectile
+  :ensure t
+  :config (projectile-mode))
+
 ; haskell
 (use-package haskell-mode
   :ensure t
