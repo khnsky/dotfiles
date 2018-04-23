@@ -76,9 +76,9 @@
 
 (use-package doom-themes
   :ensure t
-  :config (load-theme 'doom-one t)
-          (doom-themes-org-config)
-          (doom-themes-visual-bell-config))     ; flash modeline on bell
+  :config (progn (load-theme 'doom-one t)
+                 (doom-themes-org-config)
+                 (doom-themes-visual-bell-config)))     ; flash modeline on bell
 
 (use-package counsel
   :ensure t
@@ -87,8 +87,8 @@
 
 (use-package ivy
   :ensure t
-  :config (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
-          (ivy-mode 1)
+  :config (progn (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
+                 (ivy-mode 1))
   :delight)
 
 (use-package swiper
@@ -125,7 +125,8 @@
 
 (use-package projectile
   :ensure t
-  :config (projectile-mode))
+  :config (progn (projectile-mode)
+                 (setq projectile-completion-system 'ivy)))
 
 ; haskell
 (use-package haskell-mode
