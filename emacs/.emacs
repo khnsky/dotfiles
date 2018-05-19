@@ -110,6 +110,11 @@
   :init (use-package evil-magit
           :ensure t))
 
+(use-package tex
+  :ensure auctex
+  :defer t
+  :config (setq TeX-auto-save t))
+
 ;; programming
 
 (use-package flycheck
