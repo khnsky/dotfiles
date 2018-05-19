@@ -6,7 +6,7 @@ super + Return
 
 # rofi
 super + d
- rofi -show run
+ dmenu_run -b -nb black -sb black -sf white
 
 # reload i3 and restart sxhkd
 super + shift + r
