@@ -1,22 +1,54 @@
+# reload source code on change
 set autosourcereload
-set cgdbmodekey=ESC
+
+#set cgdbmodekey=ESC
+
+# enable color support
 set color
+
+# enable color in debug window
 set debugwincolor
+
+# don't show assembly code inline in source window
 set nodisasm
+
+# executing line marker
+# shortarrow | longarrow | highlight | block
 set executinglinedisplay=longarrow
+
+# highlight all matches
 set hlsearch
+
+# case insensitive search
 set ignorecase
+
+# selected line marker
+# shortarrow | longarrow | highlight | block
 set selectedlinedisplay=longarrow
+
+# show user set marks
 set showmarks
+
+# don't show all comands sent od gdb
 set noshowdebugcommands
+
+# enable syntax highlighting
 set syntax=on
+
 set timeout
 set timeoutlen=1000
 set ttimeout
 set ttimeoutlen=100
+
 set tabstop=4
+
 set winminheight=0
 set winminwidth=0
+
+# src_full | src_big | even | gdb_big | gdb_full
 set winsplit=src_big
+
+# horizontal | vertical
 set winsplitorientation=horizontal
+
 set wrapscan
