@@ -62,12 +62,6 @@
   :ensure t
   :config (global-evil-surround-mode 1))
 
-(use-package linum-relative
-  :ensure t
-  :init (setq linum-relative-current-symbol "") ; set number relativenumber
-  :config (linum-relative-global-mode 1)
-  :delight 'linum-relative-global-mode)
-
 (use-package origami
   :ensure t
   :config (global-origami-mode 1))
@@ -166,6 +160,14 @@
 
 (setq inhibit-startup-message t     ; show scratchpad on startup
       initial-scratch-message nil)  ; no message in scratchpad
+
+(setq-default display-line-numbers 'relative)
+
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
+(pixel-scroll-mode 1)
+
 
 (set-frame-font                     ; set default font
  "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
