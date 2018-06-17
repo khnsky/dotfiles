@@ -127,6 +127,10 @@
   :config (progn (projectile-mode)
                  (setq projectile-completion-system 'ivy)))
 
+(add-hook 'prog-mode-hook (lambda ()
+                       (subword-mode)
+                       (electric-pair-mode)))
+
 ; haskell
 (use-package haskell-mode
   :ensure t
