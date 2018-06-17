@@ -147,7 +147,9 @@
 
 ;;; interface
 
+(line-number-mode -1)
 (column-number-mode 1)              ; show column as well as line number in modeline
+
 (global-font-lock-mode 1)           ; syntax highlighting everywhere
 (global-hl-line-mode 1)             ; highlight current line
 (global-prettify-symbols-mode 1)    ; show nice symbols instead of some keywords
