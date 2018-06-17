@@ -81,13 +81,14 @@
 
 (use-package ivy
   :ensure t
+  :functions ivy-mode
   :config (progn (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
                  (ivy-mode 1))
   :delight)
 
 (use-package swiper
   :ensure t
-  :bind ("C-s" . swiper))
+  :bind ("C-s" . counsel-grep-or-swiper))
 
 (use-package org
   :ensure t
