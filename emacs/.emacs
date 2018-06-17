@@ -184,7 +184,7 @@
 ;;; misc. settings
 
 (setq apropos-do-all t                          ; search apropos more exetnsively
-      completition-ignore-case t
+      completion-ignore-case t
       default-directory "~/"
       load-prefer-newer t
       mouse-yank-at-point t                     ; paste at point, not at click
