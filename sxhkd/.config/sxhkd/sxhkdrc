@@ -14,7 +14,8 @@ super + shift + r
 
 # print screen
 {_,ctrl} + {_,shift} + Print
- mkdir -p ~/pictures/screenshots && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
+ mkdir -p ~/pictures/screenshots                        \
+ && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
 
 # i3 bindings {{{
 # switch to/move container to workspace
@@ -55,11 +56,13 @@ super + {_,shift} + a
 
 # scratchpad
 super + x
- i3-msg '[instance="scratchpad"] scratchpad show; [instance="scratchpad"] move position center'
+ i3-msg '[instance="scratchpad"] scratchpad show;       \
+ [instance="scratchpad"] move position center'
 
 # bring emacs or run if not running
 super + c
- pgrep emacs \
- && i3-msg '[instance="emacs"] move scratchpad; [instance="emacs"] scratchpad show; floating disable' \
+ pgrep emacs                                            \
+ && i3-msg '[instance="emacs"] move scratchpad;         \
+ [instance="emacs"] scratchpad show; floating disable'  \
  || emacs
 # }}}
