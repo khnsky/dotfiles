@@ -6,9 +6,9 @@ SAVEHIST=1000
 
 setopt APPEND_HISTORY                   # append history instead of overwriting it
 setopt EXTENDED_HISTORY                 # store command start and execution time
-setopt HIST_IGNORE_DUPS                 # dont save command if preciding command is same
-setopt HIST_IGNORE_SPACE                # dont save commands preceded with space
-setopt HIST_REDUCE_BLANKS               # strim meaningless whitespace
+setopt HIST_IGNORE_DUPS                 # don't save command if preceding command is same
+setopt HIST_IGNORE_SPACE                # don't save commands preceded with space
+setopt HIST_REDUCE_BLANKS               # trim meaningless whitespace
 setopt INC_APPEND_HISTORY               # write history on command not on shell exit
 setopt NO_SHARE_HISTORY                 # every instance of zsh has its history
 
@@ -48,7 +48,7 @@ reset_color="%f"
 
 color="%(?..$bad_color)"                # bad color if last command failed
 
-privlige_p="[$color%#$reset_color]"     # '#' if shell running with priviliges, % otherwise
+privilege_p="[$color%#$reset_color]"    # '#' if shell running with privileges, % otherwise
 dir_p="[%~]"                            # show current dir, home shown as ~
 
 autoload -Uz vcs_info
@@ -83,7 +83,7 @@ precmd() {
 #}
 #zle -N zle-line-finish
 
-PROMPT='${user_info_in_ssh_}${privlige_p}: '
+PROMPT='${user_info_in_ssh_}${privilege_p}: '
 RPROMPT='${dir_p}${vcs_info_msg_0_}'
 
 # }}}
@@ -91,17 +91,18 @@ RPROMPT='${dir_p}${vcs_info_msg_0_}'
 # help
 autoload -Uz run-help run-help-git  # load run-help and run-help-git
 
-# completition
+# completion
 autoload -Uz compinit && compinit   # load compinit
+zstyle ':completion:*' rehash true  # persistent rehash
 zstyle ':completion:*' menu select
-# match case insensitivly
+# match case insensitively
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-setopt COMPLETE_ALIASES             # alias completition before substitution
+setopt COMPLETE_ALIASES             # alias completion before substitution
 setopt CORRECT_ALL
 
 setopt AUTO_CD                      # cd if not a command and dir exist
-setopt EXTENDED_GLOB                # use extended globs, behaviour may be unexpected
+setopt EXTENDED_GLOB                # use extended globs, behavior may be unexpected
 
 # variables
 export VISUAL=emacsclient           # set visual editor to emacsclient
@@ -118,7 +119,7 @@ export LDFLAGS="-lm"
 unset flags
 
 # color man pages
-# https://boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
+# boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
 # -R: output ANSI color escape seqs in 'raw' form,
 # +Gg: go to the end and back to show total lines and percentage,
 # represent termcap effect as:
@@ -174,13 +175,13 @@ alias reload='. $HOME/.zshrc'           # source .zshrc with reload command
 alias sudo='sudo '                      # expand aliases when using with sudo
 
 # auto color output
-alias cal='cal -m --color=auto'         # color cal output, start week with monday
+alias cal='cal -m --color=auto'         # color cal output, start week with Monday
 alias diff='diff --color=auto'          # color diff output
 alias grep='grep --color=auto'          # color grep output
 alias ls='ls --color=auto'              # color ls output
 
 alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
-alias gs='git status -sb'               # short status, brach info
+alias gs='git status -sb'               # short status, branch info
 
 type cgdb > /dev/null 2>&1 && alias gdb='cgdb'
