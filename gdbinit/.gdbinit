@@ -1,5 +1,4 @@
-# red (gdb)
-set prompt \033[01;31m(gdb) \033[0m
+set prompt gdb :: > \ 
 
 set disassembly-flavor intel
 
