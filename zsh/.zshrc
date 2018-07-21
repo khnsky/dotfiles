@@ -144,5 +144,6 @@ alias ls='ls --color=auto'              # color ls output
 
 alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
-
-type cgdb > /dev/null 2>&1 && alias gdb='cgdb'
+if type cgdb > /dev/null 2>&1; then
+    alias gdb='cgdb'
+fi
