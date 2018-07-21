@@ -1,9 +1,14 @@
 [user]
 	email = mailpiotrk@gmail.com
 	name = Piotrek Kochański
+
 [help]
 	# negative - execute autocorected command immediately, 0 - only show,
 	# positive execute autocorected command after n tenth of a second
 	autocorrect = -1
+
 [color]
 	ui = auto
+
+[alias]
+    sb = status -sb

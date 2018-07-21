@@ -182,6 +182,5 @@ alias ls='ls --color=auto'              # color ls output
 
 alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
-alias gs='git status -sb'               # short status, branch info
 
 type cgdb > /dev/null 2>&1 && alias gdb='cgdb'
