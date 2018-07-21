@@ -31,21 +31,14 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-(unless package-archive-contents
-  (package-refresh-contents))
+(unless package-archive-contents (package-refresh-contents))
 
 (eval-when-compile (require 'use-package))
-
-(use-package delight
-  :ensure t)
-
-(use-package emacs
-  :delight (visual-line-mode))
+(use-package delight :ensure t)
+(use-package emacs :delight (visual-line-mode))
 
 ;; evil and related
 
@@ -258,8 +251,7 @@
 
 ;; server
 (require 'server)
-(unless (server-running-p)
-  (server-start))
+(unless (server-running-p) (server-start))
 
 (add-hook 'server-switch-hook
           (lambda ()
