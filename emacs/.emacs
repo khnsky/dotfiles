@@ -160,8 +160,8 @@
 
 ;;; interface
 
-(line-number-mode -1)
-(column-number-mode 1)              ; show column as well as line number in modeline
+(line-number-mode -1)               ; don't show line number in modeline
+(column-number-mode 1)              ; show column number in modeline
 
 (global-font-lock-mode 1)           ; syntax highlighting everywhere
 (global-hl-line-mode 1)             ; highlight current line
@@ -178,7 +178,8 @@
 (setq inhibit-startup-message t     ; show scratchpad on startup
       initial-scratch-message nil)  ; no message in scratchpad
 
-(setq-default display-line-numbers 'relative)
+(setq-default
+ display-line-numbers 'relative)    ; show relative numbers on the side
 
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
