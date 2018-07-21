@@ -177,9 +177,24 @@
 
 (pixel-scroll-mode 1)
 
+(defun khnsky-set-font ()
+  "Set one of aviable fonts on the system."
+  (interactive)
+  (if (or (eq system-type 'windows-nt) (eq system-type 'cygwin))
+      (set-frame-font "Consolas-10")
+    (let ((fs '("Inconsolata"))
+          (s "10")
+          (p ""))
+      (dolist (f fs)
+        (when (member f (font-family-list))
+          (set-frame-font (format "%s-%s%s" f s p))
+          (return))))))
 
-(set-frame-font                     ; set default font
- "Liberation Mono:pixelsize=12:antialias=true:autohint=true")
+; TODO: doesn't work
+(if (daemonp)
+    (add-hook 'after-make-frame-functions (lambda (_)
+                                            (khnsky-set-font)))
+  (khnsky-set-font))
 
 ;;; indentation
 
