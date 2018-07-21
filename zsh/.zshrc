@@ -69,14 +69,15 @@ setopt EXTENDED_GLOB                # use extended globs, behavior may be unexpe
 export VISUAL=emacsclient           # set visual editor to emacsclient
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
-flags='-Wall -Wextra '
+flags+='-Wall -Wextra -Werror '
 flags+='-Wduplicated-cond -Wduplicated-branches -Wlogical-op '
 flags+='-Wrestrict -Wnull-dereference '
 flags+='-Wdouble-promotion -Wconversion -Wsign-conversion '
 flags+='-Wshadow -Wformat=2 -g '
-export CFLAGS="-std=c11 $flags -Wjump-misses-init -pedantic"
+flags+='-fsanitize=address '
+export CFLAGS="-std=c11 $flags -Wjump-misses-init -Wstrict-prototypes -pedantic"
 export CXXFLAGS="$flags -Wold-style-cast -Wuseless-cast"
-export LDFLAGS="-lm"
+export LDFLAGS="-lm -fsanitize=address"
 unset flags
 
 # color man pages
