@@ -56,8 +56,7 @@ autoload -Uz run-help run-help-git  # load run-help and run-help-git
 autoload -Uz compinit && compinit   # load compinit
 zstyle ':completion:*' rehash true  # persistent rehash
 zstyle ':completion:*' menu select
-# match case insensitively
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # match cast insensitively
 
 setopt COMPLETE_ALIASES             # alias completion before substitution
 setopt CORRECT_ALL
@@ -124,7 +123,7 @@ cxxrun() {
 # presenting
 mirror-screen() {
     if [ $# -lt 3 ]; then
-        echo 'usage: mirror-screen _origin-display_ _dest-display_ _resolution_'
+        echo 'usage: mirror-screen <origin display> <dest display> <resolution>'
         xrandr | grep --color=never ' connected'
         return 1
     fi
