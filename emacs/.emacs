@@ -7,14 +7,16 @@
 ;; increase gc threshold for init
 (defvar gc-cons-threshold-orig gc-cons-threshold)
 (setq gc-cons-threshold (* 100 1024 1024))
-(run-with-idle-timer 5 nil (lambda () "after 5 idle seconds restore gc value, run once"
+(run-with-idle-timer 5 nil (lambda ()
+                             "after 5 idle seconds restore gc value, run once"
                              (setq gc-cons-threshold gc-cons-threshold-orig)
                              (makunbound 'gc-cons-threshold-orig)))
 
 ;; don't run regex on files during init
 (defvar file-name-handler-alist-orig file-name-handler-alist)
 (setq file-name-handler-alist nil)
-(add-hook 'after-init-hook (lambda () "restore file-name-handler-alist after init"
+(add-hook 'after-init-hook (lambda ()
+                             "restore file-name-handler-alist after init"
                              (setq file-name-handler-alist file-name-handler-alist-orig)
                              (makunbound 'file-name-handler-alist-orig)))
 
@@ -70,7 +72,13 @@
 
 (use-package doom-themes
   :ensure t
-  :config (progn (load-theme 'doom-one t)
+  :config (progn (if (daemonp)
+                     (add-hook 'after-make-frame-functions
+                               (lambda (frame)
+                                 "Load theme on frame creation."
+                                 (select-frame frame)
+                                 (load-theme 'doom-one t)))
+                   (load-theme 'doom-one t))
                  (doom-themes-org-config)
                  (doom-themes-visual-bell-config)))     ; flash modeline on bell
 
@@ -129,8 +137,8 @@
                  (setq projectile-completion-system 'ivy)))
 
 (add-hook 'prog-mode-hook (lambda ()
-                       (subword-mode)
-                       (electric-pair-mode)))
+                            (subword-mode)
+                            (electric-pair-mode)))
 
 ; haskell
 (use-package haskell-mode
@@ -227,9 +235,9 @@
 
 ;;; tweaks
 
-;; ask to (recursively) create directories when saving file in non existant dir
 (add-hook 'before-save-hook
           (lambda ()
+            "Ask to create directories when saving file in non existant dir."
             (when buffer-file-name
               (let ((dir (file-name-directory buffer-file-name)))
                 (when (and (not (file-exists-p dir))
@@ -237,9 +245,11 @@
                             (format "Directory %s doesn't exist. Create it? " dir)))
                   (make-directory dir t))))))
 
-;; set executable bit if file starts with #!
 (add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
+          (lambda ()
+            "Set executable if file starts with #! unless it's rust file."
+            (unless (string= (file-name-extension buffer-file-name) "rs")
+                  (executable-make-buffer-file-executable-if-script-p))))
 
 ;; ask y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -251,6 +261,7 @@
 
 (add-hook 'server-switch-hook
           (lambda ()
+            "Kill buffer with C-x k when connected to server."
             (when (current-local-map)
               (use-local-map (copy-keymap (current-local-map))))
             (when server-buffer-clients
