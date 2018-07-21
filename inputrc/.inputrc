@@ -1,5 +1,2 @@
-# breaks gdb shortcuts
-#set editing-mode vi
-
-# (partialy) complete word and show suggestions if still ambiguous with single tab
-set show-all-if-ambiguous on
+#set editing-mode vi                         # breaks gdb shortcuts
+set show-all-if-ambiguous on                # longest completion, show possibilites
