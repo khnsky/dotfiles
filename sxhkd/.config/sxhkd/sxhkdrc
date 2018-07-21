@@ -4,9 +4,9 @@
 super + Return
  st || i3-sensible-terminal
 
-# rofi
-super + d
- dmenu_run -b -nb black -sb black -sf white
+# dmenu
+super + o
+ dmenu_run -b -nb black -sb black -sb "#0469A0" -sf black
 
 # reload i3 and restart sxhkd
 super + shift + r
