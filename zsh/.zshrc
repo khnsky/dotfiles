@@ -19,7 +19,15 @@ zstyle :compinstall filename '/home/user/.zshrc'
 
 # my config
 bindkey -v                              # vi keybinding
-export KEYTIMEOUT=1                     # timeout when exiting normal mode, default 40
+KEYTIMEOUT=1                            # timeout when exiting normal mode, default 40
+
+DIRSTACKSIZE=10
+setopt AUTO_PUSHD                       # add dir to dirstack on cd
+setopt PUSHD_SILENT                     # don't print dirstack on pushd / popd
+setopt PUSHD_TO_HOME                    # pushd with no args act like pushd $HOME
+setopt PUSHD_IGNORE_DUPS                # don't push mulitple copies of same dir
+
+setopt AUTO_REMOVE_SLASH
 
 # prompt {{{
 autoload -Uz promptinit && promptinit   # load promptinit
