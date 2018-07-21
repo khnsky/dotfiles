@@ -83,7 +83,8 @@
 (use-package ivy
   :ensure t
   :functions ivy-mode
-  :config (progn (setq ivy-use-virtual-buffers t)      ; bookmark recent files and buffers
+  :config (progn (setq ivy-use-virtual-buffers t)
+                 (declare-function ivy-mode ".emacs")
                  (ivy-mode 1))
   :delight)
 
