@@ -134,7 +134,8 @@
 (use-package projectile
   :ensure t
   :config (progn (projectile-mode)
-                 (setq projectile-completion-system 'ivy)))
+                 (setq projectile-completion-system 'ivy))
+  :delight)
 
 (add-hook 'prog-mode-hook (lambda ()
                             (subword-mode)
