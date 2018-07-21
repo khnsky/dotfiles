@@ -162,8 +162,10 @@
 (show-paren-mode 1)                 ; highlight matching paren
 
 (menu-bar-mode -1)                  ; hide menu-bar
-(scroll-bar-mode -1)                ; hide scroll-bar
-(tool-bar-mode -1)                  ; hide tool-bar
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))             ; hide scroll-bar
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))               ; hide tool-bar
 
 (setq inhibit-startup-message t     ; show scratchpad on startup
       initial-scratch-message nil)  ; no message in scratchpad
