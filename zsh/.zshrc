@@ -147,3 +147,8 @@ alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 if type cgdb > /dev/null 2>&1; then
     alias gdb='cgdb'
 fi
+for t in "st-256color, tmux-256color"; do
+    if [ "$t" = "$TERM" ]; then
+        export COLORTERM=truecolor
+    fi
+done
