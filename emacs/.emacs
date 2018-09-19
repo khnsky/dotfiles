@@ -132,8 +132,9 @@
   :delight)
 
 (add-hook 'prog-mode-hook (lambda ()
-                            (subword-mode)
-                            (electric-pair-mode)))
+                            "words in camelCase separate, insert pairs of delims"
+                            (subword-mode 1)
+                            (electric-pair-mode 1)))
 
 ; haskell
 (use-package haskell-mode
@@ -197,6 +198,7 @@
 ; TODO: doesn't work
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (_)
+                                            "set fonts"
                                             (khnsky-set-font)))
   (khnsky-set-font))
 
