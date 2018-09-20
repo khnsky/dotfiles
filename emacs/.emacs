@@ -187,7 +187,7 @@
   (interactive)
   (if (or (eq system-type 'windows-nt) (eq system-type 'cygwin))
       (set-frame-font "Consolas-10")
-    (let ((fs '("Inconsolata"))
+    (let ((fs '("Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono"))
           (s "10")
           (p ""))
       (dolist (f fs)
