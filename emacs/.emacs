@@ -174,13 +174,15 @@
 (setq inhibit-startup-message t     ; show scratchpad on startup
       initial-scratch-message nil)  ; no message in scratchpad
 
-(setq-default
- display-line-numbers 'relative)    ; show relative numbers on the side
+(when (<= 26 emacs-major-version)
+  (setq-default
+   display-line-numbers 'relative)) ; show relative numbers on the side
 
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
-(pixel-scroll-mode 1)
+(when (fboundp 'pixel-scroll-mode)
+  (pixel-scroll-mode 1))
 
 (defun khnsky-set-font ()
   "Set one of aviable fonts on the system."
