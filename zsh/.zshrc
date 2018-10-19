@@ -173,3 +173,7 @@ for t in "st-256color, tmux-256color"; do
         export COLORTERM=truecolor
     fi
 done
+
+mpv() {
+    command mpv "$@" &> /dev/null & disown
+}
