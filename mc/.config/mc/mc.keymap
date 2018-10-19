@@ -1,0 +1,8 @@
+[main]
+Swap = ctrl-w-r
+
+[panel]
+Left    = h
+Down    = j
+Up      = k
+Right   = l
