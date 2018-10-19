@@ -184,25 +184,27 @@
 (when (fboundp 'pixel-scroll-mode)
   (pixel-scroll-mode 1))
 
-(defun khnsky-set-font ()
+(defun khnsky-setup-font ()
   "Set one of aviable fonts on the system."
-  (interactive)
   (if (or (eq system-type 'windows-nt) (eq system-type 'cygwin))
-      (set-frame-font "Consolas-10")
-    (let ((fs '("Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono"))
-          (s "10")
-          (p ""))
-      (dolist (f fs)
-        (when (member f (font-family-list))
-          (set-frame-font (format "%s-%s%s" f s p))
-          (return))))))
+      (khnsky-lset-aviable-font '("Consolas") "10")
+    (khnsky-lset-aviable-font
+     '("Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono") "10")))
+
+(defun khnsky-lset-aviable-font (fonts &optional size)
+  "Set first font in the list FONTS that is aviable on the system with SIZE."
+  (dolist (font fonts)
+    (when (member font (font-family-list))
+      (if size (set-frame-font (format "%s-%s" font size))
+        (set-frame-font font))
+      (return))))
 
 ; TODO: doesn't work
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (_)
                                             "set fonts"
-                                            (khnsky-set-font)))
-  (khnsky-set-font))
+                                            (khnsky-setup-font)))
+  (khnsky-setup-font))
 
 ;;; indentation
 
