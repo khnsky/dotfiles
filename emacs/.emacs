@@ -127,8 +127,10 @@
 
 (use-package projectile
   :ensure t
-  :config (progn (projectile-mode)
-                 (setq projectile-completion-system 'ivy))
+  :config (progn (projectile-mode 1)
+                 (setq projectile-completion-system 'ivy)
+                 (define-key
+                   projectile-mode-map (kbd "C-c p") 'projectile-command-map))
   :delight)
 
 (add-hook 'prog-mode-hook (lambda ()
