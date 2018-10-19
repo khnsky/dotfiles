@@ -38,7 +38,13 @@
 
 (eval-when-compile (require 'use-package))
 (use-package delight :ensure t)
-(use-package emacs :delight (visual-line-mode))
+; TODO: doesn't delight some modes (arev, undo-tree)
+(use-package emacs
+  :delight
+  (visual-line-mode)
+  (eldoc-mode)
+  (auto-revert-mode)
+  (undo-tree-mode))
 
 ;; evil and related
 
