@@ -1,2 +1,3 @@
-#set editing-mode vi                         # breaks gdb shortcuts
-set show-all-if-ambiguous on                # longest completion, show possibilites
+set show-all-if-ambiguous   on  # longest completion, show possibilites
+set colored-stats           on  # color completions using LS_COLORS
+set visible-stats           on  # append completion with char denoting file's type
