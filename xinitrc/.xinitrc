@@ -31,6 +31,8 @@ setxkbmap               \
     -option caps:escape \
     -option terminate:ctrl_alt_bksp
 
+eval $(ssh-agent)
+
 # autostart 
 mpd             &
 redshift        &
