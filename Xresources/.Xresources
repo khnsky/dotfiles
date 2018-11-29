@@ -4,36 +4,27 @@
 *.foreground:   #93a1a1
 *.background:   #000000
 *.cursorColor:  #92a1a1
-
 ! black
 *.color0:       #161925
 *.color8:       #657b83
-
 ! red
 *.color1:       #aa0000
 *.color9:       #cc1100
-
 ! green
 *.color2:       #0bdd38
 *.color10:      #2sdd5a
-
 ! yellow
 *.color3:       #b58900
 *.color11:      #d7ab22
-
 ! blue
 *.color4:       #0469a0
 *.color12:      #268bd2
-
 ! magenta
 *.color5:       #ff00c4
 *.color13:      #cc33cc
-
 ! cyan
 *.color6:       #2aa198
 *.color14:      #2aa198
-
 ! white
 *.color7:       #93a1a1
 *.color15:      #fdf6e3
-! }}}
