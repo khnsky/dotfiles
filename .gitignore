@@ -1,14 +1,21 @@
-nvim/.config/nvim/autoload/*
-nvim/.config/nvim/plugged/*
+*~
+
+cgdb/.cgdb/logs
+cgdb/.cgdb/readline_history.txt
 
 emacs/.emacs.d/*
 
-*~
+firefox/.mozilla/firefox/*
 
+mpd/.config/mpd/database
 mpd/.config/mpd/log
 mpd/.config/mpd/pid
+mpd/.config/mpd/sticker.sql
 
 mpv/.config/mpv/watch_later/*
+
+nvim/.config/nvim/autoload/*
+nvim/.config/nvim/plugged/*
 
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/history
