@@ -2,45 +2,37 @@
 
 font pango:monospace 11
 set $mod Mod4
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
 # toggle tiling / floating
 # TODO: without it i3 says config contains errors?
 bindsym $mod+Shift+space floating toggle
 
-# }}}
-
-# TODO: doesn't pull from .Xresources, sets fallback values
 # import colors {{{
-# set_from_resource     $<name>         <resource_name>     <fallback>
-set_from_resource       $fgcolor        i3wm.foreground     #ffffff
-set_from_resource       $bgcolor        i3wm.background     #151515
-
-set_from_resource       $black          i3wm.color0         #3d3d3d
-set_from_resource       $red            i3wm.color1         #992929
-set_from_resource       $green          i3wm.color2         #007777
-set_from_resource       $yellow         i3wm.color3         #ce8030
-set_from_resource       $blue           i3wm.color4         #31658c
-set_from_resource       $magenta        i3wm.color5         #d80d80
-set_from_resource       $cyan           i3wm.color6         #00b0b0
-set_from_resource       $white          i3wm.color7         #b2b2b2
+set_from_resource   $fgcolor    i3wm.foreground
+set_from_resource   $bgcolor    i3wm.background
+set_from_resource   $black      i3wm.color0
+set_from_resource   $red        i3wm.color1
+set_from_resource   $green      i3wm.color2
+set_from_resource   $yellow     i3wm.color3
+set_from_resource   $blue       i3wm.color4
+set_from_resource   $magenta    i3wm.color5
+set_from_resource   $cyan       i3wm.color6
+set_from_resource   $white      i3wm.color7
 # }}}
 
 # bar {{{
 bar {
-    status_command i3status
+    status_command      i3status
     position            bottom
     separator_symbol    " "
     colors {
         background $bgcolor
-
         #                   border      background  text
         focused_workspace   $bgcolor    $bgcolor    $white
         inactive_workspace  $bgcolor    $bgcolor    $black
         urgent_workspace    $red        $red        $white
-        }
+    }
 }
 # }}}
 
