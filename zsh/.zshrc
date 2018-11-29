@@ -97,7 +97,7 @@ flags+='-Wdouble-promotion -Wconversion -Wsign-conversion '
 flags+='-Wshadow -Wformat=2 -g '
 flags+='-fsanitize=address '
 export CFLAGS="-std=c11 $flags -Wjump-misses-init -Wstrict-prototypes -pedantic"
-export CXXFLAGS="$flags -Wold-style-cast -Wuseless-cast"
+export CXXFLAGS="-std=c++17 $flags -Wold-style-cast -Wuseless-cast"
 export LDFLAGS="-lm -fsanitize=address"
 unset flags
 
