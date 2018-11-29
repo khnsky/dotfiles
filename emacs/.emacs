@@ -100,11 +100,14 @@
 
 (use-package org
   :ensure t
-  :config (setq org-startup-indented t          ; turn on indenting according to structure
-                org-log-done 'time              ; add timestamps on done todos
-                org-src-fontify-natively t      ; syntax color src code blocks
-                org-return-follows-link t)      ; open links under point whith ret
+  :config (setq org-log-done 'time              ; add timestamps on done todos
+                org-return-follows-link   t     ; open links under point whith ret
+                org-startup-indented      t     ; turn on indenting according to structure
+                org-src-fontify-natively  t     ; syntax color src code blocks
+                org-src-tab-acts-natively t)    ; tabs in src blocks act as if major mode
   :bind (("C-c a" . org-agenda)
+         ("C-c b" . org-switchb)
+         ("C-c c" . org-caputre)
          ("C-c l" . org-store-link)))
 
 (use-package magit
