@@ -162,6 +162,9 @@
   :ensure t
   :hook (flycheck-mode . flycheck-rust-setup))
 
+(use-package csharp-mode
+  :ensure t)
+
 ;;; interface
 
 (line-number-mode -1)               ; don't show line number in modeline
