@@ -35,7 +35,12 @@ ethernet _first_ {
 }
 
 battery all {
-    format              = "%status %percentage %remaining"
+    format              = "BAT: %percentage %status %remaining"
+    status_full         = "FULL"
+    status_chr          = "CHR"
+    status_bat          = "DIS"
+    status_unk          = "UNK"
+    format_down         = ""
 }
 
 cpu_usage {
