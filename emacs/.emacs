@@ -231,6 +231,8 @@
               tab-always-indent t
               tab-width 4)
 
+(add-to-list 'c-offsets-alist '(inlambda . 0))
+
 ;;; misc. settings
 
 (setq completion-ignore-case t
