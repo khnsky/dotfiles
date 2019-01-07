@@ -33,6 +33,9 @@ bar {
         inactive_workspace  $bgcolor    $bgcolor    $black
         urgent_workspace    $red        $red        $white
     }
+
+    bindsym button4 nop
+    bindsym button5 nop
 }
 # }}}
 
