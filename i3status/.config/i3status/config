@@ -16,6 +16,7 @@ order += "time"
 
 volume master {
     format              = "VOL: %volume"
+    format_muted        = "VOL: M"
     #device              = "pulse"
 }
 
