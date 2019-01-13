@@ -3,4 +3,3 @@ startx_() {
         exec startx > /dev/null 2>&1;
     fi
 }
-startx_
