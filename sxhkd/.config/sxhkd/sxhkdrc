@@ -33,6 +33,9 @@ XF86AudioMicMute
 super + {_,shift} + {1,2,3,4,5,6,7,8,9,0,Tab}
  i3-msg {_,move container to} workspace {1,2,3,4,5,6,7,8,9,0,back_and_forth}
 
+super + {p,n}
+ i3-msg workspace {prev,next}
+
 # resize containers with super + r then hjkl
 super + r ; {h,j,k,l}
  i3-msg 'resize {shrink width,grow height,shrink height,grow width} 5 px or 5 ppt'
