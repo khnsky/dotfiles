@@ -121,7 +121,9 @@
 (use-package tex
   :ensure auctex
   :defer t
-  :config (setq TeX-auto-save t))
+  :config (setq TeX-auto-save t                 ; save style information
+                TeX-parse-self t                ; parse file after loading it
+                TeX-pdf-mode t))
 
 ;; programming
 
