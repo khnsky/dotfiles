@@ -205,17 +205,15 @@
 (defun khnsky-setup-font ()
   "Set one of aviable fonts on the system."
   (if (or (eq system-type 'windows-nt) (eq system-type 'cygwin))
-      (khnsky-lset-aviable-font '("Consolas") "10")
+      (khnsky-lset-aviable-font '("Consolas") 10)
     (khnsky-lset-aviable-font
-     '("Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono") "10")))
+     '("Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono") 10)))
 
 (defun khnsky-lset-aviable-font (fonts &optional size)
   "Set first font in the list FONTS that is aviable on the system with SIZE."
   (dolist (font fonts)
     (when (member font (font-family-list))
-      (if size (set-frame-font (format "%s-%s" font size))
-        (set-frame-font font))
-      (return))))
+      (return (set-frame-font (if size (format "%s-%d" font size) font))))))
 
 ; TODO: doesn't work
 (if (daemonp)
