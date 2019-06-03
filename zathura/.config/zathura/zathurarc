@@ -1,6 +1,9 @@
 # set zathura to use x clipboard buffer for copying
 set selection-clipboard             clipboard
 
+# vertical center zoom for when using width fit
+set vertical-center                 true
+
 # interface
 set guioptions                      ""
 set statusbar-basename              true
