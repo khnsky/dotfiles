@@ -21,6 +21,9 @@ set completion-fg                   "#FFFFFF"
 set completion-highlight-bg         "#0469A0"
 set completion-highlight-fg         "#000000"
 
+set highlight-active-color          "#0469A0"
+set highlight-color                 "#0469A0"
+
 set index-active-bg                 "#0469A0"
 set index-active-fg                 "#000000"
 set index-bg                        "#000000"
@@ -32,7 +35,6 @@ set inputbar-fg                     "#B58900"
 set notification-bg                 "#000000"
 set notification-fg                 "#0469A0"
 
-set highlight-active-color          "#0469A0"
 
 # switch jk and JK
 map [normal]                        j navigate next
