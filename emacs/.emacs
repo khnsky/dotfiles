@@ -216,10 +216,8 @@
       (return (set-frame-font (if size (format "%s-%d" font size) font))))))
 
 ; TODO: doesn't work
-(if (daemonp)
-    (add-hook 'after-make-frame-functions (lambda (_)
-                                            "set fonts"
-                                            (khnsky-setup-font)))
+(if (daemonp) (add-hook 'after-make-frame-functions
+                        (lambda (_) "set fonts" (khnsky-setup-font)))
   (khnsky-setup-font))
 
 ;;; indentation
