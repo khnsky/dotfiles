@@ -34,8 +34,11 @@ set foldmethod=syntax       " folding based on syntax
 set nofoldenable            " no folding by default
 
 set mouse=a                 " use mouse in all modes, maybe set to nvi, also how does copying change when setting this?
-set nomousefocus            " window on which mouse is is not automaticaly activated
-set mousemodel=popup        " right mouse button doesn't extend selection but instead pops up a menu?
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 
 set scrolljump=1            " lines scrolled when cursor moved off screen
 set scrolloff=1             " scroll before this amount of lines off screen
