@@ -49,6 +49,8 @@ set splitright              " put vertical split to the right
 " default timeout on mappings, no timeout on escape sequences
 " no lag when exiting visual mode
 set timeout timeoutlen=1000 ttimeoutlen=0
+
+set tags=./tags;./TAGS          " recursively look up for tags or TAGS file
 " }}}
 
 " interface {{{
