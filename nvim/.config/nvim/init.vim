@@ -69,7 +69,7 @@ set shiftround                  " < and > indent to multiples of shiftwidth
 set path=.,,**
 
 set wildmenu                    " show possible matches above command line on pressing wildchar
-set wildmode=longest:list,full  " complete longest common string, then each full match
+set wildmode=longest:full,full  " complete longest common string, then each full match
 
 set laststatus=2                " always show statusline
 " }}}
