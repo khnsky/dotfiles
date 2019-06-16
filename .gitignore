@@ -7,12 +7,14 @@ emacs/.emacs.d/*
 
 firefox/.mozilla/firefox/*
 
-mpd/.config/mpd/database
+mpd/.config/mpd/db
 mpd/.config/mpd/log
 mpd/.config/mpd/pid
 mpd/.config/mpd/sticker.sql
 
 mpv/.config/mpv/watch_later/*
+
+ncmpcpp/.ncmpcpp/error.log
 
 nvim/.config/nvim/autoload/*
 nvim/.config/nvim/plugged/*
