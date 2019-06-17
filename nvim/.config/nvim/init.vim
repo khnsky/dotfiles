@@ -59,6 +59,9 @@ set relativenumber              " show relative line numbers for other lines
 
 set showcmd                     " show keys in a current chord
 
+let mapleader = '\'
+map <space> <leader>
+
 " indentation
 set tabstop=4                   " visual width of <tab>
 set softtabstop=4               " amount of columns tab key inserts (combination of spaces and tabs if needed)
