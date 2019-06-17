@@ -76,5 +76,8 @@ set laststatus=2                " always show statusline
 
 " autocommands {{{
 " use tab in Makefiles
-autocmd FileType make setlocal noexpandtab
+augroup FiletypeMake
+    autocmd!
+    autocmd FileType make setlocal noexpandtab
+augroup END
 " }}}
