@@ -9,7 +9,7 @@ set guioptions                      ""
 set statusbar-basename              true
 set window-title-basename           true
 
-# nightmode
+# night-mode
 set recolor                         true
 set recolor-keephue                 true
 set recolor-darkcolor               "#FFFFFF"
@@ -34,7 +34,6 @@ set inputbar-fg                     "#B58900"
 
 set notification-bg                 "#000000"
 set notification-fg                 "#0469A0"
-
 
 # switch jk and JK
 map [normal]                        j navigate next
