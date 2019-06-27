@@ -31,13 +31,10 @@ setxkbmap                   \
     -option compose:menu    \
     -option terminate:ctrl_alt_bksp
 
-eval $(ssh-agent)
-
 # autostart 
 mpd             &
 redshift        &
 sxhkd           &
 xss-lock slock  &
-
-# start wm
+eval "$(ssh-agent)"
 exec i3
