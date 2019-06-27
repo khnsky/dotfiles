@@ -167,6 +167,10 @@ alias ls='ls --color=auto'              # color ls output
 
 alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
+if [ -t 0 ]; then                       # fd 0 - stdin
+    stty sane
+fi
+
 case "$TERM" in                         # for midnight commander
     *256color)
         export COLORTERM=truecolor
