@@ -25,9 +25,10 @@ fi
 # set keyboard layout
 # make caps an additional escape
 # enable termination of x with ctrl+alt+backspace
-setxkbmap               \
-    -layout pl,us       \
-    -option caps:escape \
+setxkbmap                   \
+    -layout pl,us           \
+    -option caps:escape     \
+    -option compose:menu    \
     -option terminate:ctrl_alt_bksp
 
 eval $(ssh-agent)
