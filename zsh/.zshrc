@@ -167,11 +167,11 @@ alias ls='ls --color=auto'              # color ls output
 
 alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
-for t in "st-256color, tmux-256color"; do
-    if [ "$t" = "$TERM" ]; then
+case "$TERM" in                         # for midnight commander
+    *256color)
         export COLORTERM=truecolor
-    fi
-done
+        ;;
+esac
 
 mpv() {
     command mpv "$@" &> /dev/null & disown
