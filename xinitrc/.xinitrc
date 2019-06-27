@@ -38,8 +38,6 @@ mpd             &
 redshift        &
 sxhkd           &
 xss-lock slock  &
-# when i figure out how to have fonts set properly when using daemon
-#emacs --daemon &
 
 # start wm
 exec i3
