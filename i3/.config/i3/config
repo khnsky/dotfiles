@@ -77,6 +77,8 @@ assign [class="discord"] 8
 assign [class="riot"]    8
 assign [class="Steam"]   9
 
+for_window [instance="keepassxc"] floating enable
+
 # scratchpad
 for_window [instance="scratchpad"] floating enable
 for_window [instance="scratchpad"] resize set 625 400
