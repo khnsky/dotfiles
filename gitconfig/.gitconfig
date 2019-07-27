@@ -1,6 +1,6 @@
 [user]
-	email = mailpiotrk@gmail.com
-	name = Piotrek Kochański
+	email = khnsky@khnsky.cc
+	name  = Piotrek Kochański
 
 [help]
 	# negative - execute autocorected command immediately, 0 - only show,
@@ -12,3 +12,9 @@
 
 [alias]
     sb = status -sb
+
+[commit]
+    # not sure if this is right but:
+    #   1 - show diff in commit message editor
+    #   2 - also show diff between unstaged changes?
+    verbose = 2
