@@ -1,3 +1,10 @@
-set show-all-if-ambiguous   on  # longest completion, show possibilites
-set colored-stats           on  # color completions using LS_COLORS
-set visible-stats           on  # append completion with char denoting file's type
+set show-all-if-ambiguous       on      # longest completion, show possibilites
+set colored-stats               on      # color completions using LS_COLORS
+set visible-stats               on      # append completion with char denoting file's type
+
+$if Gdb
+    set editing-mode            emacs
+$else
+    set editing-mode            vi
+    set show-mode-in-prompt     on
+$endif
