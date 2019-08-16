@@ -175,9 +175,6 @@ inoremap <C-U> <C-G>u<C-U>
 " break undo on newline
 inoremap <CR> <C-G>u<CR>
 
-inoremap <C-E> <C-X><C-E>
-inoremap <C-Y> <C-X><C-Y>
-
 let mapleader = '\'
 map <Space> <Leader>
 
