@@ -177,7 +177,7 @@ alias ls='ls --color=auto'              # color ls output
 alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
 
 case "$TERM" in                         # for midnight commander
-    *256color)
+    *256* )
         export COLORTERM=truecolor
         ;;
 esac
