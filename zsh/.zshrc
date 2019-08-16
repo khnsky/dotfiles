@@ -164,6 +164,10 @@ if [ -t 0 ]; then                       # fd 0 - stdin
     stty -ixon                          # fuck control flow
 fi
 
+if type dircolors &> /dev/null; then
+    eval $(dircolors -b)                # set LS_COLORS
+fi
+
 # auto color output
 alias cal='cal -m --color=auto'         # color cal output, start week with Monday
 alias diff='diff --color=auto'          # color diff output
