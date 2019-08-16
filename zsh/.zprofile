@@ -1,3 +1,5 @@
+[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
     printf 'startx? [Y/n] '
     read -r answer
