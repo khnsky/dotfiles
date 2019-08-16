@@ -1,5 +1,13 @@
 ! vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
+! for programs not using fontconfig
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.rgba:       rgb
+Xft.autohint:   false
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+
 ! special
 *.foreground:   #93a1a1
 *.background:   #000000
