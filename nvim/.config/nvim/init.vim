@@ -206,7 +206,7 @@ cnoreabbrev ho help \| only<C-F>2b<Left><C-C>
 
 nnoremap <Leader>b :ls<CR>:buffer<Space>
 
-fun s:Zoom()
+func! s:Zoom()
     if exists('w:unzoom')               " w: is window local
         exe w:unzoom
         unl w:unzoom
