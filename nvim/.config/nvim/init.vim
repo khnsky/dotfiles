@@ -8,7 +8,7 @@ endif
 if 1                                    " has +eval
     filetype indent plugin on           " enable file type plugins and indent
 
-    aug filetypes
+    aug vimrc
         au!
         " use tabs to indent in Makefiles
         au FileType make
@@ -16,9 +16,7 @@ if 1                                    " has +eval
         " :f, gf etc. works for include files
         au FileType c,cpp
                     \   setl path+=/usr/include
-    aug END
 
-    aug custom
         " set foldlevel to a minimal value while having all folds still open
         " foldlevel is buffer local, use foldlevelstart for initial foldlevel
         " value, however zm wont close folds right away if it is set too high
@@ -28,7 +26,22 @@ if 1                                    " has +eval
                     \       ? 'normal! zR'
                     \       : 'setl fdc=0'
         endif
+
+        au Colorscheme desert call OverwriteColorscheme()
     aug END
+
+    func! OverwriteColorscheme()
+        hi CursorLineNr ctermfg=White
+        hi LineNr       ctermfg=DarkGrey
+        hi StatusLine   cterm=None          ctermfg=LightGrey
+        hi StatusLineNC cterm=None          ctermfg=DarkGrey
+        hi TabLine      cterm=None          ctermfg=DarkGrey    ctermbg=None
+        hi TabLineFill  cterm=None
+        hi TabLineSel   cterm=None          ctermfg=White
+        hi VertSplit    cterm=None          ctermfg=DarkGrey
+        hi WildMenu     cterm=None          ctermfg=White       ctermbg=None
+        hi Visual       cterm=Bold,Reverse  ctermfg=None        ctermbg=None
+    endfunc
 endif
 
 if has('syntax') && !exists('g:syntax_on')
