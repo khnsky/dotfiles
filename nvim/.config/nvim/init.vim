@@ -214,6 +214,10 @@ if !exists(':DiffOrig')                 " see :h DiffOrig
                 \ | wincmd p | diffthis
 endif
 
+if has('nvim-0.3.2') || has('patch-8.1.0360')
+    set diffopt=internal,filler,algorithm:histogram,indent-heuristic
+endif
+
 if &history < 1000
     set history=1000                    " entries in cmd and search histories
 endif
