@@ -178,5 +178,5 @@ case "$TERM" in                         # for midnight commander
 esac
 
 mpv() {
-    command mpv "$@" &> /dev/null & disown
+    command mpv $@ &> /dev/null & disown
 }
