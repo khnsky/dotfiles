@@ -99,7 +99,7 @@ flags="\
     -fsanitize=address \
     "
 export CFLAGS="-std=c11 $flags -Wjump-misses-init -Wstrict-prototypes -pedantic"
-export CXXFLAGS="-std=c++17 $flags -Wold-style-cast -Wuseless-cast"
+export CXXFLAGS="-std=c++17 $flags -Wold-style-cast -Wuseless-cast -Wzero-as-null-pointer-constant"
 export LDFLAGS="-lm -fsanitize=address"
 unset flags
 
