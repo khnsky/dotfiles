@@ -243,6 +243,8 @@ set lazyredraw                          " don't redraw while executing macros
 
 set sessionoptions-=options             " don't store options across sessions
 
+set shortmess=aoOtT
+
 let &makeprg = '(make $* \|\| make %<)' " use implicit rule if make fails
 " misc. }}}
 
