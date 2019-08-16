@@ -146,7 +146,7 @@ cxxrun() {
 
 # presenting
 mirror-screen() {
-    if [ $# -lt 3 ]; then
+    if [ $# -ne 3 ]; then
         echo 'usage: mirror-screen <origin display> <dest display> <resolution>'
         xrandr | grep --color=never ' connected'
         return 1
