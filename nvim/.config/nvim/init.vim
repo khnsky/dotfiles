@@ -91,6 +91,8 @@ if has('path_extra')                    " see :h file-searching
         set tags+=./TAGS; tags+=TAGS    
     endif
 endif
+
+set tagcase=match                       " match tags case not following ignorecase
 " files }}}
 
 " text {{{
