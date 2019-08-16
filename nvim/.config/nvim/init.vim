@@ -203,10 +203,18 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 " :vh to open help in vertical split
 cnoreabbrev vh vertical help
-" :ho to open help in only window
-cnoreabbrev ho help \| only<C-F>2b<Left><C-C>
+" :ho to open help in only window, <S-Left> - backward word in insert mode
+cnoreabbrev ho help <Bar> only<S-Left><S-Left><Left>
 
-nnoremap <Leader>b :ls<CR>:buffer<Space>
+" if nr of buffers is lower than cmdheight doesn't show anything
+" if only one buffer is listed it won't show because cmdheight is set to 2
+cnoreabbrev b  ls<CR>:buffer
+cnoreabbrev sb ls<CR>:sbuffer
+cabbrev     vb ls<CR>:vertical sb
+
+nmap <Leader>b  :b<Space>
+nmap <Leader>sb :sb<Space>
+nmap <Leader>vb :vb<Space>
 
 func! s:Zoom()
     if exists('w:unzoom')               " w: is window local
