@@ -104,6 +104,7 @@ set incsearch                           " search incrementally
 
 " indentation
 set autoindent                          " copy indent form current line
+set cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
 set expandtab                           " insert spaces in place of tabs
 set shiftround                          " < and > indent to multiples of sw
 set shiftwidth=4                        " indent width
