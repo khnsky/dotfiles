@@ -2,81 +2,114 @@
 
 # start a terminal
 super + Return
- st || i3-sensible-terminal
+    st
 
 # dmenu
 super + o
- dmenu_run -b -nb black -sb black -sb "#0469A0" -sf black
-
-# reload i3 and restart sxhkd
-super + shift + r
- i3-msg reload; pkill -i --signal SIGUSR1 sxhkd
+    dmenu_run -b -nb black -sb black -sb "#0469A0" -sf black
 
 # print screen
-{_,ctrl} + {_,shift} + Print
- mkdir -p ~/pictures/screenshots \
- && maim {_,--hidecursor} {_,--select}  ~/pictures/screenshots/$(date +%s).png
+{_,ctrl +} {_,shift +} Print
+    mkdir -p ~/pictures/screenshots && \
+    maim {_,-u} {_,-s}  ~/pictures/screenshots/$(date +%s).png
 
 # thinkpad media buttons
-# TODO: only pulseaudio, no alsa support
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
- pactl set-sink-mute 0 false; pactl set-sink-volume 0 {+5%,-5%}
+    pactl set-sink-mute 0 false; \
+    pactl set-sink-volume 0 {+5%,-5%}
 
-XF86AudioMute
- pactl set-sink-mute 0 toggle
+{XF86AudioMute,XF86AudioMicMute}
+    pactl set-{sink-mute 0,source-mute 1} toggle
 
-XF86AudioMicMute
- pactl set-source-mute 1 toggle
+## from /usr/share/doc/bspwm/examples/sxhkdrc
+## bspwm hotkeys
 
-# i3 bindings {{{
-# switch to/move container to workspace
-super + {_,shift} + {1,2,3,4,5,6,7,8,9,0,Tab}
- i3-msg {_,move container to} workspace {1,2,3,4,5,6,7,8,9,0,back_and_forth}
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r; pkill -USR1 -x sxhkd}
 
-super + {p,n}
- i3-msg workspace {prev,next}
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
 
-# resize containers with super + r then hjkl
-super + r ; {h,j,k,l}
- i3-msg 'resize {shrink width,grow height,shrink height,grow width} 5 px or 5 ppt'
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
 
-# kill focused window
-super + q
- i3-msg kill
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
 
-# change focus to/move focused window
-super + {_,shift} + {h,j,k,l}
- i3-msg {focus,move} {left,down,up,right}
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
 
-# split vertically/horizontally
-super + {_,shift} + v
- i3-msg split {h,v}
+## state/flags
 
-# enter fullscreen mode for the focused container
-super + f
- i3-msg fullscreen toggle
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# change container layout (tabbed, toggle split)
-super + {w,e}
- i3-msg layout {tabbed,toggle split}
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
 
-# toggle floating / change focus floating tiling
-super + {_,shift} + space
- i3-msg {focus mode_toggle,floating toggle}
+## focus/swap
 
-# focus the parent / child container
-super + {_,shift} + a
- i3-msg focus {parent,child}
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
 
-# scratchpad
-super + x
- i3-msg '[instance="scratchpad"] scratchpad show;       \
- [instance="scratchpad"] move position center'
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
 
-# bring emacs or run if not running
-super + c
- pgrep emacs                                            \
- && i3-msg '[instance="emacs"] move scratchpad;         \
- [instance="emacs"] scratchpad show; floating disable'  \
- || emacs
-# }}}
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+## preselect
+
+# preselect the direction / cancel preselect
+super + ctrl + {h,j,k,l,space}
+	bspc node -p {west,south,north,east,cancel}
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+## move/resize
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+
+bspc rule -a keepassxc   state=floating center=on rectangle=400x400
+bspc rule -a nextcloud   state=floating center=on rectangle=400x400
+bspc rule -a qbittorrent state=floating center=on rectangle=400x400
+
+while true; do
+    #[ -f /sys/class/power_supply/BAT0/capacity ]
+    echo "$(bspc wm -g) | $(acpi -b) | $(date +'%r %F')"
+    sleep 1s
+done | dzen2 -fn monospace-11 &

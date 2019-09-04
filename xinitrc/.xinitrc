@@ -37,4 +37,6 @@ redshift        &
 sxhkd           &
 xss-lock slock  &
 eval "$(ssh-agent)"
-exec i3
+
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+exec bspwm
