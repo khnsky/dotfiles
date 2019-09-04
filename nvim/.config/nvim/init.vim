@@ -108,6 +108,7 @@ set cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
 set expandtab                           " insert spaces in place of tabs
 set shiftround                          " < and > indent to multiples of sw
 set shiftwidth=4                        " indent width
+let g:vim_indent_cont = &sw             " line cont. indent see :h ft-vim-indent
 set smarttab                            " sw at the start of a line, sts else
 set softtabstop=4                       " amount of columns inserted by <tab>
 set tabstop=4                           " visual width of <tab>
