@@ -38,5 +38,4 @@ sxhkd           &
 xss-lock slock  &
 eval "$(ssh-agent)"
 
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 exec bspwm
