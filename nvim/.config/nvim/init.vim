@@ -138,6 +138,9 @@ endif
 set backspace=2                         " backspace over everything in insert
 
 set complete-=i                         " include file completion is slow
+" show menu even for single completion, show extra information in preview
+" window, force user to select match
+set completeopt=menuone,preview,noselect
 
 set nrformats-=octal                    " predictable number inc/decreasing
 
