@@ -212,11 +212,7 @@ cnoreabbrev ho help <Bar> only<S-Left><S-Left><Left>
 " if only one buffer is listed it won't show because cmdheight is set to 2
 cnoreabbrev b  ls<CR>:buffer
 cnoreabbrev sb ls<CR>:sbuffer
-cabbrev     vb ls<CR>:vertical sb
-
-nmap <Leader>b  :b<Space>
-nmap <Leader>sb :sb<Space>
-nmap <Leader>vb :vb<Space>
+cnoreabbrev vb ls<CR>:vertical sb
 
 func! s:Zoom()
     if exists('w:unzoom')               " w: is window local
