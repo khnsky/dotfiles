@@ -27,6 +27,11 @@ if 1                                    " has +eval
                     \       : 'setl fdc=0'
         endif
 
+        if has('nvim')
+            au TermOpen *
+                    \ setl nonumber norelativenumber syntax=sh | startinsert!
+        endif
+
         au Colorscheme desert call OverwriteColorscheme()
     aug END
 
@@ -255,19 +260,3 @@ set shortmess=aoOtT
 
 let &makeprg = '(make $* \|\| make %<)' " use implicit rule if make fails
 " misc. }}}
-
-" nvim terminal {{{
-if has('nvim')                          " use <Esc> to exit terminal-mode
-    tnoremap <Esc> <C-\><C-n>
-
-    aug terminals
-        au!
-        " cursor moves weirdly when exiting terminal mode
-        " if number / relativenumber is set
-        " set syntax to highlight commands
-        " start in insert mode
-        au TermOpen * setl nonumber norelativenumber syntax=sh  |
-                    \ startinsert!
-    aug END
-endif
-" nvim terminall }}}
