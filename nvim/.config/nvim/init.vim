@@ -130,6 +130,7 @@ if has('folding')
     set foldmethod=syntax               " folding based on syntax
 endif
 
+set matchpairs=(:),{:},[:],<:>,=:;
 set showmatch                           " highlight matching paren-like chars
 if !exists('g:loaded_matchit')
     runtime! macros/matchit.vim
