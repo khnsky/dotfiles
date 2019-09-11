@@ -215,6 +215,11 @@ map Q gq
 " copy to EOL instead of copying line, more analogous to the rest of operators
 map Y y$
 
+" try to keep cursor in the same column when scrolling, moving, jumping
+" go to the column  of the mark instead of going to the first non-blank
+set nostartofline
+map ' `
+
 " clear search highlight in addition to clearing & redrawing screen
 nnoremap <C-L> :nohl<CR><C-L>
 
