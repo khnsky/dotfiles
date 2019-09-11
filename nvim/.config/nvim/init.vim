@@ -66,12 +66,12 @@ endif
 " init }}}
 
 " files {{{
-set autoread                            " reload file if detected to be changed
-set autowriteall                        " some commands force :write
-set nobackup                            " disable keeping backup files
-set nohidden                            " disable hiding buffers
-set noswapfile                          " disable swap files
-set nowritebackup                       " disable write backup files
+" reload buffer if file detected to have changed
+" write file when changing buffers
+" disable backup and swap files
+set autoread
+set autowriteall
+set nobackup noswapfile nowritebackup
 
 if has('persistent_undo')               " persistent undo history
     set undofile
@@ -100,55 +100,51 @@ set tagcase=match                       " match tags case not following ignoreca
 " files }}}
 
 " text {{{
-" searching
-set ignorecase                          " case insensitive search by default ...
-set smartcase                           " ... unless using uppercase letter
-set hlsearch                            " highlight all matches
-set incsearch                           " search incrementally
+" case insensitive search by default unless uppercase letter used, highlight
+" all matches, serach incrementally
+set ignorecase smartcase hlsearch incsearch
 
-" indentation
-set autoindent                          " copy indent form current line
-set cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
-set expandtab                           " insert spaces in place of tabs
-set shiftround                          " < and > indent to multiples of sw
-set shiftwidth=4                        " indent width
+" use previous line indent
+" sane values for c/c++ indentation
+set autoindent cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
+
+" insert spaces in place of tabs, round indent to multiple of 'sw'
+" use 4 spaces for each step of (auto)indent
+set expandtab shiftround shiftwidth=4
 let g:vim_indent_cont = &sw             " line cont. indent see :h ft-vim-indent
-set smarttab                            " sw at the start of a line, sts else
-set softtabstop=4                       " amount of columns inserted by <tab>
-set tabstop=4                           " visual width of <tab>
+
+" use sw at the start of a line, sts else
+" insert 4 spaces for tab and represent tab by 4 columns
+set smarttab softtabstop=4 tabstop=4
 
 set wrap                                " wrap lines too long to display
 if has('linebreak')
-    set linebreak                       " break lines at sensible places
-    set breakindent                     " keep indentation when wrapping
+    " break lines at sensible places and keep indentation when wrapping
+    set linebreak breakindent
 endif
 
 if has('folding')
-    set foldenable                      " all folds opened in autocmd
-    set foldcolumn=1
-    set foldmethod=syntax               " folding based on syntax
+    " enable syntax based folding, folds enabled in autocmd
+    set foldenable foldcolumn=1 foldmethod=syntax
 endif
 
-set matchpairs=(:),{:},[:],<:>,=:;
-set showmatch                           " highlight matching paren-like chars
-if !exists('g:loaded_matchit')
-    runtime! macros/matchit.vim
-endif
+" add <:> and =:; to matching pairs, highligth match to the one under cursor
+set matchpairs=(:),{:},[:],<:>,=:; showmatch
 
-set backspace=2                         " backspace over everything in insert
 
-set complete-=i                         " include file completion is slow
+" include file completion is slow
 " show menu even for single completion, show extra information in preview
 " window, force user to select match
-set completeopt=menuone,preview,noselect
+set complete-=i completeopt=menuone,preview,noselect
 
 set nrformats-=octal                    " predictable number inc/decreasing
+set backspace=2                         " backspace over everything in insert
+set virtualedit=block                   " free movement in block mode
 
 if v:version > 703 || v:version == 703 && has('patch541')
-    set formatoptions+=j                " remove comment leader on line join
+    " remove comment leader when joining lines
+    set formatoptions+=j
 endif
-
-set virtualedit=block                   " free movement in block mode
 " text }}}
 
 " windows {{{
@@ -161,38 +157,35 @@ if has('mouse')
     endif
 endif
 
-set splitbelow                          " put split below current window
-set splitright                          " put vertical split to the right
+" put splits below current window and vertical split to the right
+set splitbelow splitright
 
-set scrolljump=10                       " jump lines on scrolloff
-set scrolloff=1                         " lines around cursor kept on screen
-set sidescrolloff=5                     " jump columns on scrolloff
+" jump 10 lines and 5 columns on scrolloff, keep 1 line context on screen
+set scrolljump=10 scrolloff=1 sidescrolloff=5
 " windows }}}
 
 " ui {{{
 set visualbell                          " use visual bell instead of beeping
 
-set number                              " show current line number ...
-set relativenumber                      " ... relative for others
+" show current line number and relative for other lines
+set number relativenumber
 
-" statusline
-set cmdheight=2                         " avoid hit-enter prompts
-set showcmd                             " show keys in a current chord
-set laststatus=2                        " always show statusline
-set ruler                               " show cursor position
+" avoid hit-enter prompts, show keys in a current chord, always show
+" statusline, show cursor position in statusline
+set cmdheight=2 showcmd laststatus=2 ruler
 
-" dialogues
-set confirm                             " show dialog on quitting unsaved
-set wildmenu                            " show possible completions
-set wildmode=longest:full,full          " complete common, then full matches
+" show dialogs on eg. quitting unsaved, show possible completiions
+" complete common then full matches
+set confirm wildmenu wildmode=longest:full,full
 " ui }}}
 
 " mappings {{{
-set ttimeout                            " timeout on key codes
-set ttimeoutlen=100                     " key code timeout
+" short timeout on key codes
+set ttimeout ttimeoutlen=100
 
 if has('langmap') && exists('+langremap')
-    set nolangremap                     " no langmap for results of mappings
+    " no langmap for results of mappings
+    set nolangremap
 endif
 
 " break undo on <C-U>
@@ -251,7 +244,6 @@ endf
 
 " TODO why does @@@ show in other windows, maybe see :h 'display'?
 nnoremap <silent> <Leader>z :call <SID>Zoom()<CR>
-" mappings }}}
 
 " misc. {{{
 if !exists(':DiffOrig')                 " see :h DiffOrig
@@ -260,6 +252,7 @@ if !exists(':DiffOrig')                 " see :h DiffOrig
 endif
 
 if has('nvim-0.3.2') || has('patch-8.1.0360')
+    " use internal diff with better diffing algorithm
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 endif
 
@@ -272,10 +265,7 @@ if &tabpagemax < 50
 endif
 
 set lazyredraw                          " don't redraw while executing macros
-
 set sessionoptions-=options             " don't store options across sessions
-
 set shortmess=aoOtT
-
 let &makeprg = '(make $* \|\| make %<)' " use implicit rule if make fails
 " misc. }}}
