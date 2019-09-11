@@ -194,8 +194,15 @@ endif
 
 " break undo on <C-U>
 inoremap <C-U> <C-G>u<C-U>
+
 " break undo on newline
-inoremap <CR> <C-G>u<CR>
+if v:version > 703 || v:version == 703 && has('patch489')
+    " expand abbreviations
+    inoremap <CR> <C-G>u<C-]><CR>
+else
+    " without this patch it inserts literal ^]
+    inoremap <CR> <C-G>u<CR>
+endif
 
 let mapleader = '\'
 map <Space> <Leader>
