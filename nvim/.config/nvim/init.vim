@@ -88,7 +88,6 @@ if has('persistent_undo')               " persistent undo history
     endif
 endif
 
-" TODO
 if has('path_extra')                    " see :h file-searching
     set path=.,,**                      " search down when using 'path' (:find)
     set tags=./tags; tags+=tags         " search for tags in current dir and up in dir of current file
