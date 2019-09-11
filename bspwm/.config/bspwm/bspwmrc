@@ -1,6 +1,7 @@
 #!/bin/sh
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+bspc config top_padding 15 # for dzen statusbar, maybe set -dock in dzen invocation?
 
 bspc rule -a keepassxc   state=floating center=on rectangle=400x400
 bspc rule -a nextcloud   state=floating center=on rectangle=400x400
