@@ -256,20 +256,6 @@ set shortmess=aoOtT
 let &makeprg = '(make $* \|\| make %<)' " use implicit rule if make fails
 " misc. }}}
 
-" netrw {{{
-" TODO put 'suffixes' at the end, see vim-vinegar
-let g:netrw_sort_sequence   = '[\/]$,*'
-let g:netrw_banner          = 0         " disable netrw banner
-" TODO bug central
-"let g:netrw_liststyle       = 3         " tree view
-
-"let g:netrw_browse_split    = 4         " open in previous window
-"let g:netrw_altv            = 0         " controlled by &splitbelow  / splitright?
-"let g:netrw_preview         = 1         " preview in vertical split
-"let g:netrw_winsize         = 25        " netrw percentage size when previewing
-"let g:netrw_cursorline      = 0
-" }}}
-
 " nvim terminal {{{
 if has('nvim')                          " use <Esc> to exit terminal-mode
     tnoremap <Esc> <C-\><C-n>
