@@ -223,6 +223,10 @@ map ' `
 " clear search highlight in addition to clearing & redrawing screen
 nnoremap <C-L> :nohl<CR><C-L>
 
+" don't expand abbreviations in console with Return
+" mapped Return doesn't trigger expansion even if it is mapped to itself
+cnoremap <CR> <CR>
+
 " :vh to open help in vertical split
 cnoreabbrev vh vertical help
 " :ho to open help in only window, <S-Left> - backward word in insert mode
