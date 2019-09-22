@@ -109,13 +109,12 @@ set ignorecase smartcase hlsearch incsearch
 set autoindent cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
 
 " insert spaces in place of tabs, round indent to multiple of 'sw'
-" use 4 spaces for each step of (auto)indent
-set expandtab shiftround shiftwidth=4
-let g:vim_indent_cont = &sw             " line cont. indent see :h ft-vim-indent
-
+" use &ts for each step of (auto)indent
 " use sw at the start of a line, sts else
 " insert 4 spaces for tab and represent tab by 4 columns
-set smarttab softtabstop=4 tabstop=4
+set expandtab shiftround shiftwidth=0 smarttab tabstop=4
+let g:vim_indent_cont = &ts             " line cont. indent see :h ft-vim-indent
+let &softtabstop      = &ts
 
 set wrap                                " wrap lines too long to display
 if has('linebreak')
