@@ -28,11 +28,13 @@ fi
 # settings
 # set keyboard layout
 # make caps an additional escape or control
+# 2 shifts at the same time act as caps
 # enable termination of x with ctrl+alt+backspace
 setxkbmap                           \
     -layout 'pl,us'                 \
     -option "caps:$caps"            \
     -option 'compose:menu'          \
+    -option 'shift:both_capslock'   \
     -option 'terminate:ctrl_alt_bksp'
 
 unset caps;
