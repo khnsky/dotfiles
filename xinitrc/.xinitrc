@@ -16,15 +16,26 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
+# if xcape is installed use capslock as escape if used by itself
+# and act as control if used with other keys
+if command -v xcape > /dev/null 2>&1; then
+    xcape -e 'Caps_Lock=Escape'
+    caps='ctrl_modifier'
+else
+    caps='escape'
+fi
+
 # settings
 # set keyboard layout
-# make caps an additional escape
+# make caps an additional escape or control
 # enable termination of x with ctrl+alt+backspace
-setxkbmap                   \
-    -layout pl,us           \
-    -option caps:escape     \
-    -option compose:menu    \
-    -option terminate:ctrl_alt_bksp
+setxkbmap                           \
+    -layout 'pl,us'                 \
+    -option "caps:$caps"            \
+    -option 'compose:menu'          \
+    -option 'terminate:ctrl_alt_bksp'
+
+unset caps;
 
 # autostart 
 mpd             &
