@@ -165,7 +165,7 @@ if [ -t 0 ]; then                       # fd 0 - stdin
     stty -ixon                          # fuck control flow
 fi
 
-if type dircolors &> /dev/null; then
+if command -v dircolors &> /dev/null; then
     eval $(dircolors -b)                # set LS_COLORS
 fi
 
