@@ -87,7 +87,8 @@ setopt AUTO_CD                      # cd if not a command and dir exist
 setopt EXTENDED_GLOB                # use extended globs, behavior may be unexpected
 
 # variables
-export VISUAL=emacsclient           # set visual editor to emacsclient
+export EDITOR='nvim'
+export VISUAL="$EDITOR"
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
 flags="\
