@@ -69,9 +69,7 @@ endif
 " reload buffer if file detected to have changed
 " write file when changing buffers
 " disable backup and swap files
-set autoread
-set autowriteall
-set nobackup noswapfile nowritebackup
+set autoread autowriteall nobackup noswapfile nowritebackup
 
 if has('persistent_undo')               " persistent undo history
     set undofile
