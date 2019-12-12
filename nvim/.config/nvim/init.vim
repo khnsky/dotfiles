@@ -213,7 +213,7 @@ set nostartofline
 map ' `
 
 " clear search highlight in addition to clearing & redrawing screen
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <C-L> <Cmd>nohl<CR><C-L>
 
 " don't expand abbreviations in console with Return
 " mapped Return doesn't trigger expansion even if it is mapped to itself
@@ -242,7 +242,7 @@ func! s:Zoom()
 endf
 
 " TODO why does @@@ show in other windows, maybe see :h 'display'?
-nnoremap <silent> <Leader>z :call <SID>Zoom()<CR>
+nnoremap <silent> <Leader>z <Cmd>call <SID>Zoom()<CR>
 
 " misc. {{{
 if !exists(':DiffOrig')                 " see :h DiffOrig
