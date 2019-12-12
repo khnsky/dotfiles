@@ -49,8 +49,11 @@ if 1                                    " has +eval
     endfunc
 endif
 
-if has('syntax') && !exists('g:syntax_on')
-    syntax enable                       " load syntax highlight once
+if has('syntax')
+    if !exists('g:syntax_on')
+        syntax enable                   " load syntax highlight once
+    endif
+
     colorscheme desert
 
     set synmaxcol=300                   " stop searching for syntax items after
