@@ -10,7 +10,7 @@ for f in $FILES; do
     if [ -x "$f/install.sh" ]; then
         "$f/install.sh"
     else
-        stow -d "$DIR" -t "$HOME"
+        stow -d "$DIR" -t "$HOME" "$f"
     fi
 
     [ $? -ne 0 ] && echo "$f install failed ($?)" 1>&2
