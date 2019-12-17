@@ -49,8 +49,11 @@ if 1                                    " has +eval
     endfunc
 endif
 
-if has('syntax') && !exists('g:syntax_on')
-    syntax enable                       " load syntax highlight once
+if has('syntax')
+    if !exists('g:syntax_on')
+        syntax enable                   " load syntax highlight once
+    endif
+
     colorscheme desert
 
     set synmaxcol=300                   " stop searching for syntax items after
@@ -69,9 +72,7 @@ endif
 " reload buffer if file detected to have changed
 " write file when changing buffers
 " disable backup and swap files
-set autoread
-set autowriteall
-set nobackup noswapfile nowritebackup
+set autoread autowriteall nobackup noswapfile nowritebackup
 
 if has('persistent_undo')               " persistent undo history
     set undofile
@@ -213,7 +214,7 @@ set nostartofline
 map ' `
 
 " clear search highlight in addition to clearing & redrawing screen
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <C-L> <Cmd>nohl<CR><C-L>
 
 " don't expand abbreviations in console with Return
 " mapped Return doesn't trigger expansion even if it is mapped to itself
@@ -242,7 +243,7 @@ func! s:Zoom()
 endf
 
 " TODO why does @@@ show in other windows, maybe see :h 'display'?
-nnoremap <silent> <Leader>z :call <SID>Zoom()<CR>
+nnoremap <silent> <Leader>z <Cmd>call <SID>Zoom()<CR>
 
 " misc. {{{
 if !exists(':DiffOrig')                 " see :h DiffOrig
