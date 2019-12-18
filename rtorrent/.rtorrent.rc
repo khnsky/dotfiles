@@ -1,0 +1,2 @@
+directory.default.set = "~/downloads"
+protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
