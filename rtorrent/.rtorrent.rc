@@ -1,2 +1,3 @@
-directory.default.set = "~/downloads"
+directory.default.set   = "~/downloads"
+session.path.set        = "~/.rtorrent"
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
