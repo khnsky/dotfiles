@@ -1,4 +1,6 @@
 DIR=$(dirname $0)
+CD=$(pwd)
+cd $DIR
 FILES=${@:-*}
 
 echo "installing: $FILES"
@@ -16,3 +18,4 @@ for f in $FILES; do
     [ $? -ne 0 ] && echo "$f install failed ($?)" 1>&2
 done
 unset f
+cd $CD
