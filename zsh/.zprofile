@@ -2,11 +2,10 @@
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
     printf 'startx? [Y/n] '
-    read -r answer
-    answer=${answer:-y}
-    case $answer in
+    read -r
+    case ${REPLY} in
         # exec makes it logout when x is killed
-        Y | y ) unset answer; exec startx > /dev/null 2>&1  ;;
-        *     ) unset answer                                ;;
+        Y | y )                      exec startx > /dev/null 2>&1   ;;
+        *     ) [ -z "${REPLY}" ] && exec startx > /dev/null 2>&1   ;;
     esac
 fi
