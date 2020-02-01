@@ -1,7 +1,14 @@
-DIR=$(dirname $0)
-CD=$(pwd)
-cd $DIR
-FILES=${@:-*}
+#!/bin/sh
+
+WD=$(pwd)
+DIR=$(dirname "$0")
+
+if ! cd "$DIR"; then
+    echo 'entering script dir failed' 1>&2
+    exit 1
+fi
+
+FILES=${*:-*}
 
 echo "installing: $FILES"
 
@@ -17,5 +24,8 @@ for f in $FILES; do
 
     [ $? -ne 0 ] && echo "$f install failed ($?)" 1>&2
 done
-unset f
-cd $CD
+
+if ! cd "$WD"; then
+    echo 'returning to working directory failed' 1>&2
+    exit 1
+fi
