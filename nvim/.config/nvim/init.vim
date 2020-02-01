@@ -167,9 +167,6 @@ set scrolljump=10 scrolloff=1 sidescrolloff=5
 " ui {{{
 set visualbell                          " use visual bell instead of beeping
 
-" show current line number and relative for other lines
-set number relativenumber
-
 " avoid hit-enter prompts, show keys in a current chord, always show
 " statusline, show cursor position in statusline
 set cmdheight=2 showcmd laststatus=2 ruler
