@@ -1,0 +1,4 @@
+# -nolisten local to prevent usage of abstract sockets
+# see: https://tstarling.com/blog/2016/06/x11-security-isolation/
+# vt to run on the same virtual terminal - systemd-logind sets the XDG_VTNR
+exec /usr/bin/X -nolisten tcp -nolisten local "$@" vt$XDG_VTNR
