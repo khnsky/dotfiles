@@ -39,11 +39,7 @@ setxkbmap                           \
 
 unset caps;
 
-# autostart 
-mpd             &
-redshift        &
 sxhkd           &
 xss-lock slock  &
 eval "$(ssh-agent)"
-
 exec bspwm
