@@ -49,30 +49,6 @@ setopt PROMPT_PERCENT                   # perform % sequences substitution
 setopt PROMPT_SUBST                     # perform substitution in prompt
 setopt TRANSIENT_RPROMPT                # display rprompt only on current line
 
-autoload -Uz vcs_info
-autoload -Uz colors && colors
-zstyle ':vcs_info:*' enable git
-# b - branch, a - action (rebase), m - misc. (stashes), u - unstaged, c -staged
-zstyle ':vcs_info:*' formats "%r :: %b %m%u%c"
-zstyle ':vcs_info:*' actionformats "%r :: %b|%a %m%u%c"
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr "%F{green}+%f"   # show green + if staged files
-zstyle ':vcs_info:*' unstagedstr "%F{red}+%f"   # show red + if unstaged files
-
-precmd() {
-    vcs_info                                    # set vcs_info...
-    if [ -n "$vcs_info_msg_0_" ]; then
-        RPROMPT="$vcs_info_msg_0_"
-    else
-        RPROMPT="%~"
-    fi
-}
-PROMPT=' %(?..%F{red})%#%f :: > '
-
-# }}}
-
-# help
-autoload -Uz run-help run-help-git  # load run-help and run-help-git
 
 # completion
 autoload -Uz compinit && compinit   # load compinit
@@ -128,32 +104,6 @@ man() {
     command man "$@"
 }
 
-# functions
-# stolen from /u/Rhomboid
-cxxrun() {
-    local src=$1
-    local out=/tmp/cxxrun-$RANDOM-$RANDOM-$RANDOM
-    local flags="-xc++ -Wall -Wextra -g"
-    local inc="-include iostream -include fstream -include iomanip \
-        -include cmath -include vector -include cstdlib -include unistd.h \
-        -include cstring -include cerrno -include fcntl.h"
-    shift
-    (
-        trap 'rm -f "$out" 2>/dev/null 2>&1' EXIT
-        eval ${CXX:-g++} -o "$out" $flags $inc - <<< "using namespace std; \
-            int main(int argc, char* argv[]) { $src; }" "$@" && "$out"
-    )
-}
-
-# presenting
-mirror-screen() {
-    if [ $# -ne 3 ]; then
-        echo 'usage: mirror-screen <origin display> <dest display> <resolution>'
-        xrandr | grep --color=never ' connected'
-        return 1
-    fi
-    xrandr --output $2 --auto --scale-from $3 --output $1
-}
 
 # aliases
 alias reload='. $HOME/.zshrc'           # source .zshrc with reload command
