@@ -1,68 +1,44 @@
 # vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/user/.zshrc'
+# End of lines added by compinstall
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-setopt APPEND_HISTORY                   # append history instead of overwriting it
-setopt EXTENDED_HISTORY                 # store command start and execution time
-setopt HIST_IGNORE_DUPS                 # don't save consecutive duplicate commands
-setopt HIST_IGNORE_SPACE                # don't save commands preceded with space
-setopt HIST_REDUCE_BLANKS               # trim meaningless whitespace
-setopt INC_APPEND_HISTORY_TIME          # write history on command not on shell exit
-setopt NO_SHARE_HISTORY                 # every instance of zsh has its history
-
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/user/.zshrc'
-
-# End of lines added by compinstall
-
-# my config
 bindkey -v                              # vi keybinding
 KEYTIMEOUT=1                            # timeout when exiting normal mode, default 40
 
 DIRSTACKSIZE=10
+
+setopt AUTO_CD                          # cd if not a command and dir exist
 setopt AUTO_PUSHD                       # add dir to dirstack on cd
+setopt COMPLETE_ALIASES                 # alias completion before substitution
+setopt CORRECT_ALL
+setopt EXTENDED_GLOB                    # use extended globs, behavior may be unexpected
+setopt EXTENDED_HISTORY                 # store command start and execution time
+setopt HIST_IGNORE_DUPS                 # don't save consecutive duplicate commands
+setopt HIST_IGNORE_SPACE                # don't save commands preceded with space
+setopt HIST_REDUCE_BLANKS               # trim meaningless whitespace
+setopt INTERACTIVE_COMMENTS             # allow comments in interactive shells
+setopt LIST_ROWS_FIRST                  # lay out matches horizontally
+setopt LONG_LIST_JOBS                   # print job notifications in long format
+#setopt PROMPT_SUBST                     # perform substitution in prompt
+setopt PUSHD_IGNORE_DUPS                # don't push mulitple copies of same dir
 setopt PUSHD_SILENT                     # don't print dirstack on pushd / popd
 setopt PUSHD_TO_HOME                    # pushd with no args act like pushd $HOME
-setopt PUSHD_IGNORE_DUPS                # don't push mulitple copies of same dir
-
-setopt AUTO_LIST                        # automatically list completions
-setopt AUTO_MENU                        # automatically use menu completion
-setopt AUTO_PARAM_KEYS                  # remove auto inserted char if necessary
-setopt AUTO_PARAM_SLASH                 # add slash if completion is dir
-setopt AUTO_REMOVE_SLASH                # remove completion slash if necessary
-setopt LIST_AMBIGUOUS                   # insert unambiguous completion, list ambiguous
-setopt LIST_ROWS_FIRST                  # lay out matches horizontally
-setopt LIST_TYPES                       # show file type trailing mark
-
-setopt INTERACTIVE_COMMENTS             # allow comments in interactive shells
-
-setopt CHECK_JOBS                       # report status of suspended jobs before exiting
-setopt CHECK_RUNNING_JOBS               # check for both running and suspended
-setopt HUP                              # send HUP signal to running jobs on exit
-setopt LONG_LIST_JOBS                   # print job notifications in long format
-
-# prompt {{{
-autoload -Uz promptinit && promptinit   # load promptinit
-setopt PROMPT_PERCENT                   # perform % sequences substitution
-setopt PROMPT_SUBST                     # perform substitution in prompt
 setopt TRANSIENT_RPROMPT                # display rprompt only on current line
 
+PROMPT=' %%> '
+RPROMPT="%~"
 
-# completion
 autoload -Uz compinit && compinit   # load compinit
 zstyle ':completion:*' rehash true  # persistent rehash
 zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # match cast insensitively
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # match case insensitively
 
-setopt COMPLETE_ALIASES             # alias completion before substitution
-setopt CORRECT_ALL
-
-setopt AUTO_CD                      # cd if not a command and dir exist
-setopt EXTENDED_GLOB                # use extended globs, behavior may be unexpected
-
-# variables
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
