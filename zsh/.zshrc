@@ -108,7 +108,6 @@ man() {
 # aliases
 alias reload='. $HOME/.zshrc'           # source .zshrc with reload command
 
-alias sudo='sudo '                      # expand aliases when using with sudo
 
 if [ -t 0 ]; then                       # fd 0 - stdin
     stty sane
@@ -119,13 +118,7 @@ if command -v dircolors &> /dev/null; then
     eval $(dircolors -b)                # set LS_COLORS
 fi
 
-# auto color output
-alias cal='cal -m --color=auto'         # color cal output, start week with Monday
-alias diff='diff --color=auto'          # color diff output
-alias grep='grep --color=auto'          # color grep output
-alias ls='ls --color=auto'              # color ls output
-
-alias rustc='TERM=xterm-color rustc'    # shitty workaround for colored output
+alias sudo='sudo '                      # expand aliases when using with sudo
 
 case "$TERM" in                         # for midnight commander
     *256* )
@@ -136,3 +129,7 @@ esac
 mpv() {
     command mpv $@ &> /dev/null & disown
 }
+for cmd in cal diff egrep grep ls; do
+    alias $cmd="$cmd --color=auto"
+done
+unset cmd
