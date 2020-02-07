@@ -1,4 +1,4 @@
-[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+[ -r "$HOME/.profile" ] && emulate sh -c 'source "$HOME/.profile"'
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
     printf 'startx? [Y/n] '
@@ -9,3 +9,12 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
         *     ) [ -z "${REPLY}" ] && exec startx > /dev/null 2>&1   ;;
     esac
 fi
+
+#if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
+#    printf 'startx? [Y/n] '
+#    read -r
+#    if [ -z "$REPLY" ] || sh_contains 'Yy' "$REPLY"; then
+#        exec startx > /dev/null 2>&1
+#    fi
+#         
+#fi
