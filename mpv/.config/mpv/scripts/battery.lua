@@ -17,5 +17,5 @@ end
 
 if not battery() then
     msg.info 'applying hq profile ... '
-    mp.commmand 'apply-profile hq'
+    mp.command 'apply-profile hq'
 end
