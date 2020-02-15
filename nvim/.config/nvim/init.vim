@@ -221,19 +221,7 @@ cnoreabbrev b  ls<CR>:buffer
 cnoreabbrev sb ls<CR>:sbuffer
 cnoreabbrev vb ls<CR>:vertical sb
 
-func! s:Zoom()
-    if exists('w:unzoom')               " w: is window local
-        exe w:unzoom
-        unl w:unzoom
-    el
-        let w:unzoom = winrestcmd()
-        wincmd |
-        wincmd _
-    en
-endf
-
-" TODO why does @@@ show in other windows, maybe see :h 'display'?
-nnoremap <silent> <Leader>z <Cmd>call <SID>Zoom()<CR>
+nmap <silent> <Leader>z <Plug>ZoomIt
 
 " misc. {{{
 if !exists(':DiffOrig')                 " see :h DiffOrig
