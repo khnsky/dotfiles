@@ -10,10 +10,6 @@ if 1                                    " has +eval
 
     aug vimrc
         au!
-        " :f, gf etc. works for include files
-        au FileType c,cpp
-                    \   setl path+=/usr/include
-
         " set foldlevel to a minimal value while having all folds still open
         " foldlevel is buffer local, use foldlevelstart for initial foldlevel
         " value, however zm wont close folds right away if it is set too high
