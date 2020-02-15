@@ -15,9 +15,9 @@ if 1                                    " has +eval
         " value, however zm wont close folds right away if it is set too high
         if has('folding')
             au BufRead *
-                    \   exe &foldenable
-                    \       ? 'normal! zR'
-                    \       : 'setl fdc=0'
+                \   if &foldenable
+                \|      normal! zR
+                \|  endif
         endif
 
         if has('nvim')
@@ -117,8 +117,8 @@ if has('linebreak')
 endif
 
 if has('folding')
-    " enable syntax based folding, folds enabled in autocmd
-    set foldenable foldcolumn=1 foldmethod=syntax
+    " enable syntax based folding, folds opened in autocmd
+    set foldenable foldmethod=syntax
 endif
 
 " add <:> and =:; to matching pairs, highligth match to the one under cursor
