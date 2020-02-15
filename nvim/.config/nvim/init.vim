@@ -222,6 +222,7 @@ cnoreabbrev sb ls<CR>:sbuffer
 cnoreabbrev vb ls<CR>:vertical sb
 
 nmap <silent> <Leader>z <Plug>ZoomIt
+" mappings }}}
 
 " misc. {{{
 if !exists(':DiffOrig')                 " see :h DiffOrig
