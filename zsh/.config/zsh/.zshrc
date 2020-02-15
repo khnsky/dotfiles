@@ -21,6 +21,12 @@ if [ -d $ZDOTDIR/zsh.d ]; then
     unset zsh
 fi
 
+# https://wiki.archlinux.org/index.php/Bash/Functions#Display_error_codes
+ec() {
+    echo -e '\e[1;33m'code $?'\e[m\n'
+}
+trap ec ERR
+
 if [ -t 0 ]; then                       # fd 0 - stdin
     stty sane
     stty -ixon                          # fuck control flow
