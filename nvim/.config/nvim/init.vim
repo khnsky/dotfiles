@@ -10,9 +10,6 @@ if 1                                    " has +eval
 
     aug vimrc
         au!
-        " use tabs to indent in Makefiles
-        au FileType make
-                    \   setl noexpandtab
         " :f, gf etc. works for include files
         au FileType c,cpp
                     \   setl path+=/usr/include
