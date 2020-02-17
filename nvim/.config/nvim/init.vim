@@ -16,7 +16,7 @@ if 1                                    " has +eval
         if has('folding')
             au BufRead *
                 \   if &foldenable
-                \|      normal! zR
+                \|      execute 'normal! zR'
                 \|  endif
         endif
 
