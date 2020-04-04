@@ -1,14 +1,14 @@
 [user]
-	email = khnsky@khnsky.cc
-	name  = Piotrek Kochański
+    email = khnsky@khnsky.cc
+    name  = Piotrek Kochański
 
 [help]
-	# negative - execute autocorected command immediately, 0 - only show,
-	# positive execute autocorected command after n tenth of a second
-	autocorrect = -1
+    # negative - execute autocorected command immediately, 0 - only show,
+    # positive execute autocorected command after n tenth of a second
+    autocorrect = -1
 
 [color]
-	ui = auto
+    ui = auto
 
 [alias]
     sb = status -sb
