@@ -78,7 +78,7 @@ if has('persistent_undo')               " persistent undo history
 endif
 
 if has('path_extra')                    " see :h file-searching
-    set path=.,,**                      " search down when using 'path' (:find)
+    set path=.,,**                      " search down when using `path' (:find)
     set tags=./tags; tags+=tags         " search for tags in current dir and up in dir of current file
     if has('emacs_tags')
         set tags+=./TAGS; tags+=TAGS    
@@ -94,10 +94,10 @@ set tagcase=match                       " match tags case not following ignoreca
 set ignorecase smartcase hlsearch incsearch
 
 " use previous line indent
-" sane values for c/c++ indentation
+" sane values for c/c++ indentation - see :h cinoptions-values
 set autoindent cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
 
-" insert spaces in place of tabs, round indent to multiple of 'sw'
+" insert spaces in place of tabs, round indent to multiple of `sw'
 " use &tabstop for each step of (auto)indent
 " use sw at the start of a line, sts else
 " insert 4 spaces for tab and represent tab by 4 columns
@@ -235,7 +235,7 @@ if &history < 1000
 endif
 
 if &tabpagemax < 50
-    set tabpagemax=50                   " limit for 'vim -p ...' or ':tab all'
+    set tabpagemax=50                   " limit for `vim -p ...' or `:tab all'
 endif
 
 set lazyredraw                          " don't redraw while executing macros
