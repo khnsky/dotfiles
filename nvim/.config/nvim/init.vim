@@ -20,11 +20,6 @@ if 1                                    " has +eval
                 \|  endif
         endif
 
-        if has('nvim')
-            au TermOpen *
-                    \ setl nonumber norelativenumber syntax=sh | startinsert!
-        endif
-
         au Colorscheme desert call OverwriteColorscheme()
     aug END
 
