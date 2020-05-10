@@ -207,7 +207,7 @@
   (if (or (eq system-type 'windows-nt) (eq system-type 'cygwin))
       (khnsky-lset-aviable-font '("Consolas") 10)
     (khnsky-lset-aviable-font
-     '("Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono") 10)))
+     '("Fira Code" "Inconsolata" "Fira Mono" "Source Code Pro" "DejaVu Sans Mono") 10)))
 
 (defun khnsky-lset-aviable-font (fonts &optional size)
   "Set first font in the list FONTS that is aviable on the system with SIZE."
@@ -286,5 +286,5 @@
 
 (message "startup time: %s" (emacs-init-time))
 
-(provide '.emacs)
-;;; .emacs ends here
+(provide 'init.el)
+;;; init.el ends here
