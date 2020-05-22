@@ -228,6 +228,9 @@ if &history < 1000
     set history=1000                    " entries in cmd and search histories
 endif
 
+let &history    = max([&hi,  1000])
+let &tabpagemax = max([&tpm, 50])
+
 if &tabpagemax < 50
     set tabpagemax=50                   " limit for 'vim -p ...' or ':tab all'
 endif
