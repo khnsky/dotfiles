@@ -202,6 +202,10 @@ cnoreabbrev sb ls<CR>:sbuffer
 cnoreabbrev vb ls<CR>:vertical sb
 
 nmap <silent> <Leader>z <Plug>ZoomIt
+
+xnoremap < <gv
+xnoremap > >gv
+
 " mappings }}}
 
 " misc. {{{
