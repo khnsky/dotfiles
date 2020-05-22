@@ -13,6 +13,12 @@ $endif
 
 $if mode=vi
     set show-mode-in-prompt     on
+    # show mode by chaning cursor (block and bar)
+    # see:
+    #   stackoverflow.com/a/42107711
+    #   wiki.archlinux.org/index.php/Octave#vi_Mode_Undecodable_Token
+    set vi-ins-mode-string      \1\e[6 q\2
+    set vi-cmd-mode-string      \1\e[2 q\2
 
     set keymap vi-command
     Control-l: clear-screen

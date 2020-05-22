@@ -7,9 +7,22 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 bindkey -v                              # vi keybinding
-KEYTIMEOUT=1                            # timeout when exiting normal mode, default 40
+KEYTIMEOUT=1                            # timeout for interpreting esc codes
 
 DIRSTACKSIZE=10
+
+# this is not a perfect solution - there could be some isses when using
+# multiline prompts etc.
+# see:  unix.stackexchange.com/q/547
+#       man zshzle
+zle-keymap-select zle-line-init() {
+    case $KEYMAP in
+        vicmd)      print -n '\1\e[2 q\2';;
+        viins|main) print -n '\1\e[6 q\2';;
+    esac
+}
+zle -N zle-keymap-select
+zle -N zle-line-init
 
 PS1='> '
 RPS1="%1~"
