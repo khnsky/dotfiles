@@ -206,6 +206,11 @@ nmap <silent> <Leader>z <Plug>ZoomIt
 xnoremap < <gv
 xnoremap > >gv
 
+map <Leader>h <C-w>h
+map <Leader>j <C-w>j
+map <Leader>k <C-w>k
+map <Leader>l <C-w>l
+
 " mappings }}}
 
 " misc. {{{
