@@ -224,13 +224,8 @@ if has('nvim-0.3.2') || has('patch-8.1.0360')
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 endif
 
-if &history < 1000
-    set history=1000                    " entries in cmd and search histories
-endif
-
-if &tabpagemax < 50
-    set tabpagemax=50                   " limit for 'vim -p ...' or ':tab all'
-endif
+let &history    = max([&hi,  1000])
+let &tabpagemax = max([&tpm, 50])
 
 set lazyredraw                          " don't redraw while executing macros
 set sessionoptions-=options             " don't store options across sessions
