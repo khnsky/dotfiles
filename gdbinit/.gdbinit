@@ -1,4 +1,4 @@
-set prompt gdb :: > \ 
+set prompt gdb>\ 
 
 set disassembly-flavor intel
 
