@@ -11,7 +11,7 @@
 # ..._ue: reset underline
 # ..._mb: begin blink - unused
 man() {
-    LESS="-R +Gg"                               \
+    LESS="$LESS -R +Gg"                         \
     LESS_TERMCAP_md=$(printf '\e[1;34m')        \
     LESS_TERMCAP_us=$(printf '\e[93m')          \
     LESS_TERMCAP_so=$(printf '\e[01;97;40m')    \

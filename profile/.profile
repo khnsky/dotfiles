@@ -12,6 +12,21 @@ export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
 export LESSHISTFILE=/dev/null       # fuck .lesshst
 
+# see: man less
+# -F: automatically exit if entire file can be diplayed on the first screen
+# -i: ignore case - like vim's smartcase
+# -R: output 'raw' ANSI color escape sequences
+# -X: disable sending termcap init and deinit strings to terminal
+#     this is sometimes desireable if deinit string does something unnecessary
+#     like clearing screen -- not used - I like clearling screen but might be
+#     needed when using -F
+# -x: use N lenght tabs - x4 - 4 space tabs
+export LESS='-FiRx4'
+
+
+export BROWSER=firefox
+export TERMINAL=st
+
 flags="\
     -Wall -Wextra -Werror \
     -Wduplicated-cond -Wduplicated-branches -Wlogical-op \
