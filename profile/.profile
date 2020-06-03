@@ -5,20 +5,6 @@ if [ -d $HOME/.profile.d ]; then
     unset profile
 fi
 
-#sh_sink() {
-#    $1 > /dev/null 2>&1
-#}
-#
-#sh_has() {
-#    sh_sink $(command -v $1)
-#}
-
-#contains() {
-#    case $1 in
-#        *$2*) return 0 ;;
-#        *   ) return 1 ;;
-#    esac
-#}
 
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
@@ -39,5 +25,3 @@ unset flags
 
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
-
-unset contains
