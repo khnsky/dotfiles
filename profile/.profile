@@ -10,6 +10,8 @@ export EDITOR='nvim'
 export VISUAL="$EDITOR"
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
+export LESSHISTFILE=/dev/null       # fuck .lesshst
+
 flags="\
     -Wall -Wextra -Werror \
     -Wduplicated-cond -Wduplicated-branches -Wlogical-op \
