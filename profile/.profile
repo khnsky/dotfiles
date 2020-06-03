@@ -25,5 +25,6 @@ export CXXFLAGS="-std=c++17 $flags -Wold-style-cast -Wuseless-cast -Wzero-as-nul
 export LDFLAGS="-lm -fsanitize=address"
 unset flags
 
+export GNUPGHOME=$HOME/.config/gnupg
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
