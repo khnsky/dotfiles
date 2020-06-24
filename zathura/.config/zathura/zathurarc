@@ -18,22 +18,28 @@ set recolor-lightcolor              "#000000"
 # colors
 set completion-bg                   "#000000"
 set completion-fg                   "#FFFFFF"
-set completion-highlight-bg         "#0469A0"
+set completion-highlight-bg         "#404040"
 set completion-highlight-fg         "#000000"
 
-set highlight-active-color          "#0469A0"
-set highlight-color                 "#0469A0"
+set highlight-active-color          "#808080"
+set highlight-color                 "#808080"
 
-set index-active-bg                 "#0469A0"
+set index-active-bg                 "#808080"
 set index-active-fg                 "#000000"
 set index-bg                        "#000000"
 set index-fg                        "#FFFFFF"
 
 set inputbar-bg                     "#000000"
-set inputbar-fg                     "#B58900"
+set inputbar-fg                     "#ffffff"
 
-set notification-bg                 "#000000"
-set notification-fg                 "#0469A0"
+set notification-bg                 "#808080"
+set notification-fg                 "#000000"
+
+# apparently it accepts 'html' and 'css3' style color codes (?)
+# but i don't know how to set alpha, 
+# however if you set it to a bad value it becomes transparent
+set statusbar-bg                    ""
+set statusbar-fg                    "#808080"
 
 # switch jk and JK
 map [normal]                        j navigate next
