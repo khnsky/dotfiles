@@ -5,6 +5,9 @@ if [ -d $HOME/.profile.d ]; then
     unset profile
 fi
 
+export HISTFILE="$HOME/.history"
+export HISTSIZE=2000
+export SAVEHIST=$HISTSIZE
 
 export EDITOR='nvim'
 export VISUAL="$EDITOR"

@@ -2,10 +2,6 @@
 
 zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 
-HISTFILE=$ZDOTDIR/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-
 bindkey -v                              # vi keybinding
 KEYTIMEOUT=1                            # timeout for interpreting esc codes
 
