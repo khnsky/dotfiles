@@ -5,8 +5,17 @@ bspc config top_padding 15 # for dzen statusbar, maybe set -dock in dzen invocat
 
 bspc rule -r '*'
 
+if [ -f /sys/class/power_supply/BAT0/capacity ] && command -v acpi; then
+    statusbar() {
+        echo "$(bspc wm -g) | $(acpi -b) | $(date +'%r %F')"
+    }
+else
+    statusbar() {
+        echo "$(bspc wm -g) | $(date +'%r %F')"
+    }
+fi
+
 while true; do
-    #[ -f /sys/class/power_supply/BAT0/capacity ]
-    echo "$(bspc wm -g) | $(acpi -b) | $(date +'%r %F')"
+    statusbar
     sleep 1s
 done | dzen2 -fn monospace-11 &
