@@ -2,7 +2,7 @@ setopt AUTO_CD                          # cd if not a command and dir exist
 setopt AUTO_PUSHD                       # add dir to dirstack on cd
 setopt COMPLETE_ALIASES                 # alias completion before substitution
 setopt CORRECT_ALL
-setopt EXTENDED_GLOB                    # use extended globs, behavior may be unexpected
+setopt EXTENDED_GLOB                    # use extended globs, may be unexpected
 setopt HIST_IGNORE_DUPS                 # don't save consecutive duplicate commands
 setopt HIST_IGNORE_SPACE                # don't save commands preceded with space
 setopt HIST_REDUCE_BLANKS               # trim meaningless whitespace
