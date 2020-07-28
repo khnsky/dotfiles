@@ -1,3 +1,7 @@
+if &compatible
+    finish
+endif
+
 " TODO why does @@@ show in other windows, maybe see :h 'display'?
 function! s:It()
     if exists('w:unzoom')       " w: - window local
@@ -9,6 +13,15 @@ function! s:It()
         wincmd _
     endif
 endfunction
+
+aug zoom.vim
+    au!
+    au WinLeave *
+        \   if exists('w:unzoom')
+        \|      execute w:unzoom
+        \|      unlet   w:unzoom
+        \|  endif
+aug END
 
 if has('nvim')
     " TODO: apparently <Cmd> is neovim only even then probably should check
