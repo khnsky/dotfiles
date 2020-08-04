@@ -125,14 +125,11 @@ endif
 " text }}}
 
 " windows {{{
-if has('mouse')
-    set mouse=nvi                       " use mouse in all modes
-    if has('mouse_sgr')                 " resize splits with mouse
-        set ttymouse=sgr                " work in columns beyond 223
-    elseif has('mouse_xterm')
-        set ttymouse=xterm2
-    endif
-endif
+" enable mouse support if available
+" `nvi` allows to use mouse in most modes but copy text from remote
+" vim instance by using command mode
+" use ttymouse=xterm2 or sgr when available to resize windows with mouse
+silent! set mouse=nvi ttymouse=xterm2 ttymouse=sgr
 
 " put splits below current window and vertical split to the right
 set splitbelow splitright
