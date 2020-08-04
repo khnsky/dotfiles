@@ -104,7 +104,6 @@ endif
 " add <:> and =:; to matching pairs, highligth match to the one under cursor
 set matchpairs=(:),{:},[:],<:>,=:; showmatch
 
-
 " include file completion is slow
 " show menu even for single completion, show extra information in preview
 " window, force user to select match
@@ -114,7 +113,8 @@ set nrformats-=octal                    " predictable number inc/decreasing
 set backspace=2                         " backspace over everything in insert
 set virtualedit=block                   " free movement in block mode
 
-if v:version > 703 || v:version == 703 && has('patch541')
+" formatoptions+=1
+if has#('patch-7.3.0541')
     " remove comment leader when joining lines
     set formatoptions+=j
 endif
@@ -162,7 +162,7 @@ endif
 inoremap <C-U> <C-G>u<C-U>
 
 " break undo on newline
-if v:version > 703 || v:version == 703 && has('patch489')
+if has#('patch-7.3.0489')
     " expand abbreviations
     inoremap <CR> <C-G>u<C-]><CR>
 else
@@ -219,7 +219,7 @@ if !exists(':DiffOrig')                 " see :h DiffOrig
                 \ | wincmd p | diffthis
 endif
 
-if has('nvim-0.3.2') || has('patch-8.1.0360')
+if has('nvim-0.3.2') || has#('patch-8.1.0360')
     " use internal diff with better diffing algorithm
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 endif
