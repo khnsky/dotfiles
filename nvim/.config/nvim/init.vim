@@ -34,21 +34,10 @@ endif
 " reload buffer if file detected to have changed
 " write file when changing buffers
 " disable backup and swap files
-set autoread autowriteall nobackup noswapfile nowritebackup
+set autoread autowriteall nobackup noswapfile nowritebackup viminfo=
 
-if has('persistent_undo')               " persistent undo history
-    set undofile
-
-    " use xdg cache dir if possible to store undofiles
-    if exists('$XDG_CACHE_HOME')
-        let &g:undodir = $XDG_CACHE_HOME   . '/vim/undo//'
-    else
-        let &g:undodir = $HOME . '/.cache' . '/vim/undo//'
-    endif
-
-    if !isdirectory(expand(&g:undodir))
-        silent! call mkdir(expand(&g:undodir), 'p', 0700)
-    endif
+if has('persistent_undo')               " semi-persistent undo history
+    set undofile undodir=/tmp,.         " TODO: not sure about security of this
 endif
 
 if has('path_extra')                    " see :h file-searching
