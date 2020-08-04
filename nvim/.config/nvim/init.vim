@@ -185,7 +185,11 @@ set nostartofline
 map ' `
 
 " clear search highlight in addition to clearing & redrawing screen
-nnoremap <C-L> <Cmd>nohl<CR><C-L>
+if has('nvim')
+    nnoremap <C-L> <Cmd>nohl<CR><C-L>
+else
+    nnoremap <C-L> :nohl<CR><C-L>
+endif
 
 " don't expand abbreviations in console with Return
 " mapped Return doesn't trigger expansion even if it is mapped to itself
