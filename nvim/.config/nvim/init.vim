@@ -199,12 +199,6 @@ cnoreabbrev vh vertical help
 " :ho to open help in only window, <S-Left> - backward word in insert mode
 cnoreabbrev ho help <Bar> only<S-Left><S-Left><Left>
 
-" if nr of buffers is lower than cmdheight doesn't show anything
-" if only one buffer is listed it won't show because cmdheight is set to 2
-cnoreabbrev b  ls<CR>:buffer
-cnoreabbrev sb ls<CR>:sbuffer
-cnoreabbrev vb ls<CR>:vertical sb
-
 nmap <silent> <Leader>z <Plug>ZoomIt
 
 xnoremap < <gv
