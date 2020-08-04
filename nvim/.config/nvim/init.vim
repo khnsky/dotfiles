@@ -214,11 +214,6 @@ map <Leader>l <C-w>l
 " mappings }}}
 
 " misc. {{{
-if !exists(':DiffOrig')                 " see :h DiffOrig
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                \ | wincmd p | diffthis
-endif
-
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     " use internal diff with better diffing algorithm
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
