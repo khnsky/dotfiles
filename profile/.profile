@@ -1,5 +1,6 @@
-if [ -d $HOME/.profile.d ]; then
-    for profile in $HOME/.profile.d/*.sh; do
+if [ -d "$HOME"/.profile.d ]; then
+    for profile in "$HOME"/.profile.d/*.sh; do
+        # shellcheck source=/dev/null
         [ -r "$profile" ] && . "$profile"
     done
     unset profile
@@ -26,23 +27,31 @@ export LESSHISTFILE=/dev/null       # fuck .lesshst
 # -x: use N lenght tabs - x4 - 4 space tabs
 export LESS='-FiRx4'
 
+# shellcheck disable=2155
+export PAGER="$(command -v less || print 'cat')"
+export MANPAGER="$PAGER" GIT_PAGER="$PAGER"
 
-export BROWSER=firefox
-export TERMINAL=st
+for i in xterm urxvt gnome-terminal xfce4-terminal konsole kitty alacrity st; do
+    command -v $i > /dev/null 2>&1 && export TERMINAL=$i
+done
 
-flags="\
-    -Wall -Wextra -Werror \
-    -Wduplicated-cond -Wduplicated-branches -Wlogical-op \
-    -Wrestrict -Wnull-dereference \
-    -Wdouble-promotion -Wconversion -Wsign-conversion \
-    -Wshadow -Wformat=2 -g \
-    -fsanitize=address \
-    "
-export CFLAGS="-std=c11 $flags -Wjump-misses-init -Wstrict-prototypes -pedantic"
-export CXXFLAGS="-std=c++17 $flags -Wold-style-cast -Wuseless-cast -Wzero-as-null-pointer-constant"
-export LDFLAGS="-lm -fsanitize=address"
-unset flags
+for i in chrome chromium firefox icecat; do
+    command -v $i > /dev/null 2>&1 && export BROWSER=$i
+done
 
-export GNUPGHOME=$HOME/.config/gnupg
+for i in cc gcc clang; do
+    command -v $i > /dev/null 2>&1 && export CC=$i
+done
+
+for i in cpp g++ clang++; do
+    command -v $i > /dev/null 2>&1 && export CXX=$i
+done
+unset i
+
+export CFLAGS='-std=c11 -Wall -Wextra -Werror -g -pedantic'
+export CXXFLAGS='-std=c++17 -Wall -Wextra -Werror -g'
+export LDFLAGS='-lm'
+
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
