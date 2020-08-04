@@ -78,6 +78,10 @@ set tagcase=match                       " match tags case not following ignoreca
 " all matches, serach incrementally
 set ignorecase smartcase hlsearch incsearch
 
+if exists('+inccommand')
+    set inccommand=split
+endif
+
 " use previous line indent
 " sane values for c/c++ indentation - see :h cinoptions-values
 set autoindent cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
