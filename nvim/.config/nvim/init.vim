@@ -27,14 +27,6 @@ if has('syntax')
     colorscheme mine
 
     set synmaxcol=300                   " stop searching for syntax items after
-
-    " see :h ft-sh-syntax
-    let g:is_posix          = 1         " use posix shell syntax highlight
-    let g:sh_fold_enabled   = 7         " enable folding for everything
-
-    " see :h ft-c-syntax
-    let g:c_comment_strings = 1         " highlight literals in comments
-    let g:c_space_errors    = 1         " highlight errors in spacing
 endif
 " init }}}
 
