@@ -91,7 +91,7 @@ set matchpairs=(:),{:},[:],<:>,=:; showmatch
 " window, force user to select match
 set complete-=i completeopt=menuone,preview,noselect
 
-set nrformats-=octal                    " predictable number inc/decreasing
+set nrformats=bin,hex                   " predictable number inc/decreasing
 set backspace=2                         " backspace over everything in insert
 set virtualedit=block                   " free movement in block mode
 
