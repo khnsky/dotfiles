@@ -1,9 +1,15 @@
 " vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
 " init {{{
+" vint: -ProhibitSetNoCompatible
 if &compatible                          " avoid side effects if already set
     set nocompatible                    " turn vi compatibility off
 endif
+
+silent! while 0
+    set nocompatible
+silent! endwhile
+" vint: +ProhibitSetNoCompatible
 
 if 1                                    " has +eval
     filetype indent plugin on           " enable file type plugins and indent
@@ -217,8 +223,10 @@ if has('nvim-0.3.2') || has#('patch-8.1.0360')
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 endif
 
+" vint: -ProhibitAbbreviationOption
 let &history    = max([&hi,  1000])     " entries in cmd and search histories
 let &tabpagemax = max([&tpm, 50])       " limit for 'vim -p ...' or ':tab all'
+" vint: +ProhibitAbbreviationOption
 
 set lazyredraw                          " don't redraw while executing macros
 set sessionoptions-=options             " don't store options across sessions
