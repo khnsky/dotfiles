@@ -14,18 +14,9 @@ silent! endwhile
 if 1                                    " has +eval
     filetype indent plugin on           " enable file type plugins and indent
 
-    aug vimrc
-        au!
-        " set foldlevel to a minimal value while having all folds still open
-        " foldlevel is buffer local, use foldlevelstart for initial foldlevel
-        " value, however zm wont close folds right away if it is set too high
-        if has('folding')
-            au BufRead *
-                \   if &foldenable
-                \|      execute 'normal! zR'
-                \|  endif
-        endif
-    aug END
+    augroup vimrc
+        autocmd!
+    augroup END
 endif
 
 if has('syntax')
@@ -108,7 +99,7 @@ endif
 
 if has('folding')
     " enable syntax based folding, folds opened in autocmd
-    set foldenable foldmethod=syntax
+    set nofoldenable foldmethod=syntax
 endif
 
 " add <:> and =:; to matching pairs, highligth match to the one under cursor
