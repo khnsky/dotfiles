@@ -55,3 +55,6 @@ export LDFLAGS='-lm'
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
+
+# disable telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
