@@ -1,6 +1,6 @@
 " vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
-" init {{{
+" init {{{1
 " vint: -ProhibitSetNoCompatible
 if &compatible                          " avoid side effects if already set
     set nocompatible                    " turn vi compatibility off
@@ -28,9 +28,8 @@ if has('syntax')
 
     set synmaxcol=300                   " stop searching for syntax items after
 endif
-" init }}}
 
-" files {{{
+" files {{{1
 " reload buffer if file detected to have changed
 " write file when changing buffers
 " disable backup and swap files
@@ -49,9 +48,8 @@ if has('path_extra')                    " see :h file-searching
 endif
 
 set tagcase=match                       " match tags case not following ignorecase
-" files }}}
 
-" text {{{
+" text {{{1
 " case insensitive search by default unless uppercase letter used, highlight
 " all matches, serach incrementally
 set ignorecase smartcase hlsearch incsearch
@@ -99,9 +97,8 @@ if has#('patch-7.3.0541')
     " remove comment leader when joining lines
     set formatoptions+=j
 endif
-" text }}}
 
-" windows {{{
+" windows {{{1
 " enable mouse support if available
 " `nvi` allows to use mouse in most modes but copy text from remote
 " vim instance by using command mode
@@ -113,9 +110,8 @@ set splitbelow splitright
 
 " jump 10 lines and 5 columns on scrolloff, keep 1 line context on screen
 set scrolljump=10 scrolloff=1 sidescrolloff=5
-" windows }}}
 
-" ui {{{
+" ui {{{1
 set visualbell                          " use visual bell instead of beeping
 
 " avoid hit-enter prompts, show keys in a current chord, always show
@@ -128,9 +124,8 @@ set confirm wildmenu wildmode=longest:full,full
 
 " all default but use line cursor for command mode
 set guicursor=n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20
-" ui }}}
 
-" mappings {{{
+" mappings {{{1
 " short timeout on key codes
 set ttimeout ttimeoutlen=100
 
@@ -228,4 +223,3 @@ let &tabpagemax = max([&tpm, 50])       " limit for 'vim -p ...' or ':tab all'
 set lazyredraw                          " don't redraw while executing macros
 set sessionoptions-=options             " don't store options across sessions
 set shortmess=aoOtT
-" misc. }}}
