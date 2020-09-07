@@ -1,25 +1,17 @@
 # vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
-# start a terminal
 super + Return
-    st
+    $XDG_CONFIG_HOME/sxhkd/bin/terminal
 
-# dmenu
 super + o
-    dmenu_run -b -nb black -sb black -sb "#0469A0" -sf black
+    $XDG_CONFIG_HOME/sxhkd/bin/launcher
 
-# print screen
-{_,ctrl +} {_,shift +} Print
-    mkdir -p ~/pictures/screenshots && \
-    maim {_,-u} {_,-s}  ~/pictures/screenshots/$(date +%s).png
+{_,ctrl +} {_, shift +} Print
+    $XDG_CONFIG_HOME/sxhkd/bin/screenshot{_, hidecursor}{_, select}
 
 # thinkpad media buttons
-{XF86AudioRaiseVolume,XF86AudioLowerVolume}
-    pactl set-sink-mute 0 false; \
-    pactl set-sink-volume 0 {+5%,-5%}
-
-{XF86AudioMute,XF86AudioMicMute}
-    pactl set-{sink-mute 0,source-mute 1} toggle
+{XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute,XF86AudioMicMute}
+    $XDG_CONFIG_HOME/sxhkd/bin/volume {raise,lower,mute,micmute}
 
 ## from /usr/share/doc/bspwm/examples/sxhkdrc
 ## bspwm hotkeys

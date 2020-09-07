@@ -1,0 +1,21 @@
+#!/bin/sh
+
+change() {
+    pactl set-sink-mute 0 false
+    pactl set-sink-volue 0 "$1"
+}
+
+mute() {
+    pactl set-sink-mute 0 toggle
+}
+
+micmute() {
+    pactl set-source-mute 1 toggle
+}
+
+case $1 in
+    raise  ) change +5% ;;
+    lower  ) change -5% ;;
+    mute   ) mute       ;;
+    micmute) micmute    ;;
+esac

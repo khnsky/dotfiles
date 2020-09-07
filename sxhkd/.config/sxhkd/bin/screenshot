@@ -1,0 +1,21 @@
+#!/bin/sh
+
+dir="$HOME/pictures/screenshots"
+[ ! -d "$dir" ] && mkdir -p "$dir"
+
+case $1 in
+    select)
+        case $2 in
+            hidecursor) maim -su "$dir/$(date +%s).png" ;;
+            *         ) maim -s  "$dir/$(date +%s).png" ;;
+        esac
+        ;;
+    hidecursor)
+        case $2 in
+            select    ) maim -su  "$dir/$(date +%s).png" ;;
+            *         ) maim -u   "$dir/$(date +%s).png" ;;
+        esac
+        ;;
+    *                 ) maim      "$dir/$(date +%s).png" ;;
+esac
+

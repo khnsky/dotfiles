@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#dmenu_path | dmenu "$@" | ${SHELL:-"/bin/sh"} &
+dmenu_run -b -nb black -sb black -sb "#0469a0" -sf black
