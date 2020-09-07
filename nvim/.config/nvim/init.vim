@@ -190,9 +190,31 @@ map <Leader>j <C-w>j
 map <Leader>k <C-w>k
 map <Leader>l <C-w>l
 
-" mappings }}}
+map <Leader>H <C-w>H
+map <Leader>J <C-w>J
+map <Leader>K <C-w>K
+map <Leader>L <C-w>L
 
-" misc. {{{
+nnoremap <tab>   <c-w>w
+nnoremap <s-tab> <c-w>W
+
+nnoremap [q :cprev<cr>zz
+nnoremap ]q :cnext<cr>zz
+nnoremap [l :lprev<cr>zz
+nnoremap ]l :lnext<cr>zz
+
+nnoremap <silent> <leader>c :cclose <bar> lclose<cr>
+
+nnoremap [b :bprev<cr>
+nnoremap ]b :bnext<cr>
+
+nnoremap [t :tabp<cr>
+nnoremap ]t :tabn<cr>
+
+nnoremap <leader>o o<c-[>
+nnoremap <leader>O O<c-[>
+
+" misc. {{{1
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     " use internal diff with better diffing algorithm
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
