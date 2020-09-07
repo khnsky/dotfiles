@@ -1,4 +1,4 @@
-if !exists(':DiffOrig')                 " see :h DiffOrig
+if exists(':DiffOrig')                  " see :h DiffOrig
     finish
 endif
 
