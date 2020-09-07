@@ -69,8 +69,7 @@ set autoindent cinoptions=N-s,:0,l1,b0,g0,t0,(0,U1,W1s,m1,j1
 " use sw at the start of a line, sts else
 " insert 4 spaces for tab and represent tab by 4 columns
 set expandtab shiftround shiftwidth=0 smarttab tabstop=4
-let g:vim_indent_cont = &tabstop        " line cont. indent see :h ft-vim-indent
-let &softtabstop      = &tabstop
+let &softtabstop = &tabstop
 
 set wrap                                " wrap lines too long to display
 if has('linebreak')
