@@ -32,7 +32,7 @@ endif
 " files {{{1
 " reload buffer if file detected to have changed
 " write file when changing buffers
-" disable backup and swap files
+" disable backup, swap and viminfo files
 set autoread autowriteall nobackup noswapfile nowritebackup viminfo=
 
 if has('persistent_undo')               " semi-persistent undo history
