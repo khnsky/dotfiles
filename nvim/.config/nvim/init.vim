@@ -215,6 +215,9 @@ nnoremap <leader>O O<c-[>
 inoremap <c-r>+ <c-r><c-r>+
 inoremap <c-r>* <c-r><c-r>*
 
+" <c-w>] and <c-w><c-]> do the same - make so <c-w><c-]> opens tag in vsplit
+nnoremap <c-w><c-]>  :exe "vert stag" expand('<cword>')<cr>
+
 " misc. {{{1
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     " use internal diff with better diffing algorithm
