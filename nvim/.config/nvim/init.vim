@@ -210,6 +210,11 @@ nnoremap ]t :tabn<cr>
 nnoremap <leader>o o<c-[>
 nnoremap <leader>O O<c-[>
 
+" prevent code execution when pasting from system clipboard
+" <c-r><c-r> inserts text from register like <c-r> but does so literally
+inoremap <c-r>+ <c-r><c-r>+
+inoremap <c-r>* <c-r><c-r>*
+
 " misc. {{{1
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     " use internal diff with better diffing algorithm
