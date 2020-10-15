@@ -5,7 +5,6 @@ let g:loaded_splitdirection = 1
 
 function! s:split_direction(...) abort
     function! s:get_direction(vertical) abort
-        echomsg 'vertical = ' a:vertical
         if a:vertical
             return 'vertical ' . (&splitright ? 'belowright' : 'aboveleft')
         else
