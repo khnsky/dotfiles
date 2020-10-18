@@ -126,6 +126,15 @@ set confirm wildmenu wildmode=longest:full,full wildignore=./,../ wildignorecase
 " all default but use line cursor for command mode
 set guicursor=n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20
 
+" use line cursor for insert mode, block cursor for normal in vim
+" might not work for one terminal or another
+if !has('nvim')
+    let &t_SI = "\e[6 q"
+    let &t_EI = "\e[2 q"
+
+    autocmd vimrc VimEnter * silent! !print -n "\e[2 q"
+endif
+
 " mappings {{{1
 " short timeout on key codes
 set ttimeout ttimeoutlen=100
