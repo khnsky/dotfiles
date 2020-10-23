@@ -25,4 +25,11 @@ execute.throw = sh, -c, (cat,"mkdir -p",\
 directory.default.set   = (cfg.download)
 session.path.set        = (cfg.session)
 
+# settings for public trackers
+#   dth requires session to be set
+# auto starts and stops dht as needed
+dht.mode.set            = auto
+dht.port.set            = 6881
+# allow for peer exchange
+protocol.pex.set        = yes
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
