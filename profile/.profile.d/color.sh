@@ -13,6 +13,8 @@ case "$TERM" in                         # for midnight commander
 esac
 
 for cmd in cal diff egrep grep ls; do
+    # expands when defined not when used - as intended
+    # shellcheck disable=2139
     alias $cmd="$cmd --color=auto"
 done
 unset cmd

@@ -27,6 +27,7 @@ export LESSHISTFILE=/dev/null       # fuck .lesshst
 # -x: use N lenght tabs - x4 - 4 space tabs
 export LESS='-FiRx4'
 
+# ignore ignoring of return value
 # shellcheck disable=2155
 export PAGER="$(command -v less || print 'cat')"
 export MANPAGER="$PAGER" GIT_PAGER="$PAGER"
