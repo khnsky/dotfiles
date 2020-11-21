@@ -98,6 +98,14 @@ if has#('patch-7.3.0541')
     set formatoptions+=j
 endif
 
+
+" setting spell before spelllang will load spell files twice or something
+" toggle and print spell with <leader>s
+" fix last spellnig mistake by selecting first suggestion
+set nospell spelllang=pl,en_us,en_gb
+nnoremap <leader>s :set spell! spell?<cr>
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 " windows {{{1
 " enable mouse support if available
 " `nvi` allows to use mouse in most modes but copy text from remote
