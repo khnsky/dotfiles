@@ -58,3 +58,6 @@ command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
 
 # disable telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# fix java programs in tiling wm
+export _JAVA_AWT_WM_NONREPARENTING=1
