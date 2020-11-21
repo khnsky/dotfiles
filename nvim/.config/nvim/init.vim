@@ -1,6 +1,15 @@
 " vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
 " init {{{1
+if has('multi_byte')
+    " in most cases if $LANG is not set vim falls back to latin1
+    " https://sanctum.geek.nz/cgit/dotfiles.git/tree/vim/vimrc#n75
+    if &encoding ==# 'latin1' && !exists('$LANG')
+        set encoding=utf-8
+    endif
+    scriptencoding utf-8
+endif
+
 " vint: -ProhibitSetNoCompatible
 if &compatible                          " avoid side effects if already set
     set nocompatible                    " turn vi compatibility off
@@ -92,11 +101,44 @@ set nrformats=bin,hex                   " predictable number inc/decreasing
 set backspace=2                         " backspace over everything in insert
 set virtualedit=block                   " free movement in block mode
 
-" formatoptions+=1
+" 1 - don't break lines after one-letter words, break it before if possible
+" l - don't break lines that were too long before entering insert
+" n - recognize numbered lists (using 'formatlistpat') and indent accordingly
+" t and c flags (auto-wrap of text and comments respectively) should be set in
+" appropriate ftplugins
+set formatoptions+=1ln
+
+" remove comment leader when joining lines
 if has#('patch-7.3.0541')
-    " remove comment leader when joining lines
     set formatoptions+=j
 endif
+
+" two-spacing sentences all the way
+" joinspaces inserts two spaces after '.', '?' or '!' with join command
+" joinspaces is already set by deafault but set it anyway for clarity
+set cpoptions+=J joinspaces
+if has#('patch-8.1.728')
+    set formatoptions+=p
+endif
+
+" setting spell before spelllang will load spell files twice or something
+" toggle and print spell with <leader>s
+" fix last spellnig mistake by selecting first suggestion
+set nospell spelllang=pl,en_us,en_gb
+nnoremap <leader>s :set spell! spell?<cr>
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" because of using two-spaced sentences spellcapcheck can be more restricive
+set spellcapcheck=[.?!]\\%(\ \ \\\|[\\n\\r\\t]\\)
+
+" treat snakeCased and CamelCased words as separate when spell checking
+if exists('+spelloptions')
+   set spelloptions+=camel
+endif
+
+" these defaults are ancient and incredibly c-centric
+" clear them here and set appropriately in ftplugins
+set comments= commentstring= define= include=
 
 " windows {{{1
 " enable mouse support if available
@@ -121,7 +163,8 @@ set cmdheight=2 showcmd laststatus=2 ruler
 " show dialogs on eg. quitting unsaved, show possible completiions
 " complete common then full matches
 " ignore implied directories, ignore case in file completion
-set confirm wildmenu wildmode=longest:full,full wildignore=./,../ wildignorecase
+set confirm wildmenu wildmode=longest:full,full wildignorecase
+set wildignore=./,../,**/./,**/../
 
 " all default but use line cursor for command mode
 set guicursor=n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20
