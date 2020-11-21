@@ -101,12 +101,25 @@ set nrformats=bin,hex                   " predictable number inc/decreasing
 set backspace=2                         " backspace over everything in insert
 set virtualedit=block                   " free movement in block mode
 
-" formatoptions+=1
+" 1 - don't break lines after one-letter words, break it before if possible
+" l - don't break lines that were too long before entering insert
+" n - recognize numbered lists (using 'formatlistpat') and indent accordingly
+" t and c flags (auto-wrap of text and comments respectively) should be set in
+" appropriate ftplugins
+set formatoptions+=1ln
+
+" remove comment leader when joining lines
 if has#('patch-7.3.0541')
-    " remove comment leader when joining lines
     set formatoptions+=j
 endif
 
+" two-spacing sentences all the way
+" joinspaces inserts two spaces after '.', '?' or '!' with join command
+" joinspaces is already set by deafault but set it anyway for clarity
+set cpoptions+=J joinspaces
+if has#('patch-8.1.728')
+    set formatoptions+=p
+endif
 
 " setting spell before spelllang will load spell files twice or something
 " toggle and print spell with <leader>s
@@ -114,6 +127,14 @@ endif
 set nospell spelllang=pl,en_us,en_gb
 nnoremap <leader>s :set spell! spell?<cr>
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" because of using two-spaced sentences spellcapcheck can be more restricive
+set spellcapcheck=[.?!]\\%(\ \ \\\|[\\n\\r\\t]\\)
+
+" treat snakeCased and CamelCased words as separate when spell checking
+if exists('+spelloptions')
+   set spelloptions+=camel
+endif
 
 " windows {{{1
 " enable mouse support if available
