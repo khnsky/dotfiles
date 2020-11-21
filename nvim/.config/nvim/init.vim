@@ -1,6 +1,15 @@
 " vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
 " init {{{1
+if has('multi_byte')
+    " in most cases if $LANG is not set vim falls back to latin1
+    " https://sanctum.geek.nz/cgit/dotfiles.git/tree/vim/vimrc#n75
+    if &encoding ==# 'latin1' && !exists('$LANG')
+        set encoding=utf-8
+    endif
+    scriptencoding utf-8
+endif
+
 " vint: -ProhibitSetNoCompatible
 if &compatible                          " avoid side effects if already set
     set nocompatible                    " turn vi compatibility off
