@@ -163,7 +163,8 @@ set cmdheight=2 showcmd laststatus=2 ruler
 " show dialogs on eg. quitting unsaved, show possible completiions
 " complete common then full matches
 " ignore implied directories, ignore case in file completion
-set confirm wildmenu wildmode=longest:full,full wildignore=./,../ wildignorecase
+set confirm wildmenu wildmode=longest:full,full wildignorecase
+set wildignore=./,../,**/./,**/../
 
 " all default but use line cursor for command mode
 set guicursor=n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20
