@@ -34,6 +34,9 @@ if has('syntax')
     endif
 
     colorscheme mine
+    if $COLORTERM =~# '^\(truecolor\|24bit\)$'
+        set termguicolors
+    endif
 
     set synmaxcol=300                   " stop searching for syntax items after
 endif
