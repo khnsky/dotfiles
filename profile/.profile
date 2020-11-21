@@ -32,7 +32,7 @@ export LESS='-FiRx4'
 export PAGER="$(command -v less || print 'cat')"
 export MANPAGER="$PAGER" GIT_PAGER="$PAGER"
 
-for i in xterm urxvt gnome-terminal xfce4-terminal konsole kitty alacrity st; do
+for i in xterm urxvt gnome-terminal xfce4-terminal konsole alacrity st kitty; do
     command -v $i > /dev/null 2>&1 && export TERMINAL=$i
 done
 
