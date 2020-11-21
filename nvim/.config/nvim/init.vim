@@ -136,6 +136,10 @@ if exists('+spelloptions')
    set spelloptions+=camel
 endif
 
+" these defaults are ancient and incredibly c-centric
+" clear them here and set appropriately in ftplugins
+set comments= commentstring= define= include=
+
 " windows {{{1
 " enable mouse support if available
 " `nvi` allows to use mouse in most modes but copy text from remote
