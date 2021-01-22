@@ -8,21 +8,21 @@ let g:colors_name = 'mine'
 hi CursorLineNr ctermfg=White
 hi LineNr       ctermfg=DarkGrey
 
-hi StatusLine   cterm=None          ctermfg=LightGrey
-hi StatusLineNC cterm=None          ctermfg=DarkGrey
-hi TabLine      cterm=None          ctermfg=DarkGrey    ctermbg=None
-hi TabLineFill  cterm=None
-hi TabLineSel   cterm=None          ctermfg=White
-hi VertSplit    cterm=None          ctermfg=DarkGrey
-hi WildMenu     cterm=None          ctermfg=White       ctermbg=None
+hi StatusLine   cterm=NONE          ctermfg=LightGrey
+hi StatusLineNC cterm=NONE          ctermfg=DarkGrey
+hi TabLine      cterm=NONE          ctermfg=DarkGrey    ctermbg=NONE
+hi TabLineFill  cterm=NONE
+hi TabLineSel   cterm=NONE          ctermfg=White
+hi VertSplit    cterm=NONE          ctermfg=DarkGrey
+hi WildMenu     cterm=NONE          ctermfg=White       ctermbg=NONE
 
-hi StatusLine   gui=None            guifg=#a0a0a0       guibg=#0f0f0f
-hi StatusLineNC gui=None            guifg=#202020       guibg=#0f0f0f
-hi TabLine      gui=None            guifg=#808080       guibg=None
-hi TabLineFill  gui=None
-hi TabLineSel   gui=None            guifg=#dddddd
-hi VertSplit    gui=None            guifg=#0f0f0f
-hi WildMenu     gui=None            guifg=#dddddd       guibg=None
+hi StatusLine   gui=NONE            guifg=#a0a0a0       guibg=#0f0f0f
+hi StatusLineNC gui=NONE            guifg=#202020       guibg=#0f0f0f
+hi TabLine      gui=NONE            guifg=#808080       guibg=NONE
+hi TabLineFill  gui=NONE
+hi TabLineSel   gui=NONE            guifg=#dddddd
+hi VertSplit    gui=NONE            guifg=#0f0f0f
+hi WildMenu     gui=NONE            guifg=#dddddd       guibg=NONE
 
 " :so $VIMRUNTIME/syntax/hitest.vim
     
@@ -48,7 +48,7 @@ hi Constant ctermfg=LightCyan guifg=#14ffff
 " Identifier (Function)
 hi! link Identifier Normal
 " Statement (Conditional, Repeat, Label, Operator, Keyword, Exception)
-hi Statement gui=None ctermfg=DarkBlue guifg=#0d73cc
+hi Statement gui=NONE ctermfg=DarkBlue guifg=#0d73cc
 " PreProc (Include, Define, Macro, PreCondit)
 hi PreProc ctermfg=LightGray guifg=#404040
 " Type (StorageClass, Structure, Typedef)
@@ -56,7 +56,7 @@ hi! link Type Statement
 " Special (SpecialChar, Tag, Delimeter, SpecialComment, Debug)
 hi Special ctermfg=LightMagenta guifg=#fd28ff
 
-hi Visual cterm=None ctermbg=Black gui=None guibg=#0f0f0f
+hi Visual cterm=NONE ctermbg=Black gui=NONE guibg=#0f0f0f
 
 "Underlined
 "Ignore
