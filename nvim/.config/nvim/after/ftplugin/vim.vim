@@ -6,6 +6,8 @@ else
     setlocal keywordprg=:help
 endif
 
-let g:vim_indent_cont = &l:tabstop        " see :h ft-vim-indent
+" see :h ft-vim-indent
+"  -2 for backslash and a space so everything aligns
+let g:vim_indent_cont = &l:tabstop > 2 ? &l:tabstop - 2 : &l:tabstop
 let b:undo_ftplugin .=
     \ '| setlocal makeprg< errorformat< keywordprg< | unlet! g:vim_indent_cont'

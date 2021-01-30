@@ -1,6 +1,3 @@
-" vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
-
-" init {{{1
 if has('multi_byte')
     " in most cases if $LANG is not set vim falls back to latin1
     " https://sanctum.geek.nz/cgit/dotfiles.git/tree/vim/vimrc#n75
@@ -41,7 +38,6 @@ if has('syntax')
     set synmaxcol=300                   " stop searching for syntax items after
 endif
 
-" files {{{1
 " reload buffer if file detected to have changed
 " write file when changing buffers
 " disable backup, swap and viminfo files
@@ -61,7 +57,6 @@ endif
 
 set tagcase=match                       " match tags case not following ignorecase
 
-" text {{{1
 " case insensitive search by default unless uppercase letter used, highlight
 " all matches, serach incrementally
 set ignorecase smartcase hlsearch incsearch
@@ -143,7 +138,6 @@ endif
 " clear them here and set appropriately in ftplugins
 set comments= commentstring= define= include=
 
-" windows {{{1
 " enable mouse support if available
 " `nvi` allows to use mouse in most modes but copy text from remote
 " vim instance by using command mode
@@ -156,7 +150,6 @@ set splitbelow splitright
 " jump 10 lines and 5 columns on scrolloff, keep 1 line context on screen
 set scrolljump=10 scrolloff=1 sidescrolloff=5
 
-" ui {{{1
 set visualbell                          " use visual bell instead of beeping
 
 " avoid hit-enter prompts, show keys in a current chord, always show
@@ -181,7 +174,6 @@ if !has('nvim')
     autocmd vimrc VimEnter * silent! !print -n "\e[2 q"
 endif
 
-" mappings {{{1
 " short timeout on key codes
 set ttimeout ttimeoutlen=100
 
@@ -273,9 +265,8 @@ inoremap <c-r>* <c-r><c-r>*
 " <c-w>] and <c-w><c-]> do the same - make so <c-w><c-]> opens tag in vsplit
 nnoremap <c-w><c-]>  :exe "vert stag" expand('<cword>')<cr>
 
-" misc. {{{1
+" use internal diff with better diffing algorithm
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
-    " use internal diff with better diffing algorithm
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 endif
 

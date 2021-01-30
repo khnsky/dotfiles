@@ -31,5 +31,5 @@ let g:c_no_bsd          = 1     " don't highlight BSD specific types
 let g:c_space_errors    = 1     " highlight trailing ws and mixed indent
 
 let b:undo_ftplugin .=
-    \ '|unlet! g:c_gnu g:c_space_errors g:c_no_ansi g:c_no_bsd' .
+    \ '|unlet! g:c_gnu g:c_space_errors g:c_no_ansi g:c_no_bsd ' .
     \ 'g:c_comment_strings g:c_space_errors'
