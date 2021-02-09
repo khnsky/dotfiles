@@ -41,5 +41,5 @@ unset caps;
 
 sxhkd           &
 xss-lock slock  &
-eval "$(ssh-agent)"
+
 exec bspwm

@@ -62,3 +62,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # fix java programs in tiling wm
 export _JAVA_AWT_WM_NONREPARENTING=1
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    # shellcheck source=/dev/null
+    . "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
+fi
