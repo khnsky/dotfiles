@@ -1,5 +1,8 @@
 # vim:fdm=marker:fmr={{{,}}}:fdl=0:fen:ts=4:sts=4:sw=4:et
 
+# check if stdin is connected to a terminal - interactive, else return
+[ ! -t 0 ] && return
+
 zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 
 bindkey -v                              # vi keybinding
@@ -23,6 +26,16 @@ zle -N zle-line-init
 PS1='> '
 RPS1="%1~"
 
+# https://wiki.archlinux.org/index.php/Bash/Functions#Display_error_codes
+ec() {
+    echo -e '\e[1;33m'code $?'\e[m\n'
+}
+trap ec ERR
+
+# fuck control flow
+stty sane
+stty -ixon
+
 if [ -d $ZDOTDIR/zsh.d ]; then
     for zsh in $ZDOTDIR/zsh.d/*.zsh; do
         [ -r "$zsh" ] && . "$zsh"
@@ -30,13 +43,4 @@ if [ -d $ZDOTDIR/zsh.d ]; then
     unset zsh
 fi
 
-# https://wiki.archlinux.org/index.php/Bash/Functions#Display_error_codes
-ec() {
-    echo -e '\e[1;33m'code $?'\e[m\n'
-}
-trap ec ERR
-
-if [ -t 0 ]; then                       # fd 0 - stdin
-    stty sane
-    stty -ixon                          # fuck control flow
 fi
