@@ -16,6 +16,6 @@ local function battery()
 end
 
 if not battery() then
-    msg.info 'applying hq profile ... '
+    msg.info   'applying hq profile ... '
     mp.command 'apply-profile hq'
 end
