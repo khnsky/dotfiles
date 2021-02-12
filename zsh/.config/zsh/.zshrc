@@ -43,4 +43,8 @@ if [ -d $ZDOTDIR/zsh.d ]; then
     unset zsh
 fi
 
+# tmux is not already running and not root
+if [ -z "$TMUX" ] && [ "$UID" != 0 ]; then
+    # -A acts as attach session if `session-name` already exists, since v. 1.8
+    command -v tmux && tmux new-session -As "$HOST"
 fi
