@@ -27,11 +27,16 @@ export LESSHISTFILE=/dev/null       # fuck .lesshst
 # -x: use N lenght tabs - x4 - 4 space tabs
 export LESS='-FiRx4'
 
+# crude way to make so that everything piped to pager in nnn doesn't disappear
+# immediately as it does with -F set
+alias nnn='LESS= nnn'
+
 # ignore ignoring of return value
 # shellcheck disable=2155
 export PAGER="$(command -v less || print 'cat')"
 export MANPAGER="$PAGER" GIT_PAGER="$PAGER"
 
+# items are listed in reverse priority because every encountered item is exported
 for i in xterm urxvt gnome-terminal xfce4-terminal konsole alacrity st kitty; do
     command -v $i > /dev/null 2>&1 && export TERMINAL=$i
 done
