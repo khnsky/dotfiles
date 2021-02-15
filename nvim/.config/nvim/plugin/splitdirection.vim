@@ -3,8 +3,11 @@ if exists('g:loaded_splitdirection')
 endif
 let g:loaded_splitdirection = 1
 
+let s:cpo = &cpoptions
+set cpoptions&vim
+
 function! s:split_direction(...) abort
-    function! s:get_direction(vertical) abort
+    function! s:direction(vertical) abort
         if a:vertical
             return 'vertical ' . (&splitright ? 'belowright' : 'aboveleft')
         else
@@ -21,12 +24,12 @@ function! s:split_direction(...) abort
     endfunction
 
     execute
-        \ s:get_direction(winwidth(0) > winheight(0) * 2)
-        \ join(a:000, ' ')
-        \ (s:is_buf_empty() && s:is_buf_only() ? '| only' : '')
+      \ s:direction(winwidth(0) > winheight(0) * 2)
+      \ join(a:000, ' ')
+      \ (s:is_buf_empty() && s:is_buf_only() ? '| only' : '')
 
     if winwidth(0) < 80
-        windo T
+        wincmd T
     endif
 
     normal! zt
@@ -38,3 +41,4 @@ command -nargs=+ -complete=command SplitDirection
 command -nargs=+ -complete=help Help
     \ call s:split_direction('help', <q-args>)
 
+let &cpoptions = s:cpo
