@@ -1,9 +1,24 @@
 #!/bin/sh
 
+kitty() {
+    # single instance helps with startup time a bit
+    command kitty -1
+}
+
 # terminal and TERMINAL is not a mistake
 # shellcheck disable=SC2153
-for terminal in "$TERMINAL" kitty st alacrity urxvt rxvt konsole \
-    xfce4-terminal gnome-terminal uxterm xterm 
+for terminal in     \
+    "$TERMINAL"     \
+    kitty           \
+    st              \
+    alacrity        \
+    urxvt           \
+    rxvt            \
+    konsole         \
+    xfce4-terminal  \
+    gnome-terminal  \
+    uxterm          \
+    xterm
 do
     command -v "$terminal" > /dev/null 2>&1 && exec "$terminal" "$@"
 done
