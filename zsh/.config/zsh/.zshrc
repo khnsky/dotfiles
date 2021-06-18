@@ -10,6 +10,7 @@ KEYTIMEOUT=1                            # timeout for interpreting esc codes
 
 DIRSTACKSIZE=10
 
+# change cursor shape based on mode
 # this is not a perfect solution - there could be some isses when using
 # multiline prompts etc.
 # see:  unix.stackexchange.com/q/547
@@ -26,9 +27,9 @@ zle -N zle-line-init
 PS1='> '
 RPS1="%1~"
 
-# https://wiki.archlinux.org/index.php/Bash/Functions#Display_error_codes
+# wiki.archlinux.org/index.php/Bash/Functions#Display_error_codes
 ec() {
-    echo -e '\e[1;33m'code $?'\e[m\n'
+    echo -e '\e[1;31m$? = '" $?"'\e[m\n'
 }
 trap ec ERR
 
