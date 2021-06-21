@@ -218,11 +218,6 @@ endif
 " mapped Return doesn't trigger expansion even if it is mapped to itself
 cnoremap <CR> <CR>
 
-" :vh to open help in vertical split
-cnoreabbrev vh vertical help
-" :ho to open help in only window, <S-Left> - backward word in insert mode
-cnoreabbrev ho help <Bar> only<S-Left><S-Left><Left>
-
 nmap <silent> <Leader>z <Plug>ZoomIt
 
 xnoremap < <gv
