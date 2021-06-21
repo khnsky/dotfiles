@@ -262,6 +262,9 @@ nnoremap <c-w>] :SD wincmd ]<cr>
 " open file under the cursor in a split
 nnoremap <c-w>f :SD wincmd f<cr>
 
+" open quickfix list populated with files in current directory
+nmap <leader>f <plug>(qf-ls)
+
 " use internal diff with better diffing algorithm
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
