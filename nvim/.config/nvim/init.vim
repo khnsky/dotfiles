@@ -259,6 +259,8 @@ inoremap <c-r>* <c-r><c-r>*
 
 " <c-w>] and <c-w><c-]> do the same - make so <c-w>] opens tag in vsplit
 nnoremap <c-w>] :SD wincmd ]<cr>
+" open file under the cursor in a split
+nnoremap <c-w>f :SD wincmd f<cr>
 
 " use internal diff with better diffing algorithm
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
