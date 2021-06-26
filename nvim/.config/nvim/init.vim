@@ -267,6 +267,8 @@ nmap <leader>f <plug>(qf-ls)
 
 nmap <f5> :<c-u>lmake <bar> redraw! <bar> lw<cr>
 
+nnoremap <esc><esc> <esc>
+
 " use internal diff with better diffing algorithm
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
