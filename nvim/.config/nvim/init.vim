@@ -265,7 +265,7 @@ nnoremap <c-w>f :SD wincmd f<cr>
 " open quickfix list populated with files in current directory
 nmap <leader>f <plug>(qf-ls)
 
-nmap <f5> :<c-u>lmake <bar> redraw! <bar> lw<cr>
+nmap <f5> :<c-u>execute 'lmake' <bar> redraw! <bar> lwindow<cr>
 
 nnoremap <esc><esc> <esc>
 
