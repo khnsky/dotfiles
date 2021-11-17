@@ -1,23 +1,37 @@
 [alias]
-    sb = status -sb
+    sb              = status -sb
 
 [color]
-    ui = auto
+    ui              = auto
 
 [commit]
     # not sure if this is right but:
     #   1 - show diff in commit message editor
     #   2 - also show diff between unstaged changes?
-    verbose = 2
+    verbose         = 1
+
+[diff]
+    # color moved lines of code with default mode
+    colormoved      = default
+
+[fetch]
+    # behave as if --prune option was given - remove any remote-tracking
+    # references that no longer exist on remote
+    prune           = true
 
 [help]
-    # negative - execute autocorected command immediately, 0 - only show,
-    # positive execute autocorected command after n tenth of a second
-    autocorrect = -1
+    # -n: execute autocorrected command immediately
+    #  0: only show the suggested command
+    # +n: execute autocorrected command after n/10 of a second
+    autocorrect     = -1
 
 [init]
-    defaultbranch = master
+    defaultbranch   = master
+
+[pull]
+    # only fast-forward merges are allowed. if you want rebase use `git pull --rebase`
+    ff              = only
 
 [user]
-    email = khnsky@khnsky.cc
-    name  = Piotrek Kochański
+    email           = khnsky@khnsky.cc
+    name            = Piotrek Kochański
