@@ -8,6 +8,9 @@ zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 bindkey -v                              # vi keybinding
 KEYTIMEOUT=1                            # timeout for interpreting esc codes
 
+# ^[[Z is shift-tab - navigate completion backwards with shift-tab
+bindkey '^[[Z' reverse-menu-complete
+
 DIRSTACKSIZE=10
 
 # change cursor shape based on mode
