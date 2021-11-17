@@ -85,3 +85,12 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     # shellcheck source=/dev/null
     . "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
 fi
+
+# prepend systemd file-hierarchy directory for user-local binaries to $PATH
+# only prepend if not already there
+case ":$PATH:" in
+    *:$HOME/.local/bin:*)
+        ;;
+    *)
+        export PATH="$HOME/.local/bin:$PATH"
+esac
