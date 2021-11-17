@@ -58,8 +58,21 @@ export CFLAGS='-std=c11 -Wall -Wextra -Werror -g -pedantic'
 export CXXFLAGS='-std=c++17 -Wall -Wextra -Werror -g'
 export LDFLAGS='-lm'
 
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/${UID:-$(id -u)}}
+export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:-/etc/xdg}
+export XDG_DATA_DIRS=${XDG_DATA_DIRS:-/usr/local/share:/usr/share}
+
+if [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
+    . "$XDG_CONFIG_HOME/user-dirs.dirs" > /dev/null
+    export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_DOWNLOAD_DIR XDG_MUSIC_DIR \
+        XDG_PICTURES_DIR XDG_VIDEOS_DIR
+fi
+
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
+
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
 
 # disable telemetry
@@ -72,3 +85,12 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     # shellcheck source=/dev/null
     . "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
 fi
+
+# prepend systemd file-hierarchy directory for user-local binaries to $PATH
+# only prepend if not already there
+case ":$PATH:" in
+    *:$HOME/.local/bin:*)
+        ;;
+    *)
+        export PATH="$HOME/.local/bin:$PATH"
+esac
