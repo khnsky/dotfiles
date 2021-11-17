@@ -1,17 +1,7 @@
 # vim:ft=conf
 
-# rtorrent sometimes expands `~` and sometimes doesn't - setting
-# direcotry.default to `~/some/dir` and printing shows correctly expanded
-# absolute path, but session.path is printed with a tilde.
-# what is more it seems to work unexpanded for some things but not for others.
-#
-# calling
-#   execute.throw = sh, -c (cat, "mkdir -p", ..., (session.path), ...)
-# creates direcotry called `~` in the working directory.
-#
-# this is a way to obtain the home directory for the current user.
 method.insert = cfg.home,     private|const|string, \
-    (execute.capture, sh, -c, "printf ~")
+    (system.env, HOME)
 method.insert = cfg.download, private|const|string, \
     (cat, (cfg.home), "/downloads")
 method.insert = cfg.session,  private|const|string, \
