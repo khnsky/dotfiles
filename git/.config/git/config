@@ -10,6 +10,9 @@
     #   2 - also show diff between unstaged changes?
     verbose         = 1
 
+[core]
+    excludesfile    = ~/.config/git/gitignore
+
 [diff]
     # color moved lines of code with default mode
     colormoved      = default
