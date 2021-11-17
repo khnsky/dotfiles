@@ -20,8 +20,8 @@ DIRSTACKSIZE=10
 #       man zshzle
 zle-keymap-select zle-line-init() {
     case $KEYMAP in
-        vicmd)      print -n '\1\e[2 q\2';;
-        viins|main) print -n '\1\e[6 q\2';;
+        vicmd)          print -n '\1\e[2 q\2';;
+        viins | main)   print -n '\1\e[6 q\2';;
     esac
 }
 zle -N zle-keymap-select
@@ -46,6 +46,27 @@ if [ -d $ZDOTDIR/zsh.d ]; then
     done
     unset zsh
 fi
+
+# see:
+#   https://www.reddit.com/r/vim/comments/9bm3x0/ctrlz_binding/
+#   https://blog.sher.pl/2014/03/21/how-to-boost-your-vim-productivity/
+# run fg preserving current command line (push input)
+ctrl-z() {
+    # push input onto buffer stack and return to top level prompt
+    # next time editor starts construct will be popped
+    zle push-input
+    # set buffer to fg
+    # don't know why this is needed instead of just `fg` but this works better
+    # otherwise ressume message is put on the prompt after exiting/suspending
+    # resumed command
+    BUFFER="fg"
+    # finish editing the buffer - this normally causes it to be exectuted
+    # like a shell command
+    zle accept-line
+}
+zle -N ctrl-z
+bindkey '^Z' ctrl-z
+HISTORY_IGNORE='(history|fg)'
 
 # tmux is not already running and not root
 if [ -z "$TMUX" ] && [ "$UID" != 0 ]; then
