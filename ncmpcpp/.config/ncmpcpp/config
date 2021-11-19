@@ -1,1 +1,3 @@
-user_interface      alternate
+user_interface    = alternative
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory  = ~/.local/share/lyrics

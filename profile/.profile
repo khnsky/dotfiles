@@ -68,11 +68,30 @@ export XDG_DATA_DIRS=${XDG_DATA_DIRS:-/usr/local/share:/usr/share}
 
 if [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
     . "$XDG_CONFIG_HOME/user-dirs.dirs" > /dev/null
-    export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_DOWNLOAD_DIR XDG_MUSIC_DIR \
-        XDG_PICTURES_DIR XDG_VIDEOS_DIR
+    export                  \
+        XDG_DESKTOP_DIR     \
+        XDG_DOCUMENTS_DIR   \
+        XDG_DOWNLOAD_DIR    \
+        XDG_MUSIC_DIR       \
+        XDG_PICTURES_DIR    \
+        XDG_VIDEOS_DIR
 fi
 
+export CABAL_CONFIG=$XDG_CONFIG_HOME/cabal/config
+export CABAL_DIR=$XDG_CACHE_HOME/cabal
+export CARGO_HOME=$XDG_CONFIG_HOME/cargo
+export GDBHISTFILE=$XDG_CONFIG_HOME/gdb/history
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
+export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
+export IPYTHONDIR=$XDG_CONFIG_HOME/jupyter
+export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
+export NUGET_PACKAGES=$XDG_CACHE_HOME/NuGetPackages
+export OCTAVE_HISTFILE=/dev/null
+export PYLINTHOME=$XDG_CACHE_HOME/pylint
+export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/startup.py
+export RANDFILE=$XDG_DATA_HOME/rnd
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
 

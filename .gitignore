@@ -3,7 +3,7 @@
 cgdb/.cgdb/logs
 cgdb/.cgdb/readline_history.txt
 
-emacs/.emacs.d/*
+emacs/.config/emacs/*
 
 firefox/.mozilla/firefox/*
 
@@ -14,7 +14,7 @@ mpd/.config/mpd/sticker.sql
 
 mpv/.config/mpv/watch_later/*
 
-ncmpcpp/.ncmpcpp/error.log
+ncmpcpp/.config/ncmpcpp/error.log
 
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/history
