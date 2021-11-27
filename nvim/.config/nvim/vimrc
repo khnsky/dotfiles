@@ -30,8 +30,9 @@ if has('syntax')
         syntax enable                   " load syntax highlight once
     endif
 
-    colorscheme mine
-    if $COLORTERM =~# '^\(truecolor\|24bit\)$'
+    autocmd vimrc VimEnter * colorscheme mine
+    " for some reason vim has no colors
+    if has('nvim') && $COLORTERM =~# '^\(truecolor\|24bit\)$'
         set termguicolors
     endif
 
