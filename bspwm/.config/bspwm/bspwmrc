@@ -2,8 +2,6 @@
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 bspc config top_padding 15 # for dzen statusbar, maybe set -dock in dzen invocation?
-# fix java programs in tiling wm
-export _JAVA_AWT_WM_NONREPARENTING=1
 
 bspc rule -r '*'
 
