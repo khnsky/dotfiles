@@ -1,28 +1,42 @@
 [alias]
+    # `&& :` is used because older versions of git apart from substituting
+    # arguments also appended them at the end.  This way arguments at the end
+    # are passed to `:` command thus ignored.
+
+    # Interactively add chunks (add -p) of an untracked file.
+    addnp           = !git add -N "$1" && git add -p "$1" && :
+
+    # Checkout new branch and set upstream branch.
+    # Usage: `git chbu _upstream_ _branch-name_`
+    chbu            = !git checkout -b "$2" && git branch -u "$1/$2" && :
+
     sb              = status -sb
 
 [color]
+    # Use colored output when connected to terminal.
     ui              = auto
 
 [commit]
-    # not sure if this is right but:
+    # Not sure if this is right but:
     #   1 - show diff in commit message editor
     #   2 - also show diff between unstaged changes?
     verbose         = 1
 
 [core]
+    # Global gitignore file.
     excludesfile    = ~/.config/git/gitignore
 
 [diff]
-    # color moved lines of code with default mode
+    # Color moved lines of code with default mode.
     colormoved      = default
 
 [fetch]
-    # behave as if --prune option was given - remove any remote-tracking
-    # references that no longer exist on remote
+    # Behave as if --prune option was given - remove any remote-tracking
+    # references that no longer exist on remote.
     prune           = true
 
 [help]
+    # Autocorrect commands
     # -n: execute autocorrected command immediately
     #  0: only show the suggested command
     # +n: execute autocorrected command after n/10 of a second
@@ -32,7 +46,8 @@
     defaultbranch   = master
 
 [pull]
-    # only fast-forward merges are allowed. if you want rebase use `git pull --rebase`
+    # Only fast-forward merges are allowed.
+    # If you want rebase use `git pull --rebase`.
     ff              = only
 
 [user]
