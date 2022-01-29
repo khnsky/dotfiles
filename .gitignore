@@ -21,3 +21,5 @@ ranger/.config/ranger/history
 
 .histfile
 .zcompdump
+
+__pycache__
