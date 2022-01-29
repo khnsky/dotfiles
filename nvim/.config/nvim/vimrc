@@ -278,6 +278,9 @@ inoremap <a-k> <esc>:m .-2 <cr>gi
 nnoremap <a-k>      :m .-2 <cr>
 vnoremap <a-k>      :m '<-2<cr>gv
 
+" paste over selection without overwriting register
+vnoremap p "_dP
+
 " use internal diff with better diffing algorithm
 if has('nvim-0.3.2') || has#('patch-8.1.0360')
     set diffopt=internal,filler,algorithm:histogram,indent-heuristic
