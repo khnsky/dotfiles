@@ -68,7 +68,7 @@ local function on_attach(client, bufnr)
         end
     end
 
-    local lsp = vim.lsp.buf
+    local diagnostic = vim.diagnostic or vim.lsp.diagnostic
     map {
         ["gD"]          = vim.lsp.buf.declaration,
         ["gd"]          = vim.lsp.buf.definition,
@@ -79,10 +79,10 @@ local function on_attach(client, bufnr)
         ["<space>rn"]   = vim.lsp.buf.rename,
         ["<space>ca"]   = vim.lsp.buf.code_action,
         ["gr"]          = vim.lsp.buf.references,
-        ["<space>e"]    = vim.lsp.diagnostic.goto_prev,
-        ["[d"]          = vim.lsp.diagnostic.goto_prev,
-        ["]d"]          = vim.lsp.diagnostic.goto_next,
-        ["<space>q"]    = vim.lsp.diagnostic.set_loclist,
+        ["<space>e"]    = diagnostic.goto_prev,
+        ["[d"]          = diagnostic.goto_prev,
+        ["]d"]          = diagnostic.goto_next,
+        ["<space>q"]    = diagnostic.set_loclist,
         ["<space>f"]    = vim.lsp.buf.formatting,
     }
 end
