@@ -50,14 +50,6 @@ cmp.setup.cmdline("/", {
     },
 })
 
-cmp.setup.cmdline(":", {
-    sources = cmp.config.sources({
-        { name = "path"    },
-    }, {
-        { name = "cmdline" },
-    })
-})
-
 local lspconfig = require "lspconfig"
 
 local function on_attach(client, bufnr)
