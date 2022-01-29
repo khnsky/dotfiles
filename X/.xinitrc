@@ -28,7 +28,6 @@ setxkbmap                           \
     -option 'shift:both_capslock'   \
     -option 'terminate:ctrl_alt_bksp'
 
-sxhkd           &
 xss-lock slock  &
 
 exec bspwm
