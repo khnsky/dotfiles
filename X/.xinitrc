@@ -30,6 +30,6 @@ setxkbmap                           \
 
 xss-lock slock  &
 
-exec bspwm
 # fix java programs in tiling wm
 export _JAVA_AWT_WM_NONREPARENTING=1
+exec qtile start
