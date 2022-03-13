@@ -1,22 +1,7 @@
 #!/bin/sh
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 0
-bspc config top_padding 15 # for dzen statusbar, maybe set -dock in dzen invocation?
-pgrep -x sxhkd > /dev/null || sxhkd &
+${XDG_CONFIG_HOME:-$HOME/.config}/sxhkd/launch.sh
+${XDG_CONFIG_HOME:-$HOME/.config}/polybar/launch.sh
 
-bspc rule -r '*'
-
-if [ -f /sys/class/power_supply/BAT0/capacity ] && command -v acpi; then
-    statusbar() {
-        echo "$(bspc wm -g) | $(acpi -b) | $(date +'%r %F')"
-    }
-else
-    statusbar() {
-        echo "$(bspc wm -g) | $(date +'%r %F')"
-    }
-fi
-
-while true; do
-    statusbar
-    sleep 1s
-done | dzen2 -fn monospace-11 &
+bspc monitor -d '1' '2' '3' '4' '5' '6' '7' '8' '9' '0'
+bspc rule    -r '*'

@@ -1,4 +1,9 @@
 #!/bin/sh
 
-#dmenu_path | dmenu "$@" | ${SHELL:-"/bin/sh"} &
-dmenu_run -nb black -sb "#808080" -sf black
+dmenu_run               \
+    -p  'run> '         \
+    -fn 'monospace;2'   \
+    -nb '#000000'       \
+    -nf '#ffffff'       \
+    -sb '#808080'       \
+    -sf '#000000'

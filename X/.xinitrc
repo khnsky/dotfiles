@@ -32,4 +32,4 @@ xss-lock slock  &
 
 # fix java programs in tiling wm
 export _JAVA_AWT_WM_NONREPARENTING=1
-exec qtile start
+exec bspwm
