@@ -1,5 +1,13 @@
 ---
-Checks:          'bugprone-*,cppcoreguidelines-*,google-*,modernize-*,performance-*,readability-*'
+Checks: >
+  -*,
+  bugprone-*,
+  cppcoreguidelines-*,
+  google-*,
+  modernize-*,
+  performance-*,
+  readability-*
+
 FormatStyle:     file
 ...
 
