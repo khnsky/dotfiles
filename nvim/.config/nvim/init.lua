@@ -87,12 +87,9 @@ local function on_attach(client, bufnr)
     }
 end
 
-local capabilities = require "cmp_nvim_lsp".update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
 for _, server in ipairs { "clangd" } do
     lspconfig[server].setup {
-        capabilities = capabilities,
+        capabilities = require 'cmp_nvim_lsp'.default_capabilities(),
         on_attach    = on_attach,
         flags        = {
             debounce_text_changes = 150,
