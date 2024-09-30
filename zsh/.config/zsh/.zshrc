@@ -9,7 +9,8 @@ bindkey -v                              # vi keybinding
 KEYTIMEOUT=1                            # timeout for interpreting esc codes
 
 # ^[[Z is shift-tab - navigate completion backwards with shift-tab
-bindkey '^[[Z' reverse-menu-complete
+bindkey '^[[Z'  reverse-menu-complete
+bindkey '^R'    history-incremental-search-backward
 
 DIRSTACKSIZE=10
 
