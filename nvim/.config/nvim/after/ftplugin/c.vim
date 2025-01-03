@@ -1,28 +1,3 @@
-setlocal commentstring&vim define&vim include&vim
-let b:undo_ftplugin .= '|setlocal commentstring< define< include<'
-
-setlocal complete+=d
-let b:undo_ftplugin .= '|setlocal complete<'
-
-let &l:makeprg =
-    \   'if [ -r Makefile ] \|\| [ -r makefile ]; then' .
-    \   '  make $*;'                                    .
-    \   'else'                                          .
-    \   '  make %:r:S;'                                 .
-    \   'fi'
-
-"   setlocal option< copies global setting instead of unsetting local option
-"   is this what is supposed to happen here
-"
-"   for string options setlocal< copies the global value, setlocal= and set<
-"   clears the local value so that global value is used instead
-let b:undo_ftplugin .= '|setlocal makeprg<'
-
-if has('unix')
-    setlocal path+=/usr/include
-    let b:undo_ftplugin .= '|setlocal path<'
-endif
-
 " see :h ft-c-syntax
 let g:c_comment_strings = 1     " highlight literals in comments
 let g:c_gnu             = 1     " highlight gnu specific items
