@@ -163,43 +163,43 @@ packages {
     github "hrsh7th/cmp-nvim-lsp",
     github "hrsh7th/cmp-path",
 
-    github "hrsh7th/vim-vsnip",
-    github "hrsh7th/cmp-vsnip",
-
     github "neovim/nvim-lspconfig",
 }
 
 local cmp = require "cmp"
 
 cmp.setup {
-    mappings = {
-        ["<c-b>"]     = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<c-f>"]     = cmp.mapping(cmp.mapping.scroll_docs( 4), { "i", "c" }),
-        ["<c-space>"] = cmp.mapping(cmp.mapping.complete(),      { "i", "c" }),
-        ["<c-y>"]     = cmp.mapping {
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        },
-        ["<cr>"]      = cmp.mapping.confirm { select = true },
+    mapping = cmp.mapping.preset.insert {
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs( 4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm { select = false },
     },
 
-    snippet = {
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
-    },
-
-    sources = cmp.config.sources {
+    sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "vsnip"    },
+        -- TODO: add vim.snippet as source
+        -- reddit.com/r/neovim/comments/1cxfhom/builtin_snippets_so_good_i_removed_luasnip/
+    }, {
         { name = "buffer"   },
-    },
+    }),
 }
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "buffer" },
     },
+})
+
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
 })
 
 local lspconfig = require "lspconfig"
