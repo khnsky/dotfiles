@@ -204,48 +204,49 @@ cmp.setup.cmdline(':', {
 
 local lspconfig = require "lspconfig"
 
-local function on_attach(client, bufnr)
-    vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+---@diagnostic disable-next-line: unused-local
+local function on_attach(args)
+    vim.keymap.set('n', 'gD',           vim.lsp.buf.declaration,     { buffer = true })
+    vim.keymap.set('n', 'gd',           vim.lsp.buf.definition,      { buffer = true })
+    vim.keymap.set('n', 'gi',           vim.lsp.buf.implementation,  { buffer = true })
+    vim.keymap.set('n', '<c-k>',        vim.lsp.buf.signature_help,  { buffer = true })
+    vim.keymap.set('n', '<leader>D',    vim.lsp.buf.type_definition, { buffer = true })
+    vim.keymap.set('n', '<leader>rn',   vim.lsp.buf.rename,          { buffer = true })
+    vim.keymap.set('n', '<leader>ca',   vim.lsp.buf.code_action,     { buffer = true })
+    vim.keymap.set('n', 'gr',           vim.lsp.buf.references,      { buffer = true })
+    -- vim.keymap.set('n', '<leader>q',    vim.diagnostic.setloclist,   { buffer = true })
 
-    local fntocmd = require "util".fntocmd
+    -- editing the buffer while formatting asynchronous can lead to unexpected changes
+    vim.keymap.set('n', '<leader>f', function()
+        vim.lsp.buf.format { async = true }
+    end, { buffer = true })
 
-    local function map(maps)
-        local opts = {
-            noremap = true,
-            silent  = true,
-        }
-        for k, v in pairs(maps) do
-            local cmd = "<cmd>" .. fntocmd(v) .. "<cr>"
-            vim.api.nvim_buf_set_keymap(bufnr, "n", k, cmd, opts)
-        end
-    end
+    vim.keymap.set('n', '<leader>h', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, { buffer = true })
 
-    local diagnostic = vim.diagnostic or vim.lsp.diagnostic
-    map {
-        ["gD"]          = vim.lsp.buf.declaration,
-        ["gd"]          = vim.lsp.buf.definition,
-        ["K"]           = vim.lsp.buf.hover,
-        ["gi"]          = vim.lsp.buf.implementation,
-        ["<c-k>"]       = vim.lsp.buf.signature_help,
-        ["<space>D"]    = vim.lsp.buf.type_definition,
-        ["<space>rn"]   = vim.lsp.buf.rename,
-        ["<space>ca"]   = vim.lsp.buf.code_action,
-        ["gr"]          = vim.lsp.buf.references,
-        ["<space>e"]    = diagnostic.goto_prev,
-        ["[d"]          = diagnostic.goto_prev,
-        ["]d"]          = diagnostic.goto_next,
-        ["<space>q"]    = diagnostic.set_loclist,
-        ["<space>f"]    = vim.lsp.buf.formatting,
-    }
+    vim.wo.signcolumn = "yes"
+
+    --local client = vim.lsp.get_client_by_id(args.data.client_id)
+    --if client:supports_method('textDocument/formatting') then
+    --  -- Format the current buffer on save
+    --  vim.api.nvim_create_autocmd('BufWritePre', {
+    --    buffer = args.buf,
+    --    callback = function()
+    --      vim.lsp.buf.format({bufnr = args.buf, id = client.id})
+    --    end,
+    --  })
+    --end
 end
 
-for _, server in ipairs { "clangd" } do
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = on_attach,
+})
+
+for _, server in ipairs { "clangd", "pyright" } do
     lspconfig[server].setup {
+        -- TODO: merge capabilities?
         capabilities = require 'cmp_nvim_lsp'.default_capabilities(),
-        on_attach    = on_attach,
-        flags        = {
-            debounce_text_changes = 150,
-        }
     }
 end
 
