@@ -214,6 +214,7 @@ local lspconfig = require "lspconfig"
 
 ---@diagnostic disable-next-line: unused-local
 local function on_attach(args)
+    -- see: h: lsp-defaults
     vim.keymap.set('n', 'gD',           vim.lsp.buf.declaration,     { buffer = true })
     vim.keymap.set('n', 'gd',           vim.lsp.buf.definition,      { buffer = true })
     vim.keymap.set('n', 'gi',           vim.lsp.buf.implementation,  { buffer = true })
@@ -251,10 +252,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = on_attach,
 })
 
-for _, server in ipairs { "clangd", "pyright" } do
-    lspconfig[server].setup {
-        -- TODO: merge capabilities?
-        capabilities = require 'cmp_nvim_lsp'.default_capabilities(),
-    }
-end
-
+vim.lsp.enable { 'clangd', 'pyright' }
