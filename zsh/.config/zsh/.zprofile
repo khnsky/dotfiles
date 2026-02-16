@@ -1,11 +1,19 @@
 [ -r "$HOME/.profile" ] && emulate sh -c 'source "$HOME/.profile"'
 
+startplasma_wayland() {
+    exec /usr/lib/plasma-dbus-run-session-if-needed \
+        /usr/bin/startplasma-wayland > /dev/null 2>&1
+}
+
+startplasma_x11() {
+    exec startx > /dev/null 2>&1
+}
+
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-    printf 'startx? [Y/n] '
+    printf '1) startplasma-wayland, 2) startx, *) tty: '
     read -r
     case ${REPLY} in
-        # exec makes it logout when x is killed
-        Y | y )                      exec startx > /dev/null 2>&1   ;;
-        *     ) [ -z "${REPLY}" ] && exec startx > /dev/null 2>&1   ;;
+        1) startplasma_wayland  ;;
+        2) startplasma_x11      ;;
     esac
 fi

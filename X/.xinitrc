@@ -28,8 +28,4 @@ setxkbmap                           \
     -option 'shift:both_capslock'   \
     -option 'terminate:ctrl_alt_bksp'
 
-xss-lock slock  &
-
-# fix java programs in tiling wm
-export _JAVA_AWT_WM_NONREPARENTING=1
-exec bspwm
+exec startplasma-x11
