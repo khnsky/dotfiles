@@ -68,9 +68,3 @@ ctrl-z() {
 zle -N ctrl-z
 bindkey '^Z' ctrl-z
 HISTORY_IGNORE='(history|fg)'
-
-# tmux is not already running and not root
-if [ -z "$TMUX" ] && [ "$UID" != 0 ]; then
-    # -A acts as attach session if `session-name` already exists, since v. 1.8
-    command -v tmux && tmux new-session -As "$HOST"
-fi
