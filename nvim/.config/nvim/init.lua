@@ -85,6 +85,7 @@ vim.o.showcmdloc = "statusline"
 -- see :h 'statusline'
 -- vim.o.winbar = [[%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P]]
 vim.o.winbar = "%<%t"
+vim.o.winborder = "single"
 
 -- show dialogues on eg. quitting unsaved, show possible completions
 -- complete common then full matches
