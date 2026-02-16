@@ -152,6 +152,14 @@ vim.o.smoothscroll = true
 -- TODO
 vim.opt.wildoptions:append("fuzzy")
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Hightlight selection on yank',
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+    end,
+})
+
 local packages = require "packages"
 local github   = packages.sources.github
 
