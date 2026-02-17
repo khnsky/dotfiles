@@ -7,7 +7,13 @@ vim.g.c_no_ansi         = 1
 vim.g.c_no_bsd          = 1
 vim.g.c_space_errors    = 1
 
+-- TODO: Ugly additional newline.
+-- TODO: Should this check if already was set?
+--       This is getting appended multiple times.
+-- TODO: This doesn't seem to be run in nvim.
+--[[
 vim.b.undo_ftplugin = vim.b.undo_ftplugin .. [[
+
 unlet! g:c_gnu
 unlet! g:c_space_errors
 unlet! g:c_no_ansi
@@ -15,3 +21,4 @@ unlet! g:c_no_bsd
 unlet! g:c_comment_strings
 unlet! g:c_space_errors
 ]]
+--]]
