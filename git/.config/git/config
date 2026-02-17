@@ -33,7 +33,7 @@
 
 [core]
     # Global gitignore file.
-    excludesfile    = ~/.config/git/gitignore
+    excludesfile    = ~/.config/git/ignore
 
 [diff]
     # Improved patience diff algorithm, much better than default myers.
