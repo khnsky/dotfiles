@@ -6,10 +6,6 @@
     # Interactively add chunks (add -p) of an untracked file.
     addnp           = !git add -N "$1" && git add -p "$1" && :
 
-    # Checkout new branch and set upstream branch.
-    # Usage: `git chbu _upstream_ _branch-name_`
-    chbu            = !git checkout -b "$2" && git branch -u "$1/$2" && :
-
     # -s, --short : give output in the short-format
     # -b, --branch: show the branch and tracking info even in short-format
     sb              = status -sb
