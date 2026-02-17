@@ -14,8 +14,6 @@ export EDITOR='nvim'
 export VISUAL="$EDITOR"
 export ALTERNATE_EDITOR=''          # start emacs --daemon if not running
 
-export LESSHISTFILE=/dev/null       # fuck .lesshst
-
 # see: man less
 # -F: automatically exit if entire file can be diplayed on the first screen
 # -i: ignore case - like vim's smartcase
@@ -77,21 +75,51 @@ if [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
         XDG_VIDEOS_DIR
 fi
 
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
+export ANDROID_HOME="$XDG_DATA_HOME"/android/sdk
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+
 export CABAL_CONFIG=$XDG_CONFIG_HOME/cabal/config
 export CABAL_DIR=$XDG_CACHE_HOME/cabal
+
 export CARGO_HOME=$XDG_CONFIG_HOME/cargo
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+
+export CONAN_HOME=$XDG_DATA_HOME/conan2
+export CONAN_USER_HOME="$XDG_CONFIG_HOME"
+
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+
 export GDBHISTFILE=$XDG_CONFIG_HOME/gdb/history
+export LESSHISTFILE=/dev/null       # fuck .lesshst
+export OCTAVE_HISTFILE=/dev/null
+
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
-export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+
+export GOMODCACHE=$XDG_CACHE_HOME/go/mod
+export GOPATH=$XDG_DATA_HOME/go
+
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+
+export GRC_PREFS_PATH="$XDG_CONFIG_HOME"/gnuradio/grc.conf
+export GR_PREFS_PATH="$XDG_CONFIG_HOME"/gnuradio
+
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
 export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
+
 export IPYTHONDIR=$XDG_CONFIG_HOME/jupyter
 export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
+
 export NUGET_PACKAGES=$XDG_CACHE_HOME/NuGetPackages
-export OCTAVE_HISTFILE=/dev/null
+
+export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 export PYLINTHOME=$XDG_CACHE_HOME/pylint
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/startup.py
+
 export RANDFILE=$XDG_DATA_HOME/rnd
-export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 command -v qt5ct > /dev/null 2>&1 && export QT_QPA_PLATFORMTHEME='qt5ct'
 
