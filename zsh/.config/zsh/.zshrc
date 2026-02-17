@@ -68,3 +68,8 @@ ctrl-z() {
 zle -N ctrl-z
 bindkey '^Z' ctrl-z
 HISTORY_IGNORE='(history|fg)'
+
+function \$() {
+    echo "forgot to remove leading \$?"
+    "$@"
+}
