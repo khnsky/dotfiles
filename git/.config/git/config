@@ -10,10 +10,27 @@
     # Usage: `git chbu _upstream_ _branch-name_`
     chbu            = !git checkout -b "$2" && git branch -u "$1/$2" && :
 
+    # -s, --short : give output in the short-format
+    # -b, --branch: show the branch and tracking info even in short-format
     sb              = status -sb
+
+    # --graph   : draw a text-based graphical representation of the commit history.
+    # --oneline : shorthand for --pretty=oneline --abbrev-commit
+    #   --pretty=oneline: use format <hash> <title-line>
+    #   --abbrev-commit : use abbreviated commmit sha
+    # --decorate: print out the ref names of commits, ref name prefixes omitted.
+    ll              = log --graph --oneline --decorate
+
+[branch]
+    # Sort branches by reverse commit date - last commit first.
+    sort            = -committerdate
 
 [color]
     # Use colored output when connected to terminal.
+    ui              = auto
+
+[column]
+    # Supported commands output in columns if output is to terminal.
     ui              = auto
 
 [commit]
@@ -27,28 +44,76 @@
     excludesfile    = ~/.config/git/gitignore
 
 [diff]
+    # Improved patience diff algorithm, much better than default myers.
+    algorithm       = histogram
+
     # Color moved lines of code with default mode.
     colormoved      = default
+
+    # Replace standard a/ and b/ prefixes with more meaningful i/ (index), w/
+    # (working tree) or c/ (commit).
+    mnemonicPrefix  = true
+
+    renames         = copies
+
+    # The `log` format lists the commits in range like `git submodule summary`.
+    submodule       = log
 
 [fetch]
     # Behave as if --prune option was given - remove any remote-tracking
     # references that no longer exist on remote.
     prune           = true
+    pruneTags       = true
+
+    # Try fetching all available remotes.  Can be overriden with --no-all or by
+    # specifying remote(s) to fetch from.
+    all             = true
 
 [help]
-    # Autocorrect commands
-    # -n: execute autocorrected command immediately
-    #  0: only show the suggested command
-    # +n: execute autocorrected command after n/10 of a second
-    autocorrect     = -1
+    autocorrect     = immediate
 
 [init]
     defaultbranch   = master
+
+[interactive]
+    # Allow user to provide one-letter input with single key (without hitting
+    # the Enter key) in interactive commands.
+    singleKey       = true
+
+[log]
+    # Use abbreviated commit sha.
+    abbrevCommit    = true
+
+[merge]
+    ff              = no
+    conflictStyle   = zdiff3
 
 [pull]
     # Only fast-forward merges are allowed.
     # If you want rebase use `git pull --rebase`.
     ff              = only
+
+[push]
+    autoSetupRemote = true
+    default         = simple
+    followTags      = true
+    recurseSubmodules = check
+
+[rerere]
+    autoupdate      = true
+    enabled         = true
+
+[status]
+    branch          = true
+    showStash       = true
+    showUntrackedFiles = all
+
+[tag]
+    # Default value used for sorting tags if --sort was not used.
+    # version:refname makes it so tags are treated and sorted in version order
+    # instead of alphabetically.  The sort order can be also affected by
+    # "versionsort.suffix" configuration variable.
+    sort            = version:refname
 
 [user]
     email           = khnsky@khnsky.cc
