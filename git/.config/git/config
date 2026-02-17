@@ -1,10 +1,6 @@
 [alias]
-    # `&& :` is used because older versions of git apart from substituting
-    # arguments also appended them at the end.  This way arguments at the end
-    # are passed to `:` command thus ignored.
-
     # Interactively add chunks (add -p) of an untracked file.
-    addnp           = !git add -N "$1" && git add -p "$1" && :
+    addnp           = "!c() { git add -N "$@" && git add -p "$@" ; }; c"
 
     # -s, --short : give output in the short-format
     # -b, --branch: show the branch and tracking info even in short-format
