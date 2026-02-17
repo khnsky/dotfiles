@@ -39,8 +39,8 @@
     # Improved patience diff algorithm, much better than default myers.
     algorithm       = histogram
 
-    # Color moved lines of code with default mode.
-    colormoved      = default
+    # Color moved lines of code.
+    colormoved      = plain
 
     # Replace standard a/ and b/ prefixes with more meaningful i/ (index), w/
     # (working tree) or c/ (commit).
