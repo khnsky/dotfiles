@@ -161,10 +161,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
-local packages = require "packages"
-local github   = packages.sources.github
 
-packages {
+local function github(src)
+    return "https://github.com/" .. src
+end
+
+vim.pack.add {
     github "hrsh7th/nvim-cmp",
 
     github "hrsh7th/cmp-buffer",
@@ -210,8 +212,6 @@ cmp.setup.cmdline(':', {
     }),
     matching = { disallow_symbol_nonprefix_matching = false }
 })
-
-local lspconfig = require "lspconfig"
 
 ---@diagnostic disable-next-line: unused-local
 local function on_attach(args)
