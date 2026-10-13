@@ -140,6 +140,15 @@
     # Show summary of commits for modified submodules.
     submoduleSummary = true
 
+[submodule]
+    # Enable --recurse-submodules by default for commands that support it (with
+    # exception of clone, ls-files. Branch unless experimental
+    # submodule.propagateBranches is enabled).  Can be disabled with
+    # --no-recurse-submodules, however some commands that do not have that
+    # option call other commands that use this setting.  A workaround for these
+    # is to call `git -c submodule.recurse=false ...`
+    recurse         = true
+
 [tag]
     # Default value used for sorting tags if --sort was not used.
     # version:refname makes it so tags are treated and sorted in version order
