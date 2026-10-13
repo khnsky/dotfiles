@@ -159,3 +159,13 @@
 [user]
     email           = khnsky@khnsky.cc
     name            = Piotrek Kochański
+
+# Local overrides
+# If include.path doesn't exist git just ignores it.  By creating this file we
+# can provide local (for specific PC or work-specific overrides).  Contents of
+# this file are inserted immediately, so that this overrides must be at the
+# very end.
+[include]
+    # Subject to tilde-expansion, if relative the path is considered relative
+    # to file containing the include directive.
+    path            = local.config
