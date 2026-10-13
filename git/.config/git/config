@@ -137,6 +137,8 @@
     # untracked files.  To do so git needs to `lstat()` all the files in the
     # whole repository which might be slow on some systems.
     showUntrackedFiles = all
+    # Show summary of commits for modified submodules.
+    submoduleSummary = true
 
 [tag]
     # Default value used for sorting tags if --sort was not used.
