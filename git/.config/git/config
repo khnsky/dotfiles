@@ -35,6 +35,13 @@
     # Global gitignore file.
     excludesfile    = ~/.config/git/ignore
 
+    # Enable untracked cache feature of the index which speeds up git operation.
+    # May be unsafe on systems where mtime doesn't work correctly:
+    # weird/networked/old/virtualized filesystems.  In such cases one can use
+    # `git update-index --no-untracked-cache`.
+    # See also: feature.manyFiles
+    untrackedCache = true
+
 [diff]
     # Improved patience diff algorithm, much better than default myers.
     algorithm       = histogram
