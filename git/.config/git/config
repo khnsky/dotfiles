@@ -113,6 +113,12 @@
     # failed.
     recurseSubmodules = check
 
+[rebase]
+    # When doing interactive rebase automatically reorder --fixup and --squash commits.
+    autoSquash = true
+    # When rebasing stacked branches update refs pointing to rebased commits.
+    updateRefs = true
+
 [rerere]
     # Activate recording of resolved conflicts, so that identical conflicting
     # hunks can be resolved automatically, should they be encountered again.
