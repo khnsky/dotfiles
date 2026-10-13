@@ -69,6 +69,10 @@
     # by specifying remote(s) to fetch from.
     all             = true
 
+    # Maximal number of fetch operations to be run in parallel at a time.
+    # A value of 0 will give some reasonable default.
+    parallel        = 0
+
 [help]
     autocorrect     = immediate
 
