@@ -13,6 +13,12 @@
     # --decorate: print out the ref names of commits, ref name prefixes omitted.
     ll              = log --graph --oneline --decorate
 
+    # --force-with-lease: only force if remote ref is the expected value
+    # --force-if-includes: force only if tip of remote included locally
+    #
+    # source: https://blog.timhutt.co.uk/against-submodules/
+    pushf = push --force-with-lease --force-if-includes
+
 [branch]
     # Sort branches by reverse commit date - last commit first.
     sort            = -committerdate
