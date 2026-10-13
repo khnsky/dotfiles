@@ -46,6 +46,7 @@
     # (working tree) or c/ (commit).
     mnemonicPrefix  = true
 
+    # Detect simple renames, as well as copies.
     renames         = copies
 
     # The `log` format lists the commits in range like `git submodule summary`.
@@ -57,8 +58,8 @@
     prune           = true
     pruneTags       = true
 
-    # Try fetching all available remotes.  Can be overriden with --no-all or by
-    # specifying remote(s) to fetch from.
+    # Try fetching all available remotes.  Can be overridden with --no-all or
+    # by specifying remote(s) to fetch from.
     all             = true
 
 [help]
@@ -86,18 +87,38 @@
     ff              = only
 
 [push]
+    # Automatically create branch on remote if missing.
     autoSetupRemote = true
     default         = simple
+
+    # Enable --follow-tags option by default, to override use
+    # --no-follow-tags.  Push tags that are missing from remote but are
+    # reachable form refs being pushed.
     followTags      = true
+
+    # Check if checked-out commits of submodules are available on at least one
+    # remote and fail otherwise.  Other good option is on-demand that will
+    # also automatically push the missing submodule commits and fails if that
+    # failed.
     recurseSubmodules = check
 
 [rerere]
-    autoupdate      = true
+    # Activate recording of resolved conflicts, so that identical conflicting
+    # hunks can be resolved automatically, should they be encountered again.
     enabled         = true
+    # Update the index with resulting contents after cleanly resolving
+    # conflicts using previously recorded resolutions.
+    autoupdate      = true
 
 [status]
+    # Enable --branch by default, override by using --no-branch.  Show branch
+    # and tracking info even in short-format.
     branch          = true
+    # Show number of currently stashed entries.
     showStash       = true
+    # Shows individual untracked files even in directories containing only
+    # untracked files.  To do so git needs to `lstat()` all the files in the
+    # whole repository which might be slow on some systems.
     showUntrackedFiles = all
 
 [tag]
